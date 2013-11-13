@@ -17,6 +17,7 @@
 @interface ScoutingController : UIViewController <ADBannerViewDelegate>
 {
     UILabel *hello;
+    UIButton *plus;
 }
 
 
@@ -28,13 +29,17 @@
 - (void)viewDidLoad
 {
     self.view.backgroundColor = [UIColor whiteColor];
-    hello = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 100.0, 100.0, 100.0)];
+    hello = [[UILabel alloc] initWithFrame:CGRectMake(150.0, 100.0, 100.0, 100.0)];
     hello.text = @"Hello!";
     hello.textAlignment = NSTextAlignmentCenter;
     hello.backgroundColor = [UIColor clearColor];
     
-    [self.view addSubview:hello];
+    plus = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [plus setTitle:@"+" forState:UIControlStateNormal];
+    plus.frame = CGRectMake(50.0, 100.0, 100.0, 100.00);
     
+    [self.view addSubview:hello];
+    [self.view addSubview:plus];
     self.title = @"3061 Scouting";
 }
 
