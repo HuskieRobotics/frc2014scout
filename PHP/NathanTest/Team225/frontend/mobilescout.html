@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>225 WebScout</title>
+		<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+		<style type="text/css">
+		body
+		{
+			font-family: serif;
+		}
+		
+		#currentTeam
+		{
+			font-size: 60px;
+			text-align: center;
+		}
+		
+		#currentMatch
+		{
+			font-size: 30px;
+			text-align: center;
+		}
+		
+		.pointField
+		{
+			width: 100%;
+			text-align: center;
+		}
+		
+		.pointButton
+		{
+			width: 50%;
+			height: 50px;
+		}
+		
+		#finishButton
+		{
+			width: 100%;
+			height: 50px;
+		}
+		
+		#backButton
+		{
+			width: 100%;
+			height: 50px;
+		}
+		
+		.pointDescription
+		{
+			text-align: center;
+			display:block;
+		}
+		
+
+		
+		#shooterScouting
+		{
+			display:none;
+		}
+		
+		#postScouting
+		{
+			display:none;
+		}
+		
+		#matchComments
+		{
+			width: 100%;
+		}
+		</style>
+		
+		<script src="/socket.io/socket.io.js"></script>
+		
+		<script type="text/javascript">
+		
+		var socket = io.connect();
+		
+		var WAITING_FOR_ASSIGNMENT = 0;
+		var AUTON = 1;
+		var TELEOP = 2;
+		var POSTMATCH = 3;
+		
+		
+		var matchState = WAITING_FOR_ASSIGNMENT;
+		
+		function emptyTeamDataObject()
+		{
+			return {
+				team: 0,
+				match: 0,
+				auto: [0,0,0],
+				tele: [0,0,0],
+				climb: 0,
+				color: 0,
+				comments: "",
+				blank:false
+			};
+		}
+		
+		
+		var currentTeamData = emptyTeamDataObject();
+		
+		
+		function initTeam(team, match, color)
+		{
+			if ( matchState > WAITING_FOR_ASSIGNMENT && currentTeamData.team === team && currentTeamData.match === match )
+				return;
+			
+			
+			currentTeamData = emptyTeamDataObject();
+			currentTeamData.team = team;
+			currentTeamData.match = match;
+			currentTeamData.color = color;
+			document.getElementById("currentTeam").innerHTML = team;
+			document.getElementById("currentMatch").innerHTML = "Match "+match+" Autonomous";
+			matchState = AUTON;
+			updateMatchState();
+		}
+		
+		function handleAdd(level)
+		{
+			obj = document.getElementById(level+"point");
+			obj.value = parseInt(obj.value)+1;
+		}
+		
+		function handleSubtract(level)
+		{
+			obj = document.getElementById(level+"point");
+			obj.value = parseInt(obj.value)-1;
+			if ( obj.value < 0 )
+				obj.value = 0;
+		}
+		
+		function commitAutonomous()
+		{
+			for ( var i = 0; i < 3; i++ )
+			{
+				obj = document.getElementById((i+1)+"point");
+				currentTeamData.auto[i] = obj.value;
+				obj.value = 0;
+			}
+			
+			updateMatchState(TELEOP);
+		}
+		
+		function commitTeleop()
+		{
+			for ( var i = 0; i < 3; i++ )
+			{
+				obj = document.getElementById((i+1)+"point");
+				currentTeamData.tele[i] = obj.value;
+				obj.value = 0;
+			}
+			updateMatchState(POSTMATCH);
+		}
+		
+		function commitAll()
+		{
+			var climbObj = document.getElementById("climbLevel");
+			var commentsObj = document.getElementById("matchComments");
+			
+			currentTeamData.comments = commentsObj.value;
+			currentTeamData.climb = climbObj.value;
+			
+			commentsObj.value = "";
+			climbObj.value = 0;
+			
+			socket.emit("commitScoutingData", currentTeamData);
+			updateMatchState(WAITING_FOR_ASSIGNMENT);
+		}
+		
+		
+		function updateMatchState(state)
+		{
+			if ( state !== undefined )
+				matchState = state;
+			switch ( matchState )
+			{
+				case WAITING_FOR_ASSIGNMENT:
+					document.getElementById("currentTeam").innerHTML = "...";
+					document.getElementById("currentMatch").innerHTML = "Waiting For Assignment";
+					document.getElementById("finishButton").onClick = "";
+					document.getElementById("finishButton").innerHTML = "...";
+					document.getElementById("finishButton").setAttribute("onClick", "");
+
+					document.getElementById("backButton").disabled="disabled";
+					document.getElementById("shooterScouting").style.display="none";
+					document.getElementById("postScouting").style.display="none";
+					break;
+				case AUTON:
+					document.getElementById("currentTeam").innerHTML = currentTeamData.team;
+					document.getElementById("currentTeam").style.color = (currentTeamData.color===1?"red":"blue");
+					document.getElementById("currentMatch").innerHTML = "Match "+currentTeamData.match+" Auton";
+					document.getElementById("finishButton").setAttribute("onClick", "javascript:commitAutonomous()");
+					document.getElementById("finishButton").innerHTML = "Begin Teleop";
+					document.getElementById("backButton").disabled="disabled";
+					document.getElementById("shooterScouting").style.display="block";
+					document.getElementById("postScouting").style.display="none";
+					break;
+				case TELEOP:
+					document.getElementById("currentTeam").innerHTML = currentTeamData.team;
+					document.getElementById("currentMatch").innerHTML = "Match "+currentTeamData.match+" Teleop";
+					document.getElementById("finishButton").setAttribute("onClick", "javascript:commitTeleop()");
+					document.getElementById("finishButton").innerHTML = "Finish Match";
+					document.getElementById("postScouting").style.display="none";
+					document.getElementById("shooterScouting").style.display="block";
+					document.getElementById("backButton").disabled="";
+					break;
+				case POSTMATCH:
+					document.getElementById("shooterScouting").style.display="none";
+					document.getElementById("postScouting").style.display="block";
+					document.getElementById("finishButton").innerHTML = "Commit";
+					document.getElementById("finishButton").setAttribute("onClick", "javascript:commitAll()");
+					
+					document.getElementById("backButton").disabled="";
+					break;
+			}
+		}
+		
+		function backStep()
+		{
+			switch ( matchState )
+			{
+				case TELEOP:
+					if ( confirm("Going back to autonomous will erace teleop data") )
+					{
+						for ( var i = 0; i < 3; i++ )
+						{
+							obj = document.getElementById((i+1)+"point");
+							obj.value = currentTeamData.auto[i];
+						}
+						updateMatchState(AUTON);
+					}
+					break;
+				case POSTMATCH:
+					for ( var i = 0; i < 3; i++ )
+					{
+						obj = document.getElementById((i+1)+"point");
+						obj.value = currentTeamData.tele[i];
+					}
+					updateMatchState(TELEOP);
+					break;
+			}
+		}
+		
+		
+		socket.on('assignScouting', function(data)
+		{
+			initTeam(data.team, data.match, data.color);
+		});
+		
+		function init()
+		{
+			updateMatchState();
+		}
+		
+		</script>
+		
+	</head>
+	<body onload="init();">
+	
+	<div id="currentTeam">Please Wait</div>
+	<div id="currentMatch">Waiting for assignment...</div>
+	
+	<div>
+		
+	<div id="shooterScouting">
+		<section>
+			<span class="pointDescription">3Pt</span>
+			<input type="text" disabled="disabled" class="pointField" id="3point" value="0"><br/>
+			<button class="pointButton" onClick="handleSubtract(3);">-</button><button class="pointButton" onClick="handleAdd(3);">+</button>
+		</section>
+		<br/>
+		<section>
+			<span class="pointDescription">2Pt</span>
+			<input type="text" disabled="disabled" class="pointField" id="2point" value="0"><br/>
+			<button class="pointButton" onClick="handleSubtract(2);">-</button><button class="pointButton" onClick="handleAdd(2);">+</button>
+		</section>
+		<br/>
+		<section>
+			<span class="pointDescription">1Pt</span>
+			<input type="text" disabled="disabled" class="pointField" id="1point" value="0"><br/>
+			<button class="pointButton" onClick="handleSubtract(1);">-</button><button class="pointButton" onClick="handleAdd(1);">+</button>
+		</section>
+	</div>
+	
+	<div id="postScouting">
+		Climb: 
+		<select id="climbLevel">
+			<option selected="selected" value="0">None</option>
+			<option value="1">Level 1</option>
+			<option value="2">Level 2</option>
+			<option value="3">Level 3</option>
+		</select>
+		<br/>
+		Comments:<br/>
+		<textarea id="matchComments" rows="20"></textarea>
+	</div>
+	<br/>
+	<button id="finishButton" onClick="updateMatchState();">Switch</button>
+	<br/><br/>
+	<button id="backButton" onClick="backStep();">Back</button>
+        </div>
+        
+        </body>
+</html>

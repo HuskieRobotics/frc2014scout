@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebScout</title>	
+	<script src="/socket.io/socket.io.js"></script>
+	
+	<script type="text/javascript">
+	
+	var socket = io.connect();
+	
+	var WAITING_FOR_ASSIGNMENT = 0;
+	var AUTON = 1;
+	var TELEOP = 2;
+	var POSTMATCH = 3;
+	
+	
+	var matchState = WAITING_FOR_ASSIGNMENT;
+	
+	function emptyTeamDataObject()
+	{
+		return {
+			team: 0,
+			match: 0,
+			auto: [0,0,0],
+			tele: [0,0,0],
+			climb: 0,
+			color: 0,
+			comments: "",
+			blank:false
+		};
+	}
+	
+	
+	var currentTeamData = emptyTeamDataObject();
+	
+	
+	function initTeam(team, match, color)
+	{
+		if ( matchState > WAITING_FOR_ASSIGNMENT && currentTeamData.team === team && currentTeamData.match === match )
+			return;
+		
+		
+		currentTeamData = emptyTeamDataObject();
+		currentTeamData.team = team;
+		currentTeamData.match = match;
+		currentTeamData.color = color;
+		document.getElementById("currentTeam").innerHTML = team;
+		document.getElementById("currentMatch").innerHTML = "Match "+match+" Autonomous";
+		matchState = AUTON;
+		updateMatchState();
+	}
+	
+	function handleAdd(level)
+	{
+		obj = document.getElementById(level+"point");
+		obj.value = parseInt(obj.value)+1;
+	}
+	
+	function handleSubtract(level)
+	{
+		obj = document.getElementById(level+"point");
+		obj.value = parseInt(obj.value)-1;
+		if ( obj.value < 0 )
+			obj.value = 0;
+	}
+	
+	function commitAutonomous()
+	{
+		for ( var i = 0; i < 3; i++ )
+		{
+			obj = document.getElementById((i+1)+"point");
+			currentTeamData.auto[i] = obj.value;
+			obj.value = 0;
+		}
+		
+		updateMatchState(TELEOP);
+	}
+	
+	function commitTeleop()
+	{
+		for ( var i = 0; i < 3; i++ )
+		{
+			obj = document.getElementById((i+1)+"point");
+			currentTeamData.tele[i] = obj.value;
+			obj.value = 0;
+		}
+		updateMatchState(POSTMATCH);
+	}
+	
+	function commitAll()
+	{
+		var climbObj = document.getElementById("climbLevel");
+		var commentsObj = document.getElementById("matchComments");
+		
+		currentTeamData.comments = commentsObj.value;
+		currentTeamData.climb = climbObj.value;
+		
+		commentsObj.value = "";
+		climbObj.value = 0;
+		
+		socket.emit("commitScoutingData", currentTeamData);
+		updateMatchState(WAITING_FOR_ASSIGNMENT);
+	}
+	
+	
+	function updateMatchState(state)
+	{
+		if ( state !== undefined )
+			matchState = state;
+		switch ( matchState )
+		{
+			case WAITING_FOR_ASSIGNMENT:
+				document.getElementById("currentTeam").innerHTML = "...";
+				document.getElementById("currentMatch").innerHTML = "Waiting For Assignment";
+				document.getElementById("finishButton").onClick = "";
+				document.getElementById("finishButton").innerHTML = "...";
+				document.getElementById("finishButton").setAttribute("onClick", "");
+
+				document.getElementById("backButton").disabled="disabled";
+				document.getElementById("shooterScouting").style.display="none";
+				document.getElementById("postScouting").style.display="none";
+				break;
+			case AUTON:
+				document.getElementById("currentTeam").innerHTML = currentTeamData.team;
+				document.getElementById("currentTeam").style.color = (currentTeamData.color===1?"red":"blue");
+				document.getElementById("currentMatch").innerHTML = "Match "+currentTeamData.match+" Auton";
+				document.getElementById("finishButton").setAttribute("onClick", "javascript:commitAutonomous()");
+				document.getElementById("finishButton").innerHTML = "Begin Teleop";
+				document.getElementById("backButton").disabled="disabled";
+				document.getElementById("shooterScouting").style.display="block";
+				document.getElementById("postScouting").style.display="none";
+				break;
+			case TELEOP:
+				document.getElementById("currentTeam").innerHTML = currentTeamData.team;
+				document.getElementById("currentMatch").innerHTML = "Match "+currentTeamData.match+" Teleop";
+				document.getElementById("finishButton").setAttribute("onClick", "javascript:commitTeleop()");
+				document.getElementById("finishButton").innerHTML = "Finish Match";
+				document.getElementById("postScouting").style.display="none";
+				document.getElementById("shooterScouting").style.display="block";
+				document.getElementById("backButton").disabled="";
+				break;
+			case POSTMATCH:
+				document.getElementById("shooterScouting").style.display="none";
+				document.getElementById("postScouting").style.display="block";
+				document.getElementById("finishButton").innerHTML = "Commit";
+				document.getElementById("finishButton").setAttribute("onClick", "javascript:commitAll()");
+				
+				document.getElementById("backButton").disabled="";
+				break;
+		}
+	}
+	
+	function backStep()
+	{
+		switch ( matchState )
+		{
+			case TELEOP:
+				if ( confirm("Going back to autonomous will erace teleop data") )
+				{
+					for ( var i = 0; i < 3; i++ )
+					{
+						obj = document.getElementById((i+1)+"point");
+						obj.value = currentTeamData.auto[i];
+					}
+					updateMatchState(AUTON);
+				}
+				break;
+			case POSTMATCH:
+				for ( var i = 0; i < 3; i++ )
+				{
+					obj = document.getElementById((i+1)+"point");
+					obj.value = currentTeamData.tele[i];
+				}
+				updateMatchState(TELEOP);
+				break;
+		}
+	}
+	
+	
+	socket.on('assignScouting', function(data)
+	{
+		initTeam(data.team, data.match, data.color);
+	});
+	
+	function init()
+	{
+		updateMatchState();
+	}
+	
+	</script>
+	
+	<style type="text/css">
+	body
+	{
+		padding-top: 20px;
+	}
+	
+	.centered
+	{
+		text-align:center;
+		margin:auto;
+	}
+	
+	.pointbtn
+	{
+		width:200px;
+	}
+	
+	.pointbox
+	{
+		width: 385px;
+		text-align:center;
+	}
+	
+	.controlButton
+	{
+		width: 400px;
+	}
+	</style>
+	<link href="../static/css/bootstrap.css" rel="stylesheet">
+	<link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+	<body>
+		
+		<div class="container">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a class="brand" href="/frontend">WebScout</a>
+					<ul class="nav">
+						<li class="active"><a href="#">Match Scouting</a></li>
+						<li><a href="pitscout.html">Pit Scouting</a></li>
+						<li><a href="predict.html">Predict Match</a></li>
+						<li><a href="everybody.html">All Teams</a></li>
+					</ul>
+					
+					<form class="navbar-search pull-right" action="query.html">
+					  <input type="text" class="search-query" name="team" placeholder="Team Lookup">
+					</form>
+				</div>
+			</div>
+			<br>
+			<h1 class="centered" id="currentTeam">225</h1>
+			<h4 class="centered" id="currentMatch">Match #2 Auton</h4>
+			<br>
+			<div id="shooterScouting">
+				<section>
+					<h5 class="centered">3Pt</h5>
+					<div class="centered"><input type="text" id="3point" class="pointbox" disabled="disabled" value="0"></div>
+					<div class="centered"><div class="btn-group">
+						<button class="btn btn-large pointbtn" onClick="handleSubtract(3);">-</button><button class="btn btn-large pointbtn" onClick="handleAdd(3);">+</button>
+					</div></div>
+				</section>
+				<br>
+				<section>
+					<h5 class="centered">2Pt</h5>
+					<div class="centered"><input type="text" id="2point" class="pointbox centered" disabled="disabled" value="0"></div>
+					<div class="centered"><div class="btn-group">
+						<button class="btn btn-large pointbtn" onClick="handleSubtract(2);">-</button><button class="btn btn-large pointbtn" onClick="handleAdd(2);">+</button>
+					</div></div>
+				</section>
+				<br>
+				<section>
+					<h5 class="centered">1Pt</h5>
+					<div class="centered"><input type="text" id="1point" class="pointbox centered" disabled="disabled" value="0"></div>
+					<div class="centered"><div class="btn-group">
+						<button class="btn btn-large pointbtn" onClick="handleSubtract(1);">-</button><button class="btn btn-large pointbtn" onClick="handleAdd(1);">+</button>
+					</div></div>
+				</section>
+			</div>
+			
+			<div id="postScouting" class="centered">
+				Climb: 
+				<select id="climbLevel">
+					<option selected="selected" value="0">None</option>
+					<option value="1">Level 1</option>
+					<option value="2">Level 2</option>
+					<option value="3">Level 3</option>
+				</select>
+				<br>
+				Comments:<br>
+				<textarea id="matchComments" rows="10"></textarea>
+			</div>
+			
+			<br><br>
+			<div class="centered">
+				<div class="btn-group btn-group-vertical">
+					<button id="finishButton" onClick="updateMatchState();" class="btn btn-large controlButton">Next</button>
+					<button id="backButton" onClick="backStep();" class="btn btn-large controlButton">Back</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
