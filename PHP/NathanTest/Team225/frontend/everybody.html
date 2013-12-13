@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebScout</title>
+	<script type="text/javascript" src="../static/jquery.min.js"></script>
+	<script type="text/javascript">
+	function init()
+	{
+		$.getJSON("/api/teamOverviews", function(data)
+		{
+			output = "<tr><td><strong>Team#</strong></td><td><strong>Auton 3</strong></td><td><strong>Auton 2</strong></td><td><strong>Auton 1</strong></td><td><strong>Teleop 3</strong></td><td><strong>Teleop 2</strong></td><td><strong>Teleop 1</strong></td><td><strong>Climb</strong></td><td><strong>Avg. Contribution</strong></td><td><strong>Tags</strong></td></tr>";
+			
+			data.sort(function (a,b)
+			{
+				return a.team-b.team;
+			});
+			
+			for ( var i = 0; i < data.length; i++ )
+			{
+				thisTeam = data[i];
+				output += "<tr>";
+				output += "<td><a href=\"query.html?team="+thisTeam.team+"\">"+thisTeam.team+"</a></td>";
+				output += "<td>"+thisTeam.averages.auto[2]+"</td>";
+				output += "<td>"+thisTeam.averages.auto[1]+"</td>";
+				output += "<td>"+thisTeam.averages.auto[0]+"</td>";
+				
+				output += "<td>"+thisTeam.averages.tele[2]+"</td>";
+				output += "<td>"+thisTeam.averages.tele[1]+"</td>";
+				output += "<td>"+thisTeam.averages.tele[0]+"</td>";
+				
+				output += "<td>"+(thisTeam.averages.climb*10)+"</td>";
+				output += "<td>"+thisTeam.contribution+"</td>";
+				
+				output += "<td>";
+				if ( thisTeam.pitData !== undefined )
+				{
+					output += "<span class=\"badge badge-warning\">"+thisTeam.pitData.motornum+" CIM</span>";
+					output += " <span class=\"label label-success\">"+thisTeam.pitData.drivetrainType+"</span>";
+					
+					wheels = [thisTeam.pitData.wheel1, thisTeam.pitData.wheel2, thisTeam.pitData.wheel3, thisTeam.pitData.wheel4];
+					nWheels = 0;
+					
+					if ( thisTeam.pitData.wheel1 )
+						nWheels++;
+					if ( thisTeam.pitData.wheel2 )
+						nWheels++;
+					if ( thisTeam.pitData.wheel3 )
+						nWheels++;
+					if ( thisTeam.pitData.wheel4 )
+						nWheels++;
+					nWheels *= 2;
+					
+					output += " <span class=\"badge badge-info\">"+nWheels+" wheel</span>";
+				}
+				output += "</td>";
+				output += "</tr>";
+			}
+			document.getElementById("matchTable").innerHTML = output;
+		});
+	}
+	</script>
+	
+	<style type="text/css">
+	body
+	{
+		padding-top: 20px;
+	}
+	</style>
+	<link href="../static/css/bootstrap.css" rel="stylesheet">
+	<link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+	<body onload="init();">
+		
+		<div class="container">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a class="brand" href="/frontend">WebScout</a>
+					<ul class="nav">
+						<li><a href="scout.html">Match Scouting</a></li>
+						<li><a href="pitscout.html">Pit Scouting</a></li>
+						<li><a href="predict.html">Predict Match</a></li>
+						<li class="active"><a href="everybody.html">All Teams</a></li>
+					</ul>
+					
+					<form class="navbar-search pull-right" action="query.html">
+					  <input type="text" class="search-query" name="team" placeholder="Team Lookup">
+					</form>
+				</div>
+			</div>
+			
+			<div id="teamContainer">
+				
+				<table id="matchTable" class="table table-striped">
+					<tr>
+						<td><strong>Loading</strong></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+
+</html>

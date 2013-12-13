@@ -1,0 +1,5 @@
+This is a system designed to work on all future FRC games that have 3 teams in an alliance vs. 3 other teams in another alliance.
+
+You will need a working MySQL server and and Apache web server with PHP. If you do not, I recommend installing XAMPP.
+
+The repository has an image of how the database should be structured.
