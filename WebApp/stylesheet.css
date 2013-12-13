@@ -1,0 +1,12 @@
+/* CSS Document */
+
+div {
+	height: 600px;
+	width: 1000px;
+	border-radius: 5px;
+	background-color: #69d2e7;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Sans-Serif;
+	opacity: .5;
+}
