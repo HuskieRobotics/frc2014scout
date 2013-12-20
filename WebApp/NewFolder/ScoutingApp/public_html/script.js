@@ -1,28 +1,31 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-// JavaScript Document
+var highCount=0;
+var medCount=0;
+var lowCount=0;
 $(document).ready(function(){
-	$('div').click(function(){
-		$('div').fadeOut('slow');
+	$("#highMinus").click(function(){
+		highCount--;
+		$('#highLabel').val(highCount);
 	});
-	
-	$('div').mousedown(function(){
-		$('div').hide('fast');
+	$("#highPlus").click(function(){
+		highCount++;
+		$('#highLabel').val(highCount);
 	});
-	
-	$('div').mouseenter(function(){
-		$('div').fadeTo('fast', 1);
+        
+        $("#medMinus").click(function(){
+		medCount--;
+		$('#medLabel').val(medCount);
 	});
-	
-	$('div').mouseleave(function(){
-		$('div').fadeTo('fast',.5);
+	$("#medPlus").click(function(){
+		medCount++;
+		$('#medLabel').val(medCount);
 	});
-	
-	$('#green').click(function(){
-		$('#green').hide('fast');
+        
+        $("#lowMinus").click(function(){
+		lowCount--;
+		$('#lowLabel').val(lowCount);
+	});
+	$("#lowPlus").click(function(){
+		lowCount++;
+		$('#lowLabel').val(lowCount);
 	});
 });
