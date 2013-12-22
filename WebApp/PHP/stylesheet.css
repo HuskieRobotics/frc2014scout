@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 15, 2013, 11:16:26 AM
+    Author     : Yasha Mostofi
+*/
+
+/* CSS Document */
+
+div {
+	height: 60px;
+	width: 100px;
+	border-radius: 5px;
+	background-color: #69d2e7;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Sans-Serif;
+	opacity: .5;
+}
+
