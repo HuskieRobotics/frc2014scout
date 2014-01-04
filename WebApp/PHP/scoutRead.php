@@ -12,15 +12,10 @@ $table = "test";
 $field1 = "teamNum";
 $field2 = "matchNum";
 $field3 = "highScoreA";
-$field4 = "medScoreA";
-$field5 = "lowScoreA";
-$field6 = "highScoreT";
-$field7 = "medScoreT";
-$field8 = "lowScoreT";
+
 
 mysql_select_db($databaseID);
-$sql = "SELECT $field1, $field2, $field3, $field4,"
-        . "$field5, $field6, $field7, $field8 FROM $table";
+$sql = "SELECT $field1, $field2, $field3 FROM $table";
 $return = mysql_query($sql, $conn);
 if (!$return) {
     die("Could not get data: " . mysql_error());
@@ -42,12 +37,6 @@ echo <<<_END
         <div id="container">
         <div id="header"><h1>3061 Scouting</h1>
         <br/>
-        <nav>
-                <ul class="top-menu">
-                    <li><a href="index.php">enter</a><div class="menu-item" id="enter"></div></li>
-                    <li><a href="read.php">read</a><div class="menu-item" id="read"></div></li>
-                </ul>
-        </nav>
         </div>
         
         </div>
@@ -58,11 +47,7 @@ while ($row = mysql_fetch_assoc($return)) {
     echo "$field1" . ": " . "{$row[$field1]} <br/>";
     echo "$field2" . ": " . "{$row[$field2]} <br/>";
     echo "$field3" . ": " . "{$row[$field3]} <br/>";
-    echo "$field4" . ": " . "{$row[$field4]} <br/>";
-    echo "$field5" . ": " . "{$row[$field5]} <br/>";
-    echo "$field6" . ": " . "{$row[$field6]} <br/>";
-    echo "$field7" . ": " . "{$row[$field7]} <br/>";
-    echo "$field8" . ": " . "{$row[$field8]} <br/>";
+    
 
     echo "<br/><br/>";
 }
