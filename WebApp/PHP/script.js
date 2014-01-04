@@ -1,31 +1,69 @@
-var highCount=0;
-var medCount=0;
-var lowCount=0;
+// setting up all the counters for various point values
+// in different stages of the game
+var highCountA=0;
+var medCountA=0;
+var lowCountA=0;
+var highCountT=0;
+var medCountT=0;
+var lowCountT=0;
+
 $(document).ready(function(){
-	$("#highMinus").click(function(){
-		highCount--;
-		$('#highLabel').val(highCount);
+        // code to dynamically update the labels
+        // as the user hits plus or minus
+        alert("HI");
+        //AUTO
+	$("#highMinusA").click(function(){
+		highCountA--;
+		$('#highLabelA').val(highCountA);
 	});
-	$("#highPlus").click(function(){
-		highCount++;
-		$('#highLabel').val(highCount);
-	});
-        
-        $("#medMinus").click(function(){
-		medCount--;
-		$('#medLabel').val(medCount);
-	});
-	$("#medPlus").click(function(){
-		medCount++;
-		$('#medLabel').val(medCount);
+	$("#highPlusA").click(function(){
+		highCountA++;
+		$('#highLabelA').val(highCountA);
 	});
         
-        $("#lowMinus").click(function(){
-		lowCount--;
-		$('#lowLabel').val(lowCount);
+        $("#medMinusA").click(function(){
+		medCountA--;
+		$('#medLabelA').val(medCountA);
 	});
-	$("#lowPlus").click(function(){
-		lowCount++;
-		$('#lowLabel').val(lowCount);
+	$("#medPlusA").click(function(){
+		medCountA++;
+		$('#medLabelA').val(medCountA);
+	});
+        
+        $("#lowMinusA").click(function(){
+		lowCountA--;
+		$('#lowLabelA').val(lowCountA);
+	});
+	$("#lowPlusA").click(function(){
+		lowCountA++;
+		$('#lowLabelA').val(lowCountA);
+	});
+        
+        //TELEOP
+        $("#highMinusT").click(function(){
+		highCountT--;
+		$('#highLabelT').val(highCountT);
+	});
+	$("#highPlusT").click(function(){
+		highCountT++;
+		$('#highLabelT').val(highCountT);
+	});
+        
+        $("#medMinusT").click(function(){
+		medCountT--;
+		$('#medLabelT').val(medCountT);
+	});
+	$("#medPlusT").click(function(){
+		medCountT++;
+		$('#medLabelT').val(medCountT);
+	});
+        
+        $("#lowMinusT").click(function(){
+		lowCountT--;
+		$('#lowLabelT').val(lowCountT);
+	});
+	$("#lowPlusT").click(function(){
+		lowCountT++;
+		$('#lowLabelT').val(lowCountT);
 	});
 });
