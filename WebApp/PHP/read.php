@@ -18,7 +18,7 @@ $field6 = "highScoreT";
 $field7 = "medScoreT";
 $field8 = "lowScoreT";
 
-mysql_select_db($database);
+mysql_select_db($databaseID);
 $sql = "SELECT $field1, $field2, $field3, $field4,"
         . "$field5, $field6, $field7, $field8 FROM $table";
 $return = mysql_query($sql, $conn);
@@ -40,12 +40,16 @@ echo <<<_END
     </head>
     <body>
         <div id="container">
-        <div id="header"><h1>3061 Scouting</h1></div>
-        <div id="sidebar"><h3>Navigation</h3>
-        <ul>
-            <li><a href="index.php">Enter Data</a></li>
-            <li><a href="read.php" class="active">Read Data</a></li>
-        </ul>
+        <div id="header"><h1>3061 Scouting</h1>
+        <br/>
+        <nav>
+                <ul class="top-menu">
+                    <li><a href="index.php">enter</a><div class="menu-item" id="enter"></div></li>
+                    <li><a href="read.php">read</a><div class="menu-item" id="read"></div></li>
+                </ul>
+        </nav>
+        </div>
+        
         </div>
         <div id="content"><h1>Data</h1>
 

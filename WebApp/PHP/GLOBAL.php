@@ -1,5 +1,5 @@
 <?php
-	$databaseID = "scouting";
+	$databaseID = "yes";
 	$databaseUser = "root";
 	$databasePassword = "Admin";
 ?>

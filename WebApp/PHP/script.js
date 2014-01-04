@@ -10,7 +10,13 @@ var lowCountT=0;
 $(document).ready(function(){
         // code to dynamically update the labels
         // as the user hits plus or minus
-        alert("HI");
+        
+        /* uncomment this part for dynamic matrixUI stuff
+        $("#1blue").click(function(){
+            $("#1blue").css("background-color", "black");
+        });
+        **/
+        
         //AUTO
 	$("#highMinusA").click(function(){
 		highCountA--;
