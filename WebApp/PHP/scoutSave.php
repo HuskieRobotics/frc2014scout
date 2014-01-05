@@ -12,9 +12,10 @@ $field1 = "teamNum";
 $field2 = "matchNum";
 $field3 = "highScoreA";
 
-$teamnum = $_POST['teamNum'];
-$matchnum = $_POST['matchNum'];
+$teamnum = $_POST['teamnum'];
+$matchnum = $_POST['matchnum'];
 $highLabelA = $_POST['highLabelA'];
+$teamworkRating = $_POST['teamworkRating'];
 
 mysql_select_db($databaseID);
 $sql = "INSERT INTO $table " .

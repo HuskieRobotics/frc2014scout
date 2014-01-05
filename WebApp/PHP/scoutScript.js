@@ -1,22 +1,21 @@
-var highCountA=0;
-
-
 $(document).ready(function(){
-	$("#highMinusA").click(function(){
-		highCountA--;
-		$('#highLabelA').val(highCountA);
+	$(".hit").click(function(){
+                var scoreID = $(this).attr("data-scoreID");
+                var shotID = $(this).attr("data-shotID");
+		$("#"+scoreID).val(parseInt($("#"+scoreID).val())+1);
+                $("#"+shotID).val(parseInt($("#"+shotID).val())+1);
 	});
-	$("#highPlusA").click(function(){
-		highCountA++;
-		$('#highLabelA').val(highCountA);
+	$(".miss").click(function(){
+		var shotID = $(this).attr("data-shotID");
+                $("#"+shotID).val(parseInt($("#"+shotID).val())+1);
 	});
         
         $("#saveButton").click(function(){
-            var teamNum = $("#teamnum").val();
-            var matchNum = $("#matchnum").val();
-            $.post("scoutSave.php", {"teamNum":teamNum,
-                "matchNum":matchNum, "highLabelA":highCountA}, processResult);
-            alert("saved");
+            //var teamNum = $("#teamnum").val();
+            //var matchNum = $("#matchnum").val();
+            $.post("scoutSave.php", $("#scoutingForm").serialize(), function(data){
+                alert(data);
+            });
         });
 });
 
