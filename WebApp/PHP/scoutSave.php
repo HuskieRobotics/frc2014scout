@@ -11,37 +11,46 @@ $table = "sTest";
 
 mysql_select_db($databaseID);
 
-$length = count($fieldNames);
 
-for ($i = 0; $i < $length; $i++) {
-    
-    $fieldName = $fieldNames[$i];
-    echo $_POST[$fieldName];
-    
-    if (isset($_POST[$fieldName]))
-        $valueToPut = $_POST[$fieldName];
-    else
-        $valueToPut = "false"; 
-    
-    echo $fieldName;
-    echo $valueToPut;
-    echo "\n";
-    
-    $sql = "INSERT INTO $table " .
-    "($fieldName) " .
-    "VALUES " .
-    "('$valueToPut') ";
+function buildArray($fieldNamesInput) 
+{    
+    $length = count($fieldNamesInput);
 
+    $assocArray = array();
+    for ($i = 0; $i < $length; $i++) 
+    {
 
-    $return = mysql_query($sql, $conn);
-    if (!$return) {
-        die("Could not insert data: " . mysql_error());
+        $fieldName = $fieldNamesInput[$i];
+
+        if (isset($_POST[$fieldName]))
+            $valueToPut = $_POST[$fieldName];
+        else
+            $valueToPut = "false";
+
+        $assocArray[$fieldName] = $valueToPut;
     }
+    return $assocArray;
 }
 
-echo "Data insertion successful.";
+$assocArray2 = buildArray($fieldNames);
+
+$sql = "INSERT INTO $table";
+
+
+$sql .= " (`" . implode("`, `", array_keys($assocArray2)) . "`)";
+
+
+$sql .= " VALUES ('" . implode("', '", $assocArray2) . "') ";
+
+$return = mysql_query($sql, $conn);
+if (!$return) {
+    die("Could not insert data: " . mysql_error());
+}
+
+
+echo "Data insertion successful.\n";
 
 mysql_close($conn);
 
-echo "<p>Connection successful.</p>";
+echo "Connection successful.";
 ?>
