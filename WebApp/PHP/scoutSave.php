@@ -29,6 +29,6 @@ echo "Data insertion successful.";
 
 mysql_close($conn);
 
-echo "Connection successful.";
+echo "<p>Connection successful.</p>";
 
 ?>

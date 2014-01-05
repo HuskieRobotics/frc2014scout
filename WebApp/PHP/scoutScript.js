@@ -12,13 +12,15 @@ $(document).ready(function(){
 	});
         
         $("#saveButton").click(function(){
-            $.post("scoutSave.php", {"highCountA":highCountA, "teamNum":$("teamNum").val(), 
-                "matchNum":$("matchNum").val()}, processResult);
+            var teamNum = $("#teamnum").val();
+            var matchNum = $("#matchnum").val();
+            $.post("scoutSave.php", {"teamNum":teamNum,
+                "matchNum":matchNum, "highLabelA":highCountA}, processResult);
             alert("saved");
         });
 });
 
 function processResult(data, textStatus)
 {
-    
+    alert(data);
 }
