@@ -7,7 +7,7 @@ if (!$conn) {
 }
 
 $database = "yes";
-$table = "test";
+$table = "sTest";
 
 mysql_select_db($databaseID);
 
@@ -30,7 +30,7 @@ for ($i = 0; $i < $length; $i++) {
     $sql = "INSERT INTO $table " .
     "($fieldName) " .
     "VALUES " .
-    "($valueToPut) ";
+    "('$valueToPut') ";
 
 
     $return = mysql_query($sql, $conn);
