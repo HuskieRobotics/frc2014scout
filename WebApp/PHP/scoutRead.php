@@ -8,7 +8,7 @@ if (!$conn) {
 //echo "Connection successful.<br/>";
 
 $database = "yes";
-$table = "test";
+$table = "sTest";
 
 $length = count($fieldNames);
 
@@ -17,7 +17,7 @@ mysql_select_db($databaseID);
 $sql = "SELECT ";
 
 
-$sql .= " (`" . implode("`, `", $fieldNames) . "`) FROM $table";
+$sql .= " " . implode(", ", $fieldNames) . " FROM $table";
 
 $return = mysql_query($sql, $conn);
 if (!$return) {
