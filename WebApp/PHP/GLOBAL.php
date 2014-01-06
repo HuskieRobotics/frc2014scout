@@ -7,7 +7,7 @@
             "autoGoalType","autoHotGoal","autoZonePoints",
             "autoHotDetect","initZone","highGoalScores",
             "highGoalShots","lowGoalScores","lowGoalShots",
-            "trussScores","trussShots","catchScores","catchShots",
+            "trussScores","trussShots","catchScores","catchShots", "assists",
             "canCatch","canCollect","robotSpeed","robotPushing",
             "robotThrow","teamworkRating","allianceColor","matchResult");
                 
