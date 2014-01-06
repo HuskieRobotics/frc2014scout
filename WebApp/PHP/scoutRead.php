@@ -9,13 +9,16 @@ if (!$conn) {
 
 $database = "yes";
 $table = "test";
-$field1 = "teamNum";
-$field2 = "matchNum";
-$field3 = "highScoreA";
 
+$length = count($fieldNames);
 
 mysql_select_db($databaseID);
-$sql = "SELECT $field1, $field2, $field3 FROM $table";
+
+$sql = "SELECT ";
+
+
+$sql .= " (`" . implode("`, `", $fieldNames) . "`) FROM $table";
+
 $return = mysql_query($sql, $conn);
 if (!$return) {
     die("Could not get data: " . mysql_error());
@@ -44,10 +47,11 @@ echo <<<_END
 
 _END;
 while ($row = mysql_fetch_assoc($return)) {
-    echo "$field1" . ": " . "{$row[$field1]} <br/>";
-    echo "$field2" . ": " . "{$row[$field2]} <br/>";
-    echo "$field3" . ": " . "{$row[$field3]} <br/>";
-    
+    for ($i = 0; $i < $length; $i++) {
+        $fieldName = $fieldNames[$i];
+        
+        echo "$fieldName" . ": " . "{$row[$fieldName]} <br/>";
+    }
 
     echo "<br/><br/>";
 }
