@@ -11,12 +11,25 @@ and open the template in the editor.
 #saveButton {
     height: 100px;
     width: 150px;
-    background: blue;
+    background-color: blue;
     color: orange;
     font-size: 3em;
     text-align: center;
 }
 
+.button, .hit, .miss, .plus, #saveButton {
+ font-family: Helvetica ;
+ font-weight: bold ;
+ padding: 15px; 
+ border: 1px solid black ;
+ -moz-border-radius: 8px ;
+ -webkit-border-radius: 8px ; 
+ margin-top: 10px ;
+ margin-bottom: 10px ;
+ background-color: white ;
+}
+
+/*
 .hit, .miss, .plus {
     height: 25px;
     width: 50px;
@@ -27,6 +40,7 @@ and open the template in the editor.
     font-family: Verdana, Arial, Sans-Serif;
     -webkit-appearance: push-button;
 }
+**/
 
 .label {
     height: 25px;
