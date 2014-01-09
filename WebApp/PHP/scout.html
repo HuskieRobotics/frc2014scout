@@ -18,6 +18,8 @@ and open the template in the editor.
         <script type="text/javascript" src="scoutScript.js"></script>
         <script>
             // To be called when there's a move event on the body itself:
+            // add  <body ontouchmove="BlockMove(event);"> instead of <body>
+            // to use this script
             function BlockMove(event) {
                 // Tell Safari not to move the window.
                 event.preventDefault();
@@ -25,7 +27,7 @@ and open the template in the editor.
         </script>
     </head>
 
-    <body ontouchmove="BlockMove(event);">
+    <body>
 
         <div id="container">
             <div id="header"><h1>3061 Scouting</h1>
