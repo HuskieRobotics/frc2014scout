@@ -9,6 +9,7 @@
             "highGoalShots","lowGoalScores","lowGoalShots",
             "trussScores","trussShots","catchScores","catchShots", "assists",
             "canCatch","canCollect","robotSpeed","robotPushing",
-            "robotThrow","teamworkRating","allianceColor","matchResult");
+            "robotThrow","teamworkRating","allianceColor","matchResult", 
+            "robotRole", "robotBreak", "matchComments", "autoShots");
                 
 ?>

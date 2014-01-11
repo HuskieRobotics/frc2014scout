@@ -41,6 +41,11 @@ and open the template in the editor.
                     Match # <input type="text" name="matchNum" placeholder="1"/>
 
 
+                    alliance color
+                    <br/>
+                    <input type="radio" name="allianceColor" value="red">red
+                    <input type="radio" name="allianceColor" value="blue">blue
+                    <br/>
 
 
                     <h3>autonomous</h3>
@@ -49,6 +54,10 @@ and open the template in the editor.
                     <input type="radio" name="autoGoalType" value="low">low
                     <input type="radio" name="autoGoalType" value="lowMiss">low miss
                     <input type="radio" name="autoGoalType" value="noShot" checked>no shot
+                    <br/>
+                    
+                    <button type="button" id="autoShotsPlus" class="plus" data-counterID="autoShots">plus</button>
+                    <input type="text" size="5" value="0" id="autoShots" name="autoShots" class="label"/>robot autonomous shots
                     <br/>
 
                     <input type="checkbox" name="autoHotGoal" value="hot">hot goal
@@ -63,7 +72,7 @@ and open the template in the editor.
                     <br/>
 
                     <h3>teleoperated</h3>
-                    initial robot zone
+                    robot zone at beginning of teleop
                     <br/>
                     <input type="radio" name="initZone" value="red">red
                     <input type="radio" name="initZone" value="white">white
@@ -96,43 +105,48 @@ and open the template in the editor.
                     <br/>
 
                     <button type="button" id="assistsPlus" class="plus" data-counterID="assists">plus</button>
-                    <input type="text" size="5" value="0" id="assists" name="assists" class="label"/>cycles assisted
+                    <input type="text" size="5" value="0" id="assists" name="assists" class="label"/>robot assists for alliance
                     <br/>
+                    
                     <br/>
-
-                    <input type="checkbox" name="canCatch" value="yes">catches ball
-                    <br/>
-
-                    <input type="checkbox" name="canCollect" value="yes">collects ball
+                    <h5>fouls</h5>
+                    
                     <br/>
 
-                    robot speed (1-slow, 5-fast)
+                    <h3>overall game</h3>
+
+                    <input type="checkbox" name="canCatch" value="yes">catches ball from the air
+                    <input type="checkbox" name="canCollect" value="yes">collects ball from the ground
                     <br/>
+
+                    robot speed (0-can't move, 1-slow, 5-fast)
+                    <br/>
+                    <input type="radio" name="robotSpeed" value="0" checked>0
                     <input type="radio" name="robotSpeed" value="1">1
                     <input type="radio" name="robotSpeed" value="2">2
-                    <input type="radio" name="robotSpeed" value="3" checked>3
+                    <input type="radio" name="robotSpeed" value="3">3
                     <input type="radio" name="robotSpeed" value="4">4
                     <input type="radio" name="robotSpeed" value="5">5
                     <br/>
 
-                    robot pushing ability (1-weak, 5-strong)
+                    robot pushing ability (1-weak, 5-strong, 0-I don't know)
                     <br/>
+                    <input type="radio" name="robotPushing" value="0" checked>0
                     <input type="radio" name="robotPushing" value="1">1
                     <input type="radio" name="robotPushing" value="2">2
-                    <input type="radio" name="robotPushing" value="3" checked>3
+                    <input type="radio" name="robotPushing" value="3">3
                     <input type="radio" name="robotPushing" value="4">4
                     <input type="radio" name="robotPushing" value="5">5
                     <br/>
 
-                    robot throw distance (1-close to goal, 3-zone boundaries)
+                    robot throw distance (0-can't throw, 1-close to goal, 3-zone boundaries)
                     <br/>
+                    <input type="radio" name="robotThrow" value="0" checked>0
                     <input type="radio" name="robotThrow" value="1">1
-                    <input type="radio" name="robotThrow" value="2" checked>2
+                    <input type="radio" name="robotThrow" value="2">2
                     <input type="radio" name="robotThrow" value="3">3
                     <br/>
-                    <br/>
-
-                    <h3>overall game</h3>
+                    
                     teamwork rating of robot (1-lone wolf, 5-very friendly)
                     <br/>
                     <input type="radio" name="teamworkRating" value="1">1
@@ -142,10 +156,20 @@ and open the template in the editor.
                     <input type="radio" name="teamworkRating" value="5">5
                     <br/>
 
-                    alliance color
+                    robot role in game for alliance
+                    <br/
+                    <input type="radio" name="robotRole" value="defense">defense
+                    <input type="radio" name="robotRole" value="shooter">shooter
+                    <input type="radio" name="robotRole" value="assister">assister
+                    <input type="radio" name="robotRole" value="nothing" checked>no role
                     <br/>
-                    <input type="radio" name="allianceColor" value="red">red
-                    <input type="radio" name="allianceColor" value="blue">blue
+                    
+                    did the robot break?
+                    <br/
+                    <input type="radio" name="robotBreak" value="physicalBreak">physical breaking
+                    <input type="radio" name="robotBreak" value="communicationFail">communication failure
+                    <input type="radio" name="robotBreak" value="fallOver">fall over
+                    <input type="radio" name="robotBreak" value="nothing" checked>no breakage
                     <br/>
 
                     match result
@@ -153,7 +177,9 @@ and open the template in the editor.
                     <input type="radio" name="matchResult" value="win">win
                     <input type="radio" name="matchResult" value="loss">loss
                     <br/>
-
+                    
+                    match comments
+                    <input type="text" name="matchComments" placeholder="type your comments here...">
                     <br/>
                     <button type="button" id="saveButton">save</button>
                 </form>
