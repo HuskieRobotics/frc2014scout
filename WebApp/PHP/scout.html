@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>3061 Scouting</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, width=device-width" />        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <link rel='stylesheet' type='text/css' href='scoutStylesheet.css'/>
+
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="scoutScript.js"></script>
+        <script>
+            // To be called when there's a move event on the body itself:
+            // add  <body ontouchmove="BlockMove(event);"> instead of <body>
+            // to use this script
+            function BlockMove(event) {
+                // Tell Safari not to move the window.
+                event.preventDefault();
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <div id="container">
+            <div id="header"><h1>3061 Scouting</h1>
+
+            </div>
+
+            <div id="content"><h1>Enter Data</h1>
+
+                <form action="" id="scoutingForm"> 
+                    Team # <input type="text" name="teamNum" placeholder="3061" />
+                    Match # <input type="text" name="matchNum" placeholder="1"/>
+
+
+
+
+                    <h3>autonomous</h3>
+                    <input type="radio" name="autoGoalType" value="high">high make
+                    <input type="radio" name="autoGoalType" value="highMiss">high miss
+                    <input type="radio" name="autoGoalType" value="low">low
+                    <input type="radio" name="autoGoalType" value="lowMiss">low miss
+                    <input type="radio" name="autoGoalType" value="noShot" checked>no shot
+                    <br/>
+
+                    <input type="checkbox" name="autoHotGoal" value="hot">hot goal
+                    <br/>
+
+                    <input type="checkbox" name="autoZonePoints" value="zone">moved to zone
+                    <br/>
+
+                    <input type="checkbox" name="autoHotDetect" value="detected">detects hot goal
+                    <br/>
+
+                    <br/>
+
+                    <h3>teleoperated</h3>
+                    initial robot zone
+                    <br/>
+                    <input type="radio" name="initZone" value="red">red
+                    <input type="radio" name="initZone" value="white">white
+                    <input type="radio" name="initZone" value="blue">blue
+                    <input type="radio" name="initZone" value="goalie">goalie
+                    <br/>
+
+                    <button type="button" id="highHit" class="hit" data-scoreID="highGoalScores" data-shotID="highGoalShots">hit</button>
+                    <button type="button" id="highMiss" class="miss" data-scoreID="highGoalScores" data-shotID="highGoalShots">miss</button>
+                    <input type="text" size="5" value="0" id="highGoalScores" name="highGoalScores" class="label"/>
+                    <input type="text" size="5" value="0" id="highGoalShots" name="highGoalShots" class="label"/>high goals/shots
+                    <br/>
+
+                    <button type="button" id="lowHit" class="hit" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">hit</button>
+                    <button type="button" id="lowMiss" class="miss" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">miss</button>
+                    <input type="text" size="5" value="0" id="lowGoalScores" name="lowGoalScores" class="label"/>
+                    <input type="text" size="5" value="0" id="lowGoalShots" name="lowGoalShots" class="label"/>low goals/shots
+                    <br/>
+
+                    <button type="button" id="trussHit" class="hit" data-scoreID="trussScores" data-shotID="trussShots">hit</button>
+                    <button type="button" id="trussMiss" class="miss" data-scoreID="trussScores" data-shotID="trussShots">miss</button>
+                    <input type="text" size="5" value="0" id="trussScores" name="trussScores" class="label"/>
+                    <input type="text" size="5" value="0" id="trussShots" name="trussShots" class="label"/>truss throws/attempts
+                    <br/>
+
+                    <button type="button" id="catchHit" class="hit" data-scoreID="catchScores" data-shotID="catchShots">hit</button>
+                    <button type="button" id="catchMiss" class="miss" data-scoreID="catchScores" data-shotID="catchShots">miss</button>
+                    <input type="text" size="5" value="0" id="catchScores" name="catchScores" class="label"/>
+                    <input type="text" size="5" value="0" id="catchShots" name="catchShots" class="label"/>catches/attempts
+                    <br/>
+
+                    <button type="button" id="assistsPlus" class="plus" data-counterID="assists">plus</button>
+                    <input type="text" size="5" value="0" id="assists" name="assists" class="label"/>cycles assisted
+                    <br/>
+                    <br/>
+
+                    <input type="checkbox" name="canCatch" value="yes">catches ball
+                    <br/>
+
+                    <input type="checkbox" name="canCollect" value="yes">collects ball
+                    <br/>
+
+                    robot speed (1-slow, 5-fast)
+                    <br/>
+                    <input type="radio" name="robotSpeed" value="1">1
+                    <input type="radio" name="robotSpeed" value="2">2
+                    <input type="radio" name="robotSpeed" value="3" checked>3
+                    <input type="radio" name="robotSpeed" value="4">4
+                    <input type="radio" name="robotSpeed" value="5">5
+                    <br/>
+
+                    robot pushing ability (1-weak, 5-strong)
+                    <br/>
+                    <input type="radio" name="robotPushing" value="1">1
+                    <input type="radio" name="robotPushing" value="2">2
+                    <input type="radio" name="robotPushing" value="3" checked>3
+                    <input type="radio" name="robotPushing" value="4">4
+                    <input type="radio" name="robotPushing" value="5">5
+                    <br/>
+
+                    robot throw distance (1-close to goal, 3-zone boundaries)
+                    <br/>
+                    <input type="radio" name="robotThrow" value="1">1
+                    <input type="radio" name="robotThrow" value="2" checked>2
+                    <input type="radio" name="robotThrow" value="3">3
+                    <br/>
+                    <br/>
+
+                    <h3>overall game</h3>
+                    teamwork rating of robot (1-lone wolf, 5-very friendly)
+                    <br/>
+                    <input type="radio" name="teamworkRating" value="1">1
+                    <input type="radio" name="teamworkRating" value="2">2
+                    <input type="radio" name="teamworkRating" value="3" checked>3
+                    <input type="radio" name="teamworkRating" value="4">4
+                    <input type="radio" name="teamworkRating" value="5">5
+                    <br/>
+
+                    alliance color
+                    <br/>
+                    <input type="radio" name="allianceColor" value="red">red
+                    <input type="radio" name="allianceColor" value="blue">blue
+                    <br/>
+
+                    match result
+                    <br/>
+                    <input type="radio" name="matchResult" value="win">win
+                    <input type="radio" name="matchResult" value="loss">loss
+                    <br/>
+
+                    <br/>
+                    <button type="button" id="saveButton">save</button>
+                </form>
+
+
+                <a href="scoutRead.php"><h1>read ALL the data</h1></a>
+                <br/>
+            </div>
+            <br class="clearFloat" />
+
+            <div id="footer">
+                <p>&copy; Yasha Mostofi and Nathan Lindquist 2013</p>
+            </div>
+
+        </div>
+    </body>
+
+</html>

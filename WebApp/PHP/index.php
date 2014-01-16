@@ -64,7 +64,7 @@ if ($teamnum != "") {
     $field7 = "medScoreT";
     $field8 = "lowScoreT";
 
-    mysql_select_db($database);
+    mysql_select_db($databaseID);
     $sql = "INSERT INTO $table " .
             "($field1, $field2, $field3, $field4, $field5, $field6, $field7,"
             . "$field8) " .
@@ -94,18 +94,44 @@ echo <<<_END
     </head>
     <body>
     <div id="container">
-        <div id="header"><h1>3061 Scouting</h1></div>
-        <div id="sidebar"><h3>Navigation</h3>
-        <ul>
-            <li><a class="active" href="index.php">Enter Data</a></li>
-            <li><a href="read.php">Read Data</a></li>
-        </ul>
-        </div>
+        <div id="header"><h1>3061 Scouting</h1>
+            <nav>
+                <ul class="top-menu">
+                    <li><a href="index.php">enter</a><div class="menu-item" id="enter"></div></li>
+                    <li><a href="read.php">read</a><div class="menu-item" id="read"></div></li>
+                </ul>
+            </nav>
+                </div>
+
         <div id="content"><h1>Enter Data</h1>
+
+        <!--
+        <div id="matrixUI">
+            <form action="" method="post" name="matrixUIForm">
+                <button type="button" id="1blue" class="matrixBlue"></button>
+                <button type="button" id="2blue" class="matrixBlue"></button>
+                <button type="button" id="3blue" class="matrixBlue"></button>
+                
+                <br/>
+
+                <button type="button" id="1white" class="matrixWhite"></button>
+                <button type="button" id="2white" class="matrixWhite"></button>
+                <button type="button" id="3white" class="matrixWhite"></button>
+                
+                <br/>
+                
+                <button type="button" id="1red" class="matrixRed"></button>
+                <button type="button" id="2red" class="matrixRed"></button>
+                <button type="button" id="3red" class="matrixRed"></button>
+            </form>
+        </div>
+        -->
+
 	<form action="index.php" method="post" name="form"> 
     	Team # <input type="text" name="teamnum" placeholder="3061" />
         Match # <input type="text" name="matchnum" placeholder="1"/>
-    <h3>AUTO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+        <h3>AUTO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;
             TELEOP</h3> 
@@ -145,9 +171,11 @@ echo <<<_END
   
     </div>
     <br class="clearFloat" />
+        
     <div id="footer">
         <p>&copy; Yasha Mostofi 2013</p>
     </div>
+        
     </div>
     </body>
 </html>
