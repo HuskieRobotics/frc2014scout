@@ -1,4 +1,8 @@
 <?php
+        // variable for using password or not
+        // true: use password
+        // faslse: ignore password
+        $usePassword = False;
 	$databaseID = "yes";
 	$databaseUser = "root";
 	$databasePassword = "Admin";
@@ -9,6 +13,9 @@
             "highGoalShots","lowGoalScores","lowGoalShots",
             "trussScores","trussShots","catchScores","catchShots", "assists",
             "canCatch","canCollect","robotSpeed","robotPushing",
-            "robotThrow","teamworkRating","allianceColor","matchResult");
+            "robotThrow","teamworkRating","allianceColor","matchResult", 
+            "robotRole", "robotBreak", "matchComments", "autoShots");
+        
+        //$fieldNameTypes = array("INT", "INT", "TEXT",)
                 
 ?>
