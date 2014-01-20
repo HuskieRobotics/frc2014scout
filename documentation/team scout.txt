@@ -1,0 +1,24 @@
+team scout
+
+match number
+scout's name
+team number
+alliance color
+initial robot placement
+initial ball placement
+
+start button for timer
+-- autonomous --
+copy.paste from google doc
+
+-- teleop --
+first zone that robot moves to
+high goal shots/scores
+low goal shots/scores
+truss throws/scores
+truss catches 
+pass started
+pass recieved 
+my robot assists
+shots blocked
+passes blocked

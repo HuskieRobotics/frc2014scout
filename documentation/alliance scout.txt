@@ -1,0 +1,23 @@
+alliance scout
+
+match number
+scout's name
+alliance color that i'm scouting
+how many balls started on the field
+
+start button for timer
+-- autonomous --
+button to indicate all autonomous balls have been scored
+text field - why was auto late
+
+-- teleop --
+new cycle button
+(SQL has rows that are defined by match/team# and cycle timestamp)
+labels to store the cycle times (via javascript)
+next to label: radiobutton for 1,2, or 3 assists
+	(also show counter for # of cycles)
+
+-- overall game --
+foul points against alliance 
+text box to indicate foul type, description, and team that fouled
+any robots that broke
