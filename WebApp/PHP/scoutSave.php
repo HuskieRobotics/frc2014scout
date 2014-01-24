@@ -1,7 +1,12 @@
 <?php
 
 include 'GLOBAL.php';
-$conn = mysql_connect("localhost", $databaseUser);
+if ($usePassword) {
+    $conn = mysql_connect($databaseIP, $databaseUser, $databasePassword);
+} else {
+    $conn = mysql_connect($databaseIP, $databaseUser);
+}
+$conn = mysql_connect($databaseIP, $databaseUser);
 if (!$conn) {
     die("Could not connect: " . mysql_error());
 }

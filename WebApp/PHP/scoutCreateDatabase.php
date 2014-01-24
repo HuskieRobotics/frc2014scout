@@ -1,11 +1,10 @@
-
 <?php
 
 include 'GLOBAL.php';
 if ($usePassword) {
-    $conn = mysql_connect("localhost", $databaseUser, $databasePassword);
+    $conn = mysql_connect($databaseIP, $databaseUser, $databasePassword);
 } else {
-    $conn = mysql_connect("localhost", $databaseUser);
+    $conn = mysql_connect($databaseIP, $databaseUser);
 }
 if (!$conn) {
     die("Could not connect: " . mysql_error());
