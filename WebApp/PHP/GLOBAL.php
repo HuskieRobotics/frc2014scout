@@ -7,6 +7,7 @@ $databaseID = "yes";
 $databaseUser = "root";
 $databasePassword = "Admin";
 $databaseIP = "127.0.0.1";
+$table = "sTest";
 
 $fieldNames = array("teamNum","matchNum",
     "autoGoalType","autoHotGoal","autoZonePoints",
@@ -17,6 +18,7 @@ $fieldNames = array("teamNum","matchNum",
     "robotThrow","teamworkRating","allianceColor","matchResult", 
     "robotRole", "robotBreak", "matchComments", "autoShots");
 
-        //$fieldNameTypes = array("INT", "INT", "TEXT",)
-
-    ?>
+$fieldNameTypes = array("INT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", 
+    "TEXT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT",
+    "TEXT", "TEXT", "INT", "INT", "INT", "INT", "TEXT", "TEXT", "TEXT", 
+    "TEXT", "TEXT", "INT");
