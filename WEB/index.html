@@ -6,8 +6,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+  <script type="text/javascript" src="jquery.js"></script>
+
+
+
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel='stylesheet' type='text/css' href='util/scoutStylesheet.css'/>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +33,7 @@
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="#" id="homeLink">Home</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="icon-th-large"></i> Scout ...
@@ -41,6 +48,7 @@
                 
               </ul>
             </div>
+
           </div>
         </div>
           
@@ -65,13 +73,51 @@
          <script src="js/bootstrap.min.js"></script>
 
          <script type="text/javascript">
+         $(document).ready(function(){
+          $(".hit").click(function(){
+            var scoreID = $(this).attr("data-scoreID");
+            var shotID = $(this).attr("data-shotID");
+            $("#"+scoreID).val(parseInt($("#"+scoreID).val())+1);
+            $("#"+shotID).val(parseInt($("#"+shotID).val())+1);
+          });
+          $(".miss").click(function(){
+            var shotID = $(this).attr("data-shotID");
+            $("#"+shotID).val(parseInt($("#"+shotID).val())+1);
+          });
+
+          $(".plus").click(function(){
+            var counterID = $(this).attr("data-counterID");
+            $("#"+counterID).val(parseInt($("#"+counterID).val())+1);
+          });
+
+          $("#saveButton").click(function(){
+            alert("JRRRRR");
+            //var teamNum = $("#teamnum").val();
+            //var matchNum = $("#matchnum").val();
+            $.post("util/scoutSave.php", $("#scoutingForm").serialize(), function(data){
+              alert(data);
+            });
+          });
+        });
+
+         function processResult(data, textStatus)
+         {
+          alert(data);
+        }
 
         // Wait for the page to load first
+
         window.onload = function() {
 
           //Get a reference to the link on the page
           // with an id of "mylink"
           var startTeamScout = document.getElementById("startTeamScout");
+          var homeLink = document.getElementById("homeLink");
+
+          homeLink.onclick = function() {
+            $("#scoutingArea").empty();
+            return false;
+          };
 
           //Set code to run when the link is clicked
           // by assigning a function to "onclick"

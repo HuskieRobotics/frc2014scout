@@ -1,160 +1,162 @@
+<body>
 <h1>Enter Data</h1>
 
-                <form action="" id="scoutingForm"> 
-                    Team # <input type="text" name="teamNum" placeholder="3061" />
-                    Match # <input type="text" name="matchNum" placeholder="1"/>
+<form action="" id="scoutingForm"> 
+    <p>Team # <input type="text" name="teamNum" placeholder="3061" />
+    Match # <input type="text" name="matchNum" placeholder="1"/>
+    </p>
 
 
-                    alliance color
-                    <br/>
-                    <input type="radio" name="allianceColor" value="red">red
-                    <input type="radio" name="allianceColor" value="blue">blue
-                    <br/>
+    alliance color
+    <br/>
+    <p>
+    <input type="radio" name="allianceColor" value="red">red
+    <input type="radio" name="allianceColor" value="blue">blue
+    <br/>
+    </p>
 
 
-                    <h3>autonomous</h3>
-                    <input type="radio" name="autoGoalType" value="high">high make
-                    <input type="radio" name="autoGoalType" value="highMiss">high miss
-                    <input type="radio" name="autoGoalType" value="low">low
-                    <input type="radio" name="autoGoalType" value="lowMiss">low miss
-                    <input type="radio" name="autoGoalType" value="noShot" checked>no shot
-                    <br/>
-                    
-                    <button type="button" id="autoShotsPlus" class="plus" data-counterID="autoShots">plus</button>
-                    <input type="text" size="5" value="0" id="autoShots" name="autoShots" class="label"/>robot autonomous shots
-                    <br/>
+    <h3>autonomous</h3>
+    <p>
+    <input type="radio" name="autoGoalType" value="high">high make
+    <input type="radio" name="autoGoalType" value="highMiss">high miss
+    <input type="radio" name="autoGoalType" value="low">low
+    <input type="radio" name="autoGoalType" value="lowMiss">low miss
+    <input type="radio" name="autoGoalType" value="noShot" checked>no shot
+    <br/>
+    </p>
 
-                    <input type="checkbox" name="autoHotGoal" value="hot">hot goal
-                    <br/>
+    <button type="button" id="autoShotsPlus" class="plus" data-counterID="autoShots">plus</button>
+    <input type="text" size="5" value="0" id="autoShots" name="autoShots" class="label"/>robot autonomous shots
+    <br/>
 
-                    <input type="checkbox" name="autoZonePoints" value="zone">moved to zone
-                    <br/>
+    <input type="checkbox" name="autoHotGoal" value="hot">hot goal
+    <br/>
 
-                    <input type="checkbox" name="autoHotDetect" value="detected">detects hot goal
-                    <br/>
+    <input type="checkbox" name="autoZonePoints" value="zone">moved to zone
+    <br/>
 
-                    <br/>
+    <input type="checkbox" name="autoHotDetect" value="detected">detects hot goal
+    <br/>
 
-                    <h3>teleoperated</h3>
-                    robot zone at beginning of teleop
-                    <br/>
-                    <input type="radio" name="initZone" value="red">red
-                    <input type="radio" name="initZone" value="white">white
-                    <input type="radio" name="initZone" value="blue">blue
-                    <input type="radio" name="initZone" value="goalie">goalie
-                    <br/>
+    <br/>
 
-                    <button type="button" id="highHit" class="hit" data-scoreID="highGoalScores" data-shotID="highGoalShots">hit</button>
-                    <button type="button" id="highMiss" class="miss" data-scoreID="highGoalScores" data-shotID="highGoalShots">miss</button>
-                    <input type="text" size="5" value="0" id="highGoalScores" name="highGoalScores" class="label"/>
-                    <input type="text" size="5" value="0" id="highGoalShots" name="highGoalShots" class="label"/>high goals/shots
-                    <br/>
+    <h3>teleoperated</h3>
+    robot zone at beginning of teleop
+    <br/>
+    <input type="radio" name="initZone" value="red">red
+    <input type="radio" name="initZone" value="white">white
+    <input type="radio" name="initZone" value="blue">blue
+    <input type="radio" name="initZone" value="goalie">goalie
+    <br/>
 
-                    <button type="button" id="lowHit" class="hit" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">hit</button>
-                    <button type="button" id="lowMiss" class="miss" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">miss</button>
-                    <input type="text" size="5" value="0" id="lowGoalScores" name="lowGoalScores" class="label"/>
-                    <input type="text" size="5" value="0" id="lowGoalShots" name="lowGoalShots" class="label"/>low goals/shots
-                    <br/>
+    <button type="button" id="highHit" class="hit" data-scoreID="highGoalScores" data-shotID="highGoalShots">hit</button>
+    <button type="button" id="highMiss" class="miss" data-scoreID="highGoalScores" data-shotID="highGoalShots">miss</button>
+    <input type="text" size="5" value="0" id="highGoalScores" name="highGoalScores" class="label"/>
+    <input type="text" size="5" value="0" id="highGoalShots" name="highGoalShots" class="label"/>high goals/shots
+    <br/>
 
-                    <button type="button" id="trussHit" class="hit" data-scoreID="trussScores" data-shotID="trussShots">hit</button>
-                    <button type="button" id="trussMiss" class="miss" data-scoreID="trussScores" data-shotID="trussShots">miss</button>
-                    <input type="text" size="5" value="0" id="trussScores" name="trussScores" class="label"/>
-                    <input type="text" size="5" value="0" id="trussShots" name="trussShots" class="label"/>truss throws/attempts
-                    <br/>
+    <button type="button" id="lowHit" class="hit" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">hit</button>
+    <button type="button" id="lowMiss" class="miss" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">miss</button>
+    <input type="text" size="5" value="0" id="lowGoalScores" name="lowGoalScores" class="label"/>
+    <input type="text" size="5" value="0" id="lowGoalShots" name="lowGoalShots" class="label"/>low goals/shots
+    <br/>
 
-                    <button type="button" id="catchHit" class="hit" data-scoreID="catchScores" data-shotID="catchShots">hit</button>
-                    <button type="button" id="catchMiss" class="miss" data-scoreID="catchScores" data-shotID="catchShots">miss</button>
-                    <input type="text" size="5" value="0" id="catchScores" name="catchScores" class="label"/>
-                    <input type="text" size="5" value="0" id="catchShots" name="catchShots" class="label"/>catches/attempts
-                    <br/>
+    <button type="button" id="trussHit" class="hit" data-scoreID="trussScores" data-shotID="trussShots">hit</button>
+    <button type="button" id="trussMiss" class="miss" data-scoreID="trussScores" data-shotID="trussShots">miss</button>
+    <input type="text" size="5" value="0" id="trussScores" name="trussScores" class="label"/>
+    <input type="text" size="5" value="0" id="trussShots" name="trussShots" class="label"/>truss throws/attempts
+    <br/>
 
-                    <button type="button" id="assistsPlus" class="plus" data-counterID="assists">plus</button>
-                    <input type="text" size="5" value="0" id="assists" name="assists" class="label"/>robot assists for alliance
-                    <br/>
-                    
-                    <br/>
-                    <h5>fouls</h5>
-                    
-                    <br/>
+    <button type="button" id="catchHit" class="hit" data-scoreID="catchScores" data-shotID="catchShots">hit</button>
+    <button type="button" id="catchMiss" class="miss" data-scoreID="catchScores" data-shotID="catchShots">miss</button>
+    <input type="text" size="5" value="0" id="catchScores" name="catchScores" class="label"/>
+    <input type="text" size="5" value="0" id="catchShots" name="catchShots" class="label"/>catches/attempts
+    <br/>
 
-                    <h3>overall game</h3>
+    <button type="button" id="assistsPlus" class="plus" data-counterID="assists">plus</button>
+    <input type="text" size="5" value="0" id="assists" name="assists" class="label"/>robot assists for alliance
+    <br/>
 
-                    <input type="checkbox" name="canCatch" value="yes">catches ball from the air
-                    <input type="checkbox" name="canCollect" value="yes">collects ball from the ground
-                    <br/>
+    <br/>
+    <h5>fouls</h5>
 
-                    robot speed (0-can't move, 1-slow, 5-fast)
-                    <br/>
-                    <input type="radio" name="robotSpeed" value="0" checked>0
-                    <input type="radio" name="robotSpeed" value="1">1
-                    <input type="radio" name="robotSpeed" value="2">2
-                    <input type="radio" name="robotSpeed" value="3">3
-                    <input type="radio" name="robotSpeed" value="4">4
-                    <input type="radio" name="robotSpeed" value="5">5
-                    <br/>
+    <br/>
 
-                    robot pushing ability (1-weak, 5-strong, 0-I don't know)
-                    <br/>
-                    <input type="radio" name="robotPushing" value="0" checked>0
-                    <input type="radio" name="robotPushing" value="1">1
-                    <input type="radio" name="robotPushing" value="2">2
-                    <input type="radio" name="robotPushing" value="3">3
-                    <input type="radio" name="robotPushing" value="4">4
-                    <input type="radio" name="robotPushing" value="5">5
-                    <br/>
+    <h3>overall game</h3>
 
-                    robot throw distance (0-can't throw, 1-close to goal, 3-zone boundaries)
-                    <br/>
-                    <input type="radio" name="robotThrow" value="0" checked>0
-                    <input type="radio" name="robotThrow" value="1">1
-                    <input type="radio" name="robotThrow" value="2">2
-                    <input type="radio" name="robotThrow" value="3">3
-                    <br/>
-                    
-                    teamwork rating of robot (1-lone wolf, 5-very friendly)
-                    <br/>
-                    <input type="radio" name="teamworkRating" value="1">1
-                    <input type="radio" name="teamworkRating" value="2">2
-                    <input type="radio" name="teamworkRating" value="3" checked>3
-                    <input type="radio" name="teamworkRating" value="4">4
-                    <input type="radio" name="teamworkRating" value="5">5
-                    <br/>
+    <input type="checkbox" name="canCatch" value="yes">catches ball from the air
+    <input type="checkbox" name="canCollect" value="yes">collects ball from the ground
+    <br/>
 
-                    robot role in game for alliance
-                    <br/
-                    <input type="radio" name="robotRole" value="defense">defense
-                    <input type="radio" name="robotRole" value="shooter">shooter
-                    <input type="radio" name="robotRole" value="assister">assister
-                    <input type="radio" name="robotRole" value="catcher">catcher
-                    <input type="radio" name="robotRole" value="nothing" checked>no role
-                    <br/>
-                    
-                    did the robot break?
-                    <br/>
-                    <input type="radio" name="robotBreak" value="physicalBreak">physical breaking
-                    <input type="radio" name="robotBreak" value="communicationFail">communication failure
-                    <input type="radio" name="robotBreak" value="fallOver">fall over
-                    <input type="radio" name="robotBreak" value="nothing" checked>no breakage
-                    <br/>
+    robot speed (0-can't move, 1-slow, 5-fast)
+    <br/>
+    <input type="radio" name="robotSpeed" value="0" checked>0
+    <input type="radio" name="robotSpeed" value="1">1
+    <input type="radio" name="robotSpeed" value="2">2
+    <input type="radio" name="robotSpeed" value="3">3
+    <input type="radio" name="robotSpeed" value="4">4
+    <input type="radio" name="robotSpeed" value="5">5
+    <br/>
 
-                    match result
-                    <br/>
-                    <input type="radio" name="matchResult" value="win">win
-                    <input type="radio" name="matchResult" value="loss">loss
-                    <br/>
-                    
-                    match comments
-                    <input type="text" name="matchComments" placeholder="type your comments here...">
-                    <br/>
-                    <button type="button" id="saveButton">save</button>
-                </form>
+    robot pushing ability (1-weak, 5-strong, 0-I don't know)
+    <br/>
+    <input type="radio" name="robotPushing" value="0" checked>0
+    <input type="radio" name="robotPushing" value="1">1
+    <input type="radio" name="robotPushing" value="2">2
+    <input type="radio" name="robotPushing" value="3">3
+    <input type="radio" name="robotPushing" value="4">4
+    <input type="radio" name="robotPushing" value="5">5
+    <br/>
+
+    robot throw distance (0-can't throw, 1-close to goal, 3-zone boundaries)
+    <br/>
+    <input type="radio" name="robotThrow" value="0" checked>0
+    <input type="radio" name="robotThrow" value="1">1
+    <input type="radio" name="robotThrow" value="2">2
+    <input type="radio" name="robotThrow" value="3">3
+    <br/>
+
+    teamwork rating of robot (1-lone wolf, 5-very friendly)
+    <br/>
+    <input type="radio" name="teamworkRating" value="1">1
+    <input type="radio" name="teamworkRating" value="2">2
+    <input type="radio" name="teamworkRating" value="3" checked>3
+    <input type="radio" name="teamworkRating" value="4">4
+    <input type="radio" name="teamworkRating" value="5">5
+    <br/>
+
+    robot role in game for alliance
+    <br/
+    <input type="radio" name="robotRole" value="defense">defense
+    <input type="radio" name="robotRole" value="shooter">shooter
+    <input type="radio" name="robotRole" value="assister">assister
+    <input type="radio" name="robotRole" value="catcher">catcher
+    <input type="radio" name="robotRole" value="nothing" checked>no role
+    <br/>
+
+    did the robot break?
+    <br/>
+    <input type="radio" name="robotBreak" value="physicalBreak">physical breaking
+    <input type="radio" name="robotBreak" value="communicationFail">communication failure
+    <input type="radio" name="robotBreak" value="fallOver">fall over
+    <input type="radio" name="robotBreak" value="nothing" checked>no breakage
+    <br/>
+
+    match result
+    <br/>
+    <input type="radio" name="matchResult" value="win">win
+    <input type="radio" name="matchResult" value="loss">loss
+    <br/>
+
+    match comments
+    <input type="text" name="matchComments" placeholder="type your comments here...">
+    <br/>
+    <button type="button" id="saveButton">save</button>
+</form>
 
 
-                <a href="scoutRead.php"><h1>read ALL the data</h1></a>
-                <br/>
-            </div>
-            <br class="clearFloat" />
+<a href="scoutRead.php"><h1>read ALL the data</h1></a>
+<br/>
 
-            <div id="footer">
-                <p>&copy; Yasha Mostofi and Nathan Lindquist 2013</p>
-            </div>
+</body>
