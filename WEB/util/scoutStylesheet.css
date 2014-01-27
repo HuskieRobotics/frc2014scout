@@ -42,8 +42,9 @@ and open the template in the editor.
 }
 **/
 
-.label {
+.counter_label {
     height: 25px;
+    width: 12px;
     text-align: center;
 }
 
