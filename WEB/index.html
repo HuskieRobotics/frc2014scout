@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bootstrap 101 Template</title>
+  <title>3061 Scouting - Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,52 +20,75 @@
       <!-- The Main wrapper div starts -->
       <div class="container">
         <!-- header content -->
-        <h1><a href="#">Bootstrap Site</a></h1>
+        <h1><a href="#">Team 3061 Scouting</a></h1>
         <!-- Navigation -->
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Downloads</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="icon-th-large"></i> Drop Down
+                    <i class="icon-th-large"></i> Scout ...
                     <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Item1</a></li>
-                    <li><a href="#">Item2</a></li>
-                    <li><a href="#">Item3</a></li>
+                    <li><a href="#" id="startTeamScout">... a team</a></li>
+                    <li><a href="#" id="startAllianceScout">... an alliance</a></li>
                   </ul>
                 </li>
+                <li><a href="http://team3061.org/" target="_blank">3061 Home Page</a></li>
+                
               </ul>
             </div>
           </div>
-          </div
-          <div class="hero-unit">
-            <h1>Marketing stuff!</h1>
+        </div>
+          
 
-            <p> Yeh! buy our stuff today!</p>
-            <a href="#" class="btn btn-large btn-success">Get Started</a>
+        <div id="scoutingArea">
+        </div>
+
+
+
+        <div class="row">
+          <div class="span4">
+            <p>Dummy Text</p>
           </div>
-
-          <div class="row">
-           <div class="span4">
-             <p>Dummy Text</p>
-           </div>
-           <div class="span8">
-             <p>Dummy Text</p>
-           </div>
-         </div>
+          <div class="span8">
+            <p>Dummy Text</p>
+          </div>
+        </div>
 
          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
          <script src="https://code.jquery.com/jquery.js"></script>
          <!-- Include all compiled plugins (below), or include individual files as needed -->
          <script src="js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+
+        // Wait for the page to load first
+        window.onload = function() {
+
+          //Get a reference to the link on the page
+          // with an id of "mylink"
+          var startTeamScout = document.getElementById("startTeamScout");
+
+          //Set code to run when the link is clicked
+          // by assigning a function to "onclick"
+          startTeamScout.onclick = function() {
+
+            $("#scoutingArea").load("teamScout.html");
+
+            //If you don't want the link to actually 
+            // redirect the browser to another page,
+            // "google.com" in our example here, then
+            // return false at the end of this block.
+            // Note that this also prevents event bubbling,
+            // which is probably what we want here, but won't 
+            // always be the case.
+            return false;
+          }
+        }
+    </script>
        </body>
        </html>
