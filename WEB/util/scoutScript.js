@@ -16,7 +16,6 @@ $(document).ready(function(){
 	});
         
         $("#saveButton").click(function(){
-            alert("gg");
             //var teamNum = $("#teamnum").val();
             //var matchNum = $("#matchnum").val();
             $.post("util/scoutSave.php", $("#scoutingForm").serialize(), function(data){
