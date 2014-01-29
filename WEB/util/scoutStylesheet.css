@@ -17,6 +17,11 @@ and open the template in the editor.
     text-align: center;
 }
 
+input[type=radio] {
+    width: 25px;
+    height: 25px;
+}
+
 .button, .hit, .miss, .plus, #saveButton {
  font-family: Helvetica ;
  font-weight: bold ;
