@@ -6,14 +6,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
 
 
 
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
-  <link rel='stylesheet' type='text/css' href='util/scoutStylesheet.css'/>
+  <link rel='stylesheet' type='text/css' href='css/scoutStylesheet.css'/>
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,7 +24,7 @@
       <![endif]-->
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-         <script src="jquery.js"></script>
+         <script src="js/jquery.js"></script>
          <!-- Include all compiled plugins (below), or include individual files as needed -->
          <script src="js/bootstrap.min.js"></script>
 
@@ -43,19 +43,8 @@
             return false;
           };
 
-          //Set code to run when the link is clicked
-          // by assigning a function to "onclick"
           startTeamScout.onclick = function() {
-
-            $("#scoutingArea").load("teamScout.html");
-
-            //If you don't want the link to actually 
-            // redirect the browser to another page,
-            // "google.com" in our example here, then
-            // return false at the end of this block.
-            // Note that this also prevents event bubbling,
-            // which is probably what we want here, but won't 
-            // always be the case.
+            $("#scoutingArea").load("util/teamScout.html");
             return false;
           };
         };
@@ -74,7 +63,7 @@
               <ul class="nav">
                 <li class="active"><a href="#" id="homeLink">Home</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="scout-dropdown">
                     <i class="icon-th-large"></i> Scout ...
                     <b class="caret"></b>
                   </a>

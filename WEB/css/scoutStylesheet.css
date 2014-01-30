@@ -17,7 +17,16 @@ and open the template in the editor.
     text-align: center;
 }
 
+#scoutingForm h3 {
+    text-align: center;
+}
+
 input[type=radio] {
+    width: 25px;
+    height: 25px;
+}
+
+input[type=checkbox] {
     width: 25px;
     height: 25px;
 }
@@ -49,8 +58,10 @@ input[type=radio] {
 
 .counter_label {
     height: 25px;
-    width: 12px;
+    width: 40px;
     text-align: center;
+    margin-right: 2px;
+    margin-left: 2px;
 }
 
 
@@ -66,7 +77,6 @@ input[type=radio] {
 #header h1{
     margin: 0;
     padding: 10px 0;
-    font-family: Impact, fantasy;
 }
 
 #content {
