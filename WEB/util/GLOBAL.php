@@ -9,6 +9,9 @@ $databasePassword = "Admin";
 $databaseIP = "127.0.0.1";
 $table = "sTest";
 
+$teamTable = "team_db";
+$allianceTable = "alliance_db";
+
 $fieldNames = array("teamNum","matchNum",
     "autoGoalType","autoHotGoal","autoZonePoints",
     "autoHotDetect","initZone","highGoalScores",
@@ -22,3 +25,50 @@ $fieldNameTypes = array("INT", "INT", "TEXT", "TEXT", "TEXT", "TEXT",
     "TEXT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT",
     "TEXT", "TEXT", "INT", "INT", "INT", "INT", "TEXT", "TEXT", "TEXT", 
     "TEXT", "TEXT", "INT");
+
+$teamFieldNames = array("MATCH_NUM",
+"NAME_OF_SCOUT",
+"TEAM_NUM",
+"ALLIANCE_COLOR",
+"preGamePosition",
+"preGameBallPosition",
+"ballOneAuto",
+"ballTwoAuto",
+"ballThreeAuto",
+"autoHotGoal",
+"detectHotGoal",
+"autoColorZone",
+"allianceBallEndTime",
+"teleopInitPosition",
+"highGoalShots",
+"highGoalScores",
+"lowGoalShots",
+"lowGoalScores",
+"trussThrowShots",
+"trussThrowScores",
+"trussCatchShots",
+"trussCatchScores",
+"passStarts",
+"passRecv",
+"robotCycleAssists",
+"shotsBlocked",
+"passesBlocked",
+"preferredPass",
+"caughtBall",
+"collectedBall",
+"playedDefense",
+"robotSpeed",
+"robotAgl",
+"robotPushingPower",
+"robotThrowing",
+"rolePlayed",
+"robotBreakage",
+"matchComments",
+"foulPoints",
+"robotFoulProb");
+
+$teamFieldNameTypes = array("INT", "TEXT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT",
+     "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", 
+     "INT", "INT", "INT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT");
+
+
