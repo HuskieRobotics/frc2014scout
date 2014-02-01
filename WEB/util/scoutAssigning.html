@@ -2,13 +2,37 @@
 $(document).ready(function() {
 	$("#startAssigning").click(function() {
 		var numberOfMatches = $("#numberOfMatches").val();
-		for (var i=0; i<numberOfMatches; i++)
+		var form = document.getElementById('assignScouts');
+
+		for (var i=1; i<=numberOfMatches; i++)
 		{ 
-			document.write(cars[i] + "<br>");
+			form.innerHTML = form.innerHTML + "<div class='row'>";
+			form.innerHTML = form.innerHTML + "<div class='span2'><input type='text' value='" + i + "'	class='matchLabels'/></div>";
+			form.innerHTML = form.innerHTML + "<div class='span5'>";
+			for (var j=1; j<=3; j++)
+			{
+				form.innerHTML = form.innerHTML + "<input type='text' placeholder='team: "+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
+			}
+			form.innerHTML = form.innerHTML + "</div><div class='span5'>";
+			for (var j=4; j<=6; j++)
+			{
+				form.innerHTML = form.innerHTML + "<input type='text' placeholder='team: "+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
+			}
+			form.innerHTML = form.innerHTML + "</div></div>";
 		}
 	});
 });
 </script>
+<style>
+.matchLabels {
+	width: 25px;
+}
+.teamLabels{
+	width: 60px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+</style>
 
 <p> Number of matches: 
 <input type="number" name="numberOfMatches" id="numberOfMatches" />
