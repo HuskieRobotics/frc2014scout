@@ -15,18 +15,18 @@ $(document).ready(function(){
 		$("#"+counterID).val(parseInt($("#"+counterID).val())+1);
 	});
         
-        $("#saveButton").click(function(){
-            //var teamNum = $("#teamnum").val();
-            //var matchNum = $("#matchnum").val();
-            $.post("util/scoutSave.php", $("#scoutingForm").serialize(), function(data){
-                alert(data);
-            });
+    $("#saveButton").click(function(){
+        //var teamNum = $("#teamnum").val();
+        //var matchNum = $("#matchnum").val();
+        $.post("util/scoutSave.php", $("#scoutingForm").serialize(), function(data){
+            alert(data);
         });
+    });
 
     $("#getAssignmentButton").click(function(){
         $.post("util/getAssignment.php", $("#assignmentForm").serialize(), function(data){
-            
             alert(data);
+            $("#scoutAssignmentText").load(data);
         })
         return false;
     });
