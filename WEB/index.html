@@ -36,6 +36,7 @@
           // with an id of "mylink"
           var startTeamScout = document.getElementById("startTeamScout");
           var homeLink = document.getElementById("homeLink");
+          var assignScouts = document.getElementById("fillAssignments");
 
           homeLink.onclick = function() {
             $("#scoutingArea").empty();
@@ -45,6 +46,10 @@
           startTeamScout.onclick = function() {
             $("#scoutingArea").load("util/teamScout.html");
             return false;
+          };
+
+          assignScouts.onclick = function() {
+            $("#scoutingArea").load("util/scoutAssigning.html");
           };
         };
     </script>

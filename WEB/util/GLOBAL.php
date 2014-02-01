@@ -12,6 +12,9 @@ $table = "sTest";
 $teamTable = "team_db";
 $allianceTable = "alliance_db";
 
+$login_db = "yes";
+$login_table = "members";
+
 $CONNECT_COUNT = 0;
 
 $fieldNames = array("teamNum","matchNum",

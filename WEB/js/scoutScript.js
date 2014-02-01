@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $("#teamScoutingForm").hide();
+    //$("#scoutAssignmentText").load("util/assignmentForm.html");
+
 	$(".hit").click(function(){
         var scoreID = $(this).attr("data-scoreID");
         var shotID = $(this).attr("data-shotID");
@@ -25,12 +27,18 @@ $(document).ready(function(){
     });
 
     $("#getAssignmentButton").click(function(){
-        $.post("util/getAssignment.php", $("#assignmentForm").serialize(), function(data){
-            alert(data);
-            $("#scoutAssignmentText").empty();
-            $("#scoutAssignmentText").html(data);
-        })
-        $("#teamScoutingForm").show();
+        if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
+        {
+            $.post("util/getAssignment.php", $("#assignmentForm").serialize(), function(data){
+                alert(data);
+                $("#scoutAssignmentText").html(data);
+            });
+            $("#teamScoutingForm").show();
+        }
+        else
+        {
+            $("#scoutAssignmentText").load("util/assignmentForm_redo.html");
+        }
         return false;
     });
 });
