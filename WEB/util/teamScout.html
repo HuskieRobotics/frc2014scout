@@ -1,20 +1,21 @@
-<h1>NOPE</h1>
+<body>
+<h1>Team Scouting</h1>
 
 <script type="text/javascript" src="js/scoutScript.js"></script>
 
+<div id="scoutAssignmentText">
 <form action="" id="assignmentForm">
-    <p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." />
-        Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." />
+    <p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="matchAssignInput"/>
+        Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="scoutName"/>
     </p>
-    <a href="#" class="btn btn-large btn-success" id="getAssignmentButton">Get Assignment</a>
+    <button type="button" class="btn btn-large btn-success" id="getAssignmentButton">Get Assignment</button>
     </br>
-    <div id="scoutAssignmentText">
-        <h3>Please request an assignment.</h3>
-    </div>
+    <h3>Please request an assignment.</h3>
     </br>
 </form>
+</div>
 
-<form action="" id=""> 
+<form action="" id="teamScoutingForm"> 
     <p>Team # <input type="text" name="teamNum" placeholder="3061" />
     Match # <input type="text" name="matchNum" placeholder="1"/>
 
@@ -169,3 +170,4 @@
     <br/>
     <button type="button" id="saveButton">save</button>
 </form>
+</body>

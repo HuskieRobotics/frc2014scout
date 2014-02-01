@@ -12,6 +12,8 @@ $table = "sTest";
 $teamTable = "team_db";
 $allianceTable = "alliance_db";
 
+$CONNECT_COUNT = 0;
+
 $fieldNames = array("teamNum","matchNum",
     "autoGoalType","autoHotGoal","autoZonePoints",
     "autoHotDetect","initZone","highGoalScores",
