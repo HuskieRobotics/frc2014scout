@@ -1,5 +1,5 @@
 <?php 
 
 include 'GLOBAL.php';
-echo count($teamFieldNameTypes);
-echo count($teamFieldNames);
+echo count($allianceFieldNameTypes);
+echo count($allianceFieldNames);

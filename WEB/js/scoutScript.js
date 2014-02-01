@@ -22,6 +22,14 @@ $(document).ready(function(){
                 alert(data);
             });
         });
+
+    $("#getAssignmentButton").click(function(){
+        $.post("util/getAssignment.php", $("#assignmentForm").serialize(), function(data){
+            
+            alert(data);
+        })
+        return false;
+    });
 });
 
 function processResult(data, textStatus)
