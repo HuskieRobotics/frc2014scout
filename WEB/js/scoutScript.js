@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $("#teamScoutingForm").hide();
+    // remove first comment to stop testing mode
+    //$("#teamScoutingForm").hide();
     //$("#scoutAssignmentText").load("util/assignmentForm.html");
 
 	$(".hit").click(function(){
@@ -30,16 +31,20 @@ $(document).ready(function(){
         if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
         {
             $.post("util/getAssignment.php", $("#assignmentForm").serialize(), function(data){
-                alert(data);
                 $("#scoutAssignmentText").html(data);
             });
             $("#teamScoutingForm").show();
+            $("#teleop").hide();
         }
         else
         {
             $("#scoutAssignmentText").load("util/assignmentForm_redo.html");
         }
         return false;
+    });
+
+    $("#allianceBallEndCheck").click(function() {
+        $("#teleop").show();
     });
 });
 
