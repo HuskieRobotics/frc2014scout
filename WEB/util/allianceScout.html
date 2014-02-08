@@ -1,28 +1,36 @@
-<form>
-	<p> Match number:
-	<input type="text" name="MATCH_NUM" id="MATCH_NUM"/>
-	 Name of scout:
-	<input type="text" name="NAME_OF_SCOUT" id="NAME_OF_SCOUT"/>
-	 Alliance color that I am scouting:
-	<input type="text" name="ALLIANCE_COLOR" id="ALLIANCE_COLOR"/>
-	 How many balls started on the field:
+<body>
+<h1>Alliance Scouting</h1>
+
+<script type="text/javascript" src="js/scoutScript.js"></script>
+
+<div id="scoutAssignmentText">
+    <form action="" id="assignmentForm">
+        <p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM"/>
+            Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="NAME_OF_SCOUT"/>
+        </p>
+        <a href="#" class="btn btn-large btn-success" id="getAssignmentButton_alliance">Get Assignment!</a>
+    </br>
+    <h3>Please request an assignment.</h3>
+</br>
+</form>
+</div>
+
+<form action="" id="allianceScoutingForm">
+	How many balls started on the field:
 	<input type="text" name="preBallsOnField" id="preBallsOnField"/>
-	</p>
-	<br>
+
+
 	<h3>autonomous</h3>
-	<p>
-	<br>
+	<br/>
 	When all the autonomous balls are scored
 	<input type="checkbox" name="allianceBallEndTime" id= "allianceBallEndTime"/>
-	If auto was late why was auto late?
+	Explain if autonomous ended late
 	<input type="text" name="lateAutoReason" id="lateAutoReason"/>
-	</p>
-	<br>
+	<br/>
 	<h3>teleop</h3>
-	<p>
-	<br>
-	new cycle
-	<input type="button" name= "newCycle" id="newCycle"/>
+	<br/>
+
+	<button type="button" name= "newCycle" id="newCycle">new cycle</button>
 	store cycle times
 	
 	assists
@@ -37,5 +45,7 @@
 	<br>
 	fould points against alliance
 	<input type="text" name= "allianceFoulPoints" id="allianceFoulPoints"/>
+
+	<button type="button" id="alliance_saveButton">save</button>
 </form>
 

@@ -1,6 +1,7 @@
 $(document).ready(function(){
     // remove first comment to stop testing mode
     //$("#teamScoutingForm").hide();
+    //$("#allianceScoutingForm").hide();
     //$("#scoutAssignmentText").load("util/assignmentForm.html");
 
 	$(".hit").click(function(){
@@ -19,22 +20,35 @@ $(document).ready(function(){
 		$("#"+counterID).val(parseInt($("#"+counterID).val())+1);
 	});
         
-    $("#saveButton").click(function(){
-        //var teamNum = $("#teamnum").val();
-        //var matchNum = $("#matchnum").val();
-        $.post("util/scoutSave.php", $("#scoutingForm").serialize(), function(data){
+    $("#team_saveButton").click(function(){
+        $.post("util/scoutSave.php", $("#teamScoutingForm").serialize(), function(data){
             alert(data);
         });
     });
 
-    $("#getAssignmentButton").click(function(){
+    $("#getAssignmentButton_team").click(function(){
         if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
         {
-            $.post("util/getAssignment.php", $("#assignmentForm").serialize(), function(data){
+            $.post("util/getAssignment_team.php", $("#assignmentForm").serialize(), function(data){
                 $("#scoutAssignmentText").html(data);
             });
             $("#teamScoutingForm").show();
             $("#teleop").hide();
+        }
+        else
+        {
+            $("#scoutAssignmentText").load("util/assignmentForm_redo.html");
+        }
+        return false;
+    });
+
+    $("#getAssignmentButton_alliance").click(function(){
+        if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
+        {
+            $.post("util/getAssignment_alliance.php", $("#assignmentForm").serialize(), function(data){
+                $("#scoutAssignmentText").html(data);
+            });
+            $("#allianceScoutingForm").show();
         }
         else
         {

@@ -7,23 +7,37 @@ $(document).ready(function() {
 		var	update ='';
 		for (var i=1; i<=numberOfMatches; i++)
 		{ 
+			update = update + "<form id='match"+i+"form'>"
 			update =	update + "<div class='row'>";
-			update =	update + "<div class='span2'><input type='text' value='" + i + "'	class='matchLabels'/></div>";
+			update =	update + "<div class='span2'><input type='text' value='" + i + "' name='matchNum' class='matchLabels'/></div>";
 			update =	update + "<div class='span5'>";
 			for (var j=1; j<=3; j++)
 			{
-				update =	update + "<input type='text' placeholder='team: "+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
+				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
 			}
 			update =	update + "</div><div class='span5'>";
 			for (var j=4; j<=6; j++)
 			{
-				update =	update + "<input type='text' placeholder='team: "+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
+				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+i+"' class='teamLabels' data-matchNum='"+i+"'/>";
 			}
-			update =	update + "</div></div>";
+			update =	update + "</div></div></form>";
 		}
 
 		update = update + "</br><button class='btn btn-large btn-success assignBtn' id='saveAssignments'>Save Assignments</button>";
 		form.innerHTML = form.innerHTML +	update;
+		$("#assigmentStart").hide();
+	});
+
+	$("#saveAssignments").click(function() {
+		var numMatches = $("#numberOfMatches").val();
+		for (var i=1; i<=numMatches; i++)
+		{
+			var formID = "#match"+i+"form";
+			$.post("util/saveAssignments.php", $(formID).serialize(), function(data){
+				alert(data);
+			});
+		}
+		});
 	});
 });
 </script>
@@ -46,11 +60,11 @@ $(document).ready(function() {
 </style>
 <h1>Assign Scouts</h1>
 
+<form action="" id="assignScouts">
+<div id="assigmentStart">
 <p> Number of matches:
-<input type="number" name="numberOfMatches" id="numberOfMatches" />
+<input type="number" name"numberOfMatches" id="numberOfMatches" />
 <button id="startAssigning" class="btn btn-large btn-success assignBtn">Start Assigning!</button>
 </p>
-
-<form action="" id="assignScouts">
-
+</div>
 </form>

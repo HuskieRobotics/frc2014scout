@@ -9,7 +9,6 @@
   <script type="text/javascript" src="js/jquery.js"></script>
 
 
-
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -41,21 +40,25 @@
 
           homeLink.onclick = function() {
             $("#scoutingArea").empty();
+            $("#homeNavbar").show();
             return false;
           };
 
           startTeamScout.onclick = function() {
             $("#scoutingArea").load("util/teamScout.html");
+            $("#homeNavbar").hide();
             return false;
           };
 
           startAllianceScout.onclick = function() {
             $("#scoutingArea").load("util/allianceScout.html");
+            $("#homeNavbar").hide();
             return false;
           };
 
           assignScouts.onclick = function() {
             $("#scoutingArea").load("util/scoutAssigning.html");
+            $("#homeNavbar").hide();
             return false;
           };
         };
@@ -66,13 +69,13 @@
       <!-- The Main wrapper div starts -->
       <div class="container">
         <!-- header content -->
-        <h1><a href="#">Team 3061 Scouting</a></h1>
+        <h1><a href="/index.html">Team 3061 Scouting</a></h1>
         <!-- Navigation -->
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li class="active"><a href="#" id="homeLink">Home</a></li>
+                <li><a href="#" id="homeLink">Home</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="scout-dropdown">
                     <i class="icon-th-large"></i> Scout ...
@@ -92,19 +95,36 @@
           </div>
         </div>
           
+        <div class="navbar" id="homeNavbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li><a href="#about" id="aboutLink">Home</a></li>
+                <li><a href="#madeBy" id="madeByLink">Assign Scouts</a></li>
+                <li><a href="http://team3061.org/" target="_blank">3061 Home Page</a></li>
+                
+              </ul>
+            </div>
+
+          </div>
+        </div>
 
         <div id="scoutingArea">
         </div>
 
 
 
-        <div class="row">
+        <div class="row" id="about">
           <div class="span4">
-            <p>Dummy Text</p>
+            <p></p>
           </div>
           <div class="span8">
-            <p>Dummy Text</p>
+            <p></p>
           </div>
+        </div>
+
+        <div class="row" id="madeBy">
+          <p></p>
         </div>
        
       </div>

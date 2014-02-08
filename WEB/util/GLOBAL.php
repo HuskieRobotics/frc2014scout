@@ -11,6 +11,7 @@ $table = "sTest";
 
 $teamTable = "team_db";
 $allianceTable = "alliance_db";
+$assignmentTable = "assign_db";
 
 $login_db = "yes";
 $login_table = "members";
@@ -89,6 +90,11 @@ $allianceFieldNames = array("MATCH_NUM",
 
 $allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "INT", "TEXT", "TEXT", "INT", "TEXT", "TEXT");  
 
+$assigmentFieldNames = array("matchNum","team1","team2",
+    "team3","team4","team5","team6","matchConCount");
+
+$assignmentFieldNameTypes = array("INT","INT","INT","INT","INT","INT",
+    "INT","INT");
 
 
 
