@@ -15,7 +15,7 @@ $allianceTable = "alliance_db";
 $login_db = "yes";
 $login_table = "members";
 
-$CONNECT_COUNT = 0;
+static $CONNECT_COUNT = 0;
 
 $fieldNames = array("teamNum","matchNum",
     "autoGoalType","autoHotGoal","autoZonePoints",

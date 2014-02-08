@@ -1,5 +1,4 @@
 <?php 
 
 include 'GLOBAL.php';
-echo count($allianceFieldNameTypes);
-echo count($allianceFieldNames);
+echo count($CONNECT_COUNT);

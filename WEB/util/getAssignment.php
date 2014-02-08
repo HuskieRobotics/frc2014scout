@@ -18,7 +18,7 @@ if ($MATCH_NUM != '')
 if ($continue)
 {
 	echo <<<_END
-	<h3>Hi $NAME_OF_SCOUT, you are scouting ... in match $MATCH_NUM</h3>
+	<h3>Hi $NAME_OF_SCOUT, you are scouting ...$CONNECT_COUNT... in match $MATCH_NUM</h3>
 _END;
 	$CONNECT_COUNT++;
 	$teamID = $CONNECT_COUNT % 6;

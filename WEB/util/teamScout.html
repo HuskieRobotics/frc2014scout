@@ -22,11 +22,12 @@
     <input type="text" name="TEAM_NUM" id="TEAM_NUM" />
     Alliance: 
     <input type="text" name="ALLIANCE_COLOR" id="ALLIANCE_COLOR" />
-    <br>
+    <br/>
     Your name:
     <input type="text" name="NAME_OF_SCOUT" id="NAME_OF_SCOUT" />
     </p>
 
+    <div class="row">
     <div class="span6">
         <div id="autonomous">
     <h3>autonomous</h3>
@@ -69,9 +70,8 @@
     </p>
 
     <p>
-    hot goal
-    <input type="checkbox" name="autoHotGoal" value="hot" /> 
-    <br>
+    <input type="checkbox" name="autoHotGoal" value="hot" />hot goal
+    <br/>
     </p>
 
     <p>
@@ -85,21 +85,163 @@
     </p>
 
     <p>
-    moved to colored zone
-    <input type="checkbox" name="autoColorZone" value="movedTo" />
-    <br>
+    <input type="checkbox" name="autoColorZone" value="movedTo" />moved to colored zone
+    <br/>
     </p>
 
     <p>
-    <b>all alliance balls scored</b>
-    <input type="checkbox" name="allianceBallEndTime" id="allianceBallEndCheck" />
+    <a href="#" id="allianceBallEndLink"><input type="checkbox" name="allianceBallEndTime" id="allianceBallEndCheck" /></a><b>all alliance balls scored</b>
     </p>
         </div>
+        <h3>test</h3>
         <div id="teleop">
+    <h3>teleop</h3>
+    initial zone
+    <br/>
+    <input type="radio" name="teleopInitPosition" value="red">red
+    <input type="radio" name="teleopInitPosition" value="white">white
+    <input type="radio" name="teleopInitPosition" value="blue">blue
+    <input type="radio" name="teleopInitPosition" value="goalie">goalie
+    <br/>
 
+    <button type="button" id="highHit" class="hit" data-scoreID="highGoalScores" data-shotID="highGoalShots">hit</button>
+    <button type="button" id="highMiss" class="miss" data-scoreID="highGoalScores" data-shotID="highGoalShots">miss</button>
+    <input type="text" value="0" id="highGoalScores" name="highGoalScores" class="counter_label"/>
+    <input type="text" value="0" id="highGoalShots" name="highGoalShots" class="counter_label"/>high goals/shots
+    <br/>
+
+    <button type="button" id="lowHit" class="hit" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">hit</button>
+    <button type="button" id="lowMiss" class="miss" data-scoreID="lowGoalScores" data-shotID="lowGoalShots">miss</button>
+    <input type="text" value="0" id="lowGoalScores" name="lowGoalScores" class="counter_label"/>
+    <input type="text" value="0" id="lowGoalShots" name="lowGoalShots" class="counter_label"/>low goals/shots
+    <br/>
+
+    <button type="button" id="trussHit" class="hit" data-scoreID="trussThrowScores" data-shotID="trussThrowShots">hit</button>
+    <button type="button" id="trussMiss" class="miss" data-scoreID="trussThrowScores" data-shotID="trussThrowShots">miss</button>
+    <input type="text" value="0" id="trussThrowScores" name="trussThrowScores" class="counter_label"/>
+    <input type="text" value="0" id="trussThrowShots" name="trussThrowShots" class="counter_label"/>truss throws/scores
+    <br/>
+
+    <button type="button" id="catchHit" class="hit" data-scoreID="trussCatchScores" data-shotID="trussCatchShots">hit</button>
+    <button type="button" id="catchMiss" class="miss" data-scoreID="trussCatchScores" data-shotID="trussCatchShots">miss</button>
+    <input type="text" value="0" id="trussCatchScores" name="trussCatchScores" class="counter_label"/>
+    <input type="text" value="0" id="trussCatchShots" name="trussCatchShots" class="counter_label"/>catches/attempts
+    <br/>
+
+    <button type="button" id="passStartsHit" class="hit" data-scoreID="passStarts">plus</button>
+    <input type="text" value="0" id="passStarts" name="passStarts" class="counter_label"/>passes started
+    <br/>
+
+    <button type="button" id="passRecvHit" class="hit" data-scoreID="passRecv">plus</button>
+    <input type="text" value="0" id="passRecv" name="passRecv" class="counter_label"/>passes received
+    <br/>
+
+    <button type="button" id="robotCycleAssistsHit" class="hit" data-scoreID="robotCycleAssists">plus</button>
+    <input type="text" value="0" id="robotCycleAssists" name="robotCycleAssists" class="counter_label"/>robot cycle assists
+    <br/>
+
+    <button  type="button" id="shotsBlockedHit" class="hit" data-scoreID="shotsBlocked">plus</button>
+    <input type="text" value="0" id="shotsBlocked" name="shotsBlocked" class="counter_label"/>shots blocked
+    <br/>
+
+    <button type="button" id="passesBlockedHit" class="hit" data-scoreID="passesBlocked">plus</button>
+    <input type="text" value="0" id="passesBlocked" name="passesBlocked" class="counter_label"/>passes blocked
+    <br/>
         </div>
+    </div>
+    <div class="span6">
+        <div id="overallGame">
+    <h3>overall game</h3>
+    preferred passing method
+    <br/>
+    <input type="radio" name="preferredPass" value="air"/>air
+    <input type="radio" name="preferredPass" value="ground"/>ground
+    <input type="radio" name="preferredPass" value="both"/>both
+    <input type="radio" name="preferredPass" value="none" checked/>no passing
+    <br/>
+
+    <input type="checkbox" name="caughtBall" id="caughtBall" value="caughtBall"/>catches ball
+    <br/>
+
+    <input type="checkbox" name="collectedBall" id="collectedBall" value="collectedBall"/>collects ball
+    <br/>
+
+    <input type="checkbox" name="playedDefense" id="playedDefense" value="playedDefense"/>plays defense
+    <br/>
+
+    robot speed (0-can't move, 1-slow, 5-fast)
+    <br/>
+    <input type="radio" name="robotSpeed" value="0" checked>0
+    <input type="radio" name="robotSpeed" value="1">1
+    <input type="radio" name="robotSpeed" value="2">2
+    <input type="radio" name="robotSpeed" value="3">3
+    <input type="radio" name="robotSpeed" value="4">4
+    <input type="radio" name="robotSpeed" value="5">5
+    <br/>
+
+    robot maneuverability (1-low, 5-high)
+    <br/>
+    <input type="radio" name="robotAgl" value="0" checked>0
+    <input type="radio" name="robotAgl" value="1">1
+    <input type="radio" name="robotAgl" value="2">2
+    <input type="radio" name="robotAgl" value="3">3
+    <input type="radio" name="robotAgl" value="4">4
+    <input type="radio" name="robotAgl" value="5">5
+    <br/>
 
 
+    robot pushing ability (1-weak, 5-strong)
+    <br/>
+    <input type="radio" name="robotPushingPower" value="0" checked>0
+    <input type="radio" name="robotPushingPower" value="1">1
+    <input type="radio" name="robotPushingPower" value="2">2
+    <input type="radio" name="robotPushingPower" value="3">3
+    <input type="radio" name="robotPushingPower" value="4">4
+    <input type="radio" name="robotPushingPower" value="5">5
+    <br/>
+
+    robot throwing ability (1-close to goal, 3-far away)
+    <br/>
+    <input type="radio" name="robotThrowing" value="0" checked>0
+    <input type="radio" name="robotThrowing" value="1">1
+    <input type="radio" name="robotThrowing" value="2">2
+    <input type="radio" name="robotThrowing" value="3">3
+    <br/>
+
+    main role in game
+    <br/
+    <input type="radio" name="rolePlayed" value="defense">defense
+    <input type="radio" name="rolePlayed" value="shooter">shooter
+    <input type="radio" name="rolePlayed" value="assister">assister
+    <input type="radio" name="rolePlayed" value="catcher">catcher
+    <input type="radio" name="rolePlayed" value="nothing" checked>no role
+    <br/>   
+
+    did the robot break?
+    <br/>
+    <input type="radio" name="robotBreakage" value="physicalBreak">physical breaking
+    <input type="radio" name="robotBreakage" value="communicationFail">communication failure
+    <input type="radio" name="robotBreakage" value="fallOver">fall over
+    <input type="radio" name="robotBreakage" value="nothing" checked>no breakage
+    <br/>
+
+    match comments
+    <input type="text" name="matchComments" placeholder="type your comments here...">
+    <br/>
+
+    foul points
+    <input type="text" name="foulPoints" placeholder="describe fouls...">
+    <br/>
+
+    foul confidence
+    <br/>
+    <input type="radio" name="robotFoulProb" value="0" checked>0
+    <input type="radio" name="robotFoulProb" value="1">1
+    <input type="radio" name="robotFoulProb" value="2">2
+    <input type="radio" name="robotFoulProb" value="3">3
+    <br/>
+        </div>
+    </div>
     </div>
 
 

@@ -43,8 +43,9 @@ $(document).ready(function(){
         return false;
     });
 
-    $("#allianceBallEndCheck").click(function() {
+    $("#allianceBallEndLink").click(function() {
         $("#teleop").show();
+        return false;
     });
 });
 
