@@ -35,6 +35,7 @@
           //Get a reference to the link on the page
           // with an id of "mylink"
           var startTeamScout = document.getElementById("startTeamScout");
+          var startAllianceScout = document.getElementById("startAllianceScout");
           var homeLink = document.getElementById("homeLink");
           var assignScouts = document.getElementById("fillAssignments");
 
@@ -48,8 +49,14 @@
             return false;
           };
 
+          startAllianceScout.onclick = function() {
+            $("#scoutingArea").load("util/allianceScout.html");
+            return false;
+          };
+
           assignScouts.onclick = function() {
             $("#scoutingArea").load("util/scoutAssigning.html");
+            return false;
           };
         };
     </script>
