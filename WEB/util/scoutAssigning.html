@@ -1,8 +1,12 @@
+<body>
 <script>
 $(document).ready(function() {
+	alert("HI");
 	$("#startAssigning").click(function() {
+		alert("hi");
 		var numberOfMatches = $("#numberOfMatches").val();
 		var form = document.getElementById('assignScouts');
+		alert(numberOfMatches);
 
 		var	update ='';
 		for (var i=1; i<=numberOfMatches; i++)
@@ -25,7 +29,8 @@ $(document).ready(function() {
 
 		update = update + "</br><button class='btn btn-large btn-success assignBtn' id='saveAssignments'>Save Assignments</button>";
 		form.innerHTML = form.innerHTML +	update;
-		$("#assigmentStart").hide();
+		//$("#assigmentStart").hide();
+		return false;
 	});
 
 	$("#saveAssignments").click(function() {
@@ -38,6 +43,7 @@ $(document).ready(function() {
 			});
 		}
 		});
+		return false;
 	});
 });
 </script>
@@ -52,11 +58,6 @@ $(document).ready(function() {
 	margin-left: 5px;
 	margin-right: 5px;
 }
-
-.assignBtn {
-	margin-right: auto;
-	margin-left: auto;
-}
 </style>
 <h1>Assign Scouts</h1>
 
@@ -68,3 +69,4 @@ $(document).ready(function() {
 </p>
 </div>
 </form>
+</body>

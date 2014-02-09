@@ -11,7 +11,7 @@ if (!$conn) {
 }
 echo "Connection successful.<br/>";
 mysql_select_db($databaseID);
-$stop = count($fieldNames);
+$stop = count($assignmentFieldNames);
 
 $sql = "CREATE TABLE $assignmentTable( ";
 for ($i = 0; $i < $stop; $i++)
