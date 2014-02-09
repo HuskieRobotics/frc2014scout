@@ -1,5 +1,5 @@
 <body>
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
 	alert("HI");
 	$("#startAssigning").click(function() {
@@ -42,9 +42,8 @@ $(document).ready(function() {
 				alert(data);
 			});
 		}
-		});
-		return false;
 	});
+		return false;
 });
 </script>
 <style>
@@ -64,7 +63,7 @@ $(document).ready(function() {
 <form action="" id="assignScouts">
 <div id="assigmentStart">
 <p> Number of matches:
-<input type="number" name"numberOfMatches" id="numberOfMatches" />
+<input type="number" name="numberOfMatches" id="numberOfMatches" />
 <button id="startAssigning" class="btn btn-large btn-success assignBtn">Start Assigning!</button>
 </p>
 </div>
