@@ -7,6 +7,8 @@
     <form action="" id="assignmentForm">
         <p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM"/>
             Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="NAME_OF_SCOUT"/>
+            alliance color: <input type="text" name="ALLIANCE_COLOR" placeholder="...color..." id="ALLIANCE_COLOR"/>
+            balls starting on field: <input type="text" name="preBallsOnField" id="preBallsOnField"/>
         </p>
         <a href="#" class="btn btn-large btn-success" id="getAssignmentButton_alliance">Get Assignment!</a>
     </br>
@@ -16,17 +18,16 @@
 </div>
 
 <form action="" id="allianceScoutingForm">
-	How many balls started on the field:
-	<input type="text" name="preBallsOnField" id="preBallsOnField"/>
-
-
+	<p>
 	<h3>autonomous</h3>
 	<br/>
 	When all the autonomous balls are scored
 	<input type="checkbox" name="allianceBallEndTime" id= "allianceBallEndTime"/>
 	Explain if autonomous ended late
 	<input type="text" name="lateAutoReason" id="lateAutoReason"/>
+	<p/>
 	<br/>
+	<p>
 	<h3>teleop</h3>
 	<br/>
 
@@ -34,18 +35,27 @@
 	store cycle times
 	
 	assists
-	<input type="radio" name="cycleAssistsNum" id="zeroAssist"/> zero assist
 	<input type="radio" name="cycleAssistsNum" id="oneAssist"/> one assist
-	<input type="radio" name="cycleAssistsNum" id="twoAssist"/> two assist
-	<input type="radio" name="cycleAssistsNum" id="threeAssist"/> three assist
+	<input type="radio" name="cycleAssistsNum" id="twoAssist"/> two assists
+	<input type="radio" name="cycleAssistsNum" id="threeAssist"/> three assists
 	</p>
-	<br>
+	<br/>
 	<h3>overall game</h3>
 	<p>
-	<br>
-	fould points against alliance
+	<br/>
+	foul points against alliance
 	<input type="text" name= "allianceFoulPoints" id="allianceFoulPoints"/>
-
+	<br/>
+	foul description
+	<input type="text" name= "foulDescription" id="foulDescription"/>
+	<br/>
+	robot breakage
+	<input type="radio" name= "allianceBreakage" id="allianceBreakage" checked/> no breakage
+	<input type="radio" name= "allianceBreakage" id="allianceBreakage" /> fall over
+	<input type="radio" name= "allianceBreakage" id="allianceBreakage" /> communcation failure
+	<input type="radio" name= "allianceBreakage" id="allianceBreakage" /> physical breaking
+	<p/>
+	<br/>
 	<button type="button" id="alliance_saveButton">save</button>
 </form>
 
