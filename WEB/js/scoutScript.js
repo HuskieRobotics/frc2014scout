@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // remove first comment to stop testing mode
-    $("#teamScoutingForm").hide();
+    $("#teamScoutFORM").hide();
     $("#allianceScoutingForm").hide();
     //$("#scoutAssignmentText").load("util/assignmentForm.html");
 
@@ -32,7 +32,7 @@ $(document).ready(function(){
             $.post("util/getAssignment_team.php", $("#assignmentForm").serialize(), function(data){
                 $("#scoutAssignmentText").html(data);
             });
-            $("#teamScoutingForm").show();
+            $("#teamScoutFORM").show();
             $("#teleop").hide();
         }
         else
