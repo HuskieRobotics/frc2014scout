@@ -1,7 +1,20 @@
 <body>
 <script type="text/javascript">
 $(document).ready(function() {
-	var numberOfMatches;
+	var numberOfMatches = 0;
+
+	function saveForms() {
+		alert(numberOfMatches);
+		for (var i=1; i<=numberOfMatches; i++)
+		{
+			var formID = "#match"+i+"form";
+			$.post("util/saveAssignments.php", $(formID).serialize(), function(data){
+				alert(data);
+			});
+		}
+		return false;
+	});
+
 	$("#startAssigning").click(function() {
 		numberOfMatches = $("#numberOfMatches").val();
 		var form = document.getElementById('assignScouts');
@@ -26,14 +39,15 @@ $(document).ready(function() {
 			update =	update + "</div></div></form>";
 		}
 
-		update = update + "</br><button class='btn btn-large btn-success assignBtn' id='saveAssignments'>Save Assignments</button>";
+		update = update + "</br><button class='btn btn-large btn-success assignBtn' onclick='saveForms()' id='saveAssignments'>Save Assignments</button>";
 		form.innerHTML = form.innerHTML +	update;
 		//$("#assigmentStart").hide();
 		return false;
 	});
 
-	$("#saveAssignments").click(function() {
-		for (var i=1; i<=numMatches; i++)
+	function saveForms() {
+		alert(numberOfMatches);
+		for (var i=1; i<=numberOfMatches; i++)
 		{
 			var formID = "#match"+i+"form";
 			$.post("util/saveAssignments.php", $(formID).serialize(), function(data){
