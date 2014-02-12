@@ -1,7 +1,7 @@
 $(document).ready(function(){
     // remove first comment to stop testing mode
-    //$("#teamScoutingForm").hide();
-    //$("#allianceScoutingForm").hide();
+    $("#teamScoutingForm").hide();
+    $("#allianceScoutingForm").hide();
     //$("#scoutAssignmentText").load("util/assignmentForm.html");
 
 	$(".hit").click(function(){
