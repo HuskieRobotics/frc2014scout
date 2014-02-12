@@ -1,6 +1,6 @@
 <?php
-
 include 'GLOBAL.php';
+echo "Hi from php";
 if ($usePassword) {
     $conn = mysql_connect($databaseIP, $databaseUser, $databasePassword);
 } else {
@@ -14,7 +14,7 @@ if (!$conn) {
 mysql_select_db($databaseID);
 
 
-function buildArray($fieldNamesInput) 
+function buildArray($assignmentFieldNames) 
 {    
     $length = count($fieldNamesInput);
 

@@ -10,6 +10,8 @@ function saveForms() {
 		{
                     alert(i);
 			var formID = "#match"+i+"form";
+                        alert(formID);
+                        alert($(formID).serialize());
 			$.post("saveAssignments.php", $(formID).serialize(), function(data){
 				alert(data);
 			});
