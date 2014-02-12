@@ -1,20 +1,23 @@
 <body>
 <script type="text/javascript">
-$(document).ready(function() {
-	var numberOfMatches = 0;
 
-	function saveForms() {
-		alert(numberOfMatches);
+var numberOfMatches = 0;
+
+function saveForms() {
+		alert("Hi");
+                alert(numberOfMatches);
 		for (var i=1; i<=numberOfMatches; i++)
 		{
+                    alert(i);
 			var formID = "#match"+i+"form";
-			$.post("util/saveAssignments.php", $(formID).serialize(), function(data){
+			$.post("saveAssignments.php", $(formID).serialize(), function(data){
 				alert(data);
 			});
 		}
 		return false;
-	});
+	}
 
+$(document).ready(function() {
 	$("#startAssigning").click(function() {
 		numberOfMatches = $("#numberOfMatches").val();
 		var form = document.getElementById('assignScouts');
@@ -34,7 +37,7 @@ $(document).ready(function() {
 			update =	update + "</div><div class='span5'>";
 			for (var j=4; j<=6; j++)
 			{
-				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+i+"' class='teamLabels' data-matchNum='"+i+"'/>";
+				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
 			}
 			update =	update + "</div></div></form>";
 		}
@@ -42,18 +45,6 @@ $(document).ready(function() {
 		update = update + "</br><button class='btn btn-large btn-success assignBtn' onclick='saveForms()' id='saveAssignments'>Save Assignments</button>";
 		form.innerHTML = form.innerHTML +	update;
 		//$("#assigmentStart").hide();
-		return false;
-	});
-
-	function saveForms() {
-		alert(numberOfMatches);
-		for (var i=1; i<=numberOfMatches; i++)
-		{
-			var formID = "#match"+i+"form";
-			$.post("util/saveAssignments.php", $(formID).serialize(), function(data){
-				alert(data);
-			});
-		}
 		return false;
 	});
 });
