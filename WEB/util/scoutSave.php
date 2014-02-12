@@ -39,7 +39,7 @@ function buildArray($fieldNamesInput)
 
 $assocArray2 = buildArray($teamFieldNames);
 
-$sql = "INSERT INTO $table";
+$sql = "INSERT INTO $teamTable";
 
 
 $sql .= " (`" . implode("`, `", array_keys($assocArray2)) . "`)";
