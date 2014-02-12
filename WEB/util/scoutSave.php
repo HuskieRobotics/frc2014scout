@@ -37,7 +37,7 @@ function buildArray($fieldNamesInput)
     return $assocArray;
 }
 
-$assocArray2 = buildArray($fieldNames);
+$assocArray2 = buildArray($teamFieldNames);
 
 $sql = "INSERT INTO $table";
 
