@@ -1,8 +1,9 @@
 <body>
 <script type="text/javascript">
 $(document).ready(function() {
+	var numberOfMatches;
 	$("#startAssigning").click(function() {
-		var numberOfMatches = $("#numberOfMatches").val();
+		numberOfMatches = $("#numberOfMatches").val();
 		var form = document.getElementById('assignScouts');
 		alert(numberOfMatches);
 
@@ -32,7 +33,6 @@ $(document).ready(function() {
 	});
 
 	$("#saveAssignments").click(function() {
-		var numMatches = $("#numberOfMatches").val();
 		for (var i=1; i<=numMatches; i++)
 		{
 			var formID = "#match"+i+"form";
