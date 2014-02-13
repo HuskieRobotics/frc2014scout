@@ -43,6 +43,18 @@ input[type=checkbox] {
  background-color: white ;
 }
 
+.hit {
+    background-image: url('img/hit.jpg');
+}
+
+.miss {
+    background-image: url('img/miss.jpg');
+}
+
+.plus {
+    background-image: url('img/plus.jpg');
+}
+
 /*
 .hit, .miss, .plus {
     height: 25px;
