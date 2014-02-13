@@ -29,7 +29,7 @@ $(document).ready(function(){
     });
 
     $("#getAssignmentButton_team").click(function(){
-        if ((("#MATCH_NUM").val()$ != '') && ($("#NAME_OF_SCOUT").val() != ''))
+        if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
         {
             $.post("util/getAssignment_team.php", $("#assignmentForm").serialize(), function(data){
                 $("#scoutAssignmentText").html(data);
