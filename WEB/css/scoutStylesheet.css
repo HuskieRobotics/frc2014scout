@@ -31,7 +31,7 @@ input[type=checkbox] {
     height: 25px;
 }
 
-.button, .hit, .miss, .plus, #saveButton {
+.button {
  font-family: Helvetica ;
  font-weight: bold ;
  padding: 15px; 
@@ -43,18 +43,24 @@ input[type=checkbox] {
  background-color: white ;
 }
 
-.hit {
-    background-image: url('img/hit.jpg');
+.hit, .miss, .plus {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.miss {
-    background-image: url('img/miss.jpg');
+/*
+.button, .hit, .miss, .plus, #saveButton {
+ font-family: Helvetica ;
+ font-weight: bold ;
+ padding: 15px; 
+ border: 1px solid black ;
+ -moz-border-radius: 8px ;
+ -webkit-border-radius: 8px ; 
+ margin-top: 10px ;
+ margin-bottom: 10px ;
+ background-color: white ;
 }
-
-.plus {
-    background-image: url('img/plus.jpg');
-}
-
+**/
 /*
 .hit, .miss, .plus {
     height: 25px;
