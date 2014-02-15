@@ -1,7 +1,7 @@
 $(document).ready(function(){
     // remove first comment to stop testing mode
-    //$("#teamScoutingForm").hide();
-    //$("#allianceScoutingForm").hide();
+    $("#teamScoutingForm").hide();
+    $("#allianceScoutingForm").hide();
     //$("#scoutAssignmentText").load("util/assignmentForm.html");
 
 	$(".hit").click(function(){
@@ -35,7 +35,7 @@ $(document).ready(function(){
                 $("#scoutAssignmentText").html(data);
             });
             $("#teamScoutingForm").show();
-            //$("#teleop").hide();
+            $("#teleop").hide();
             $("#MATCH_NUM_form").val($("#MATCH_NUM").val());
             $("#NAME_OF_SCOUT_form").val($("#NAME_OF_SCOUT").val());
         }

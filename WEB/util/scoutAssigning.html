@@ -4,16 +4,19 @@
 var numberOfMatches = 0;
 
 function saveForms() {
-		alert("Hi");
-                alert(numberOfMatches);
+        alert(numberOfMatches);
+        $.post("saveAssignments.php", $("#match1form").serialize(), function(data){
+        	alert(data);
+        });
+        /**
 		for (var i=1; i<=numberOfMatches; i++)
 		{
                     alert(i);
-			var formID = "#match"+i+"form";
-			$.post("saveAssignments.php", $(formID).serialize(), function(data){
+			$.post("saveAssignments.php", $("#match"+i+"form").serialize(), function(data){
 				alert(data);
 			});
 		}
+		*/
 		return false;
 	}
 
@@ -23,7 +26,7 @@ $(document).ready(function() {
 		var form = document.getElementById('assignScouts');
 		alert(numberOfMatches);
 
-		var	update ='';
+		var	update ='<form id="match0form"><div class="row"><div class="span2"></div></div></form>';
 		for (var i=1; i<=numberOfMatches; i++)
 		{ 
 			update = update + "<form id='match"+i+"form'>"
@@ -63,12 +66,12 @@ $(document).ready(function() {
 </style>
 <h1>Assign Scouts</h1>
 
-<form action="" id="assignScouts">
 <div id="assigmentStart">
 <p> Number of matches:
 <input type="number" name="numberOfMatches" id="numberOfMatches" />
 <button id="startAssigning" class="btn btn-large btn-success assignBtn">Start Assigning!</button>
 </p>
 </div>
-</form>
+<div id="assignScouts">
+</div>
 </body>

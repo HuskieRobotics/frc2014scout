@@ -28,6 +28,8 @@ function buildArray($assignmentFieldNames)
             $valueToPut = $_POST[$fieldName];
         else
             $valueToPut = "false";
+        if $fieldName = "matchConCount"
+            $valueToPut = "0";
 
         $assocArray[$fieldName] = $valueToPut;
     }
