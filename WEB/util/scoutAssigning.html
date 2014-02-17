@@ -1,4 +1,7 @@
 <body>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
 <script type="text/javascript">
 
 var numberOfMatches = 0;
@@ -26,7 +29,7 @@ $(document).ready(function() {
 				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
 			}
 			update =	update + "</div>";
-			update = update + "<div class='span2'><button class='btn btn-medium btn-success assignBtn' id='saveAssignments' data-saveFormID='#match"+i+"form'>save</button></div></div></form>";
+			update = update + "<div class='span2'><button type='button' class='btn btn-medium btn-success assignBtn' id='saveAssignments' data-saveFormID='match"+i+"form'>save</button></div></div></form>";
 		}
 
 		form.innerHTML = form.innerHTML +	update;
@@ -34,9 +37,12 @@ $(document).ready(function() {
 		return false;
 	});	
 
-	$("#saveAssignments").click(function(){
+	$("#saveAssignments").click(function(event){
+		event.preventDefault();
+		alert("hi");
 		var matchFormID = $(this).attr("data-saveFormID");
-		$.post("saveAssignments.php", $(matchFormID).serialize(), function(data){
+		alert(matchFormID);
+		$.post("saveAssignments.php", $("#"+matchFormID).serialize(), function(data){
         	alert(data);
         });
 
