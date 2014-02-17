@@ -3,52 +3,51 @@
 
 var numberOfMatches = 0;
 
-function saveForms() {
-        alert(numberOfMatches);
-        $.post("saveAssignments.php", $("#match1form").serialize(), function(data){
-        	alert(data);
-        });
-        /**
-		for (var i=1; i<=numberOfMatches; i++)
-		{
-                    alert(i);
-			$.post("saveAssignments.php", $("#match"+i+"form").serialize(), function(data){
-				alert(data);
-			});
-		}
-		*/
-		return false;
-	}
-
 $(document).ready(function() {
+
 	$("#startAssigning").click(function() {
 		numberOfMatches = $("#numberOfMatches").val();
 		var form = document.getElementById('assignScouts');
-		alert(numberOfMatches);
 
-		var	update ='<form id="match0form"><div class="row"><div class="span2"></div></div></form>';
+		var	update ='';
 		for (var i=1; i<=numberOfMatches; i++)
 		{ 
 			update = update + "<form id='match"+i+"form'>"
 			update =	update + "<div class='row'>";
 			update =	update + "<div class='span2'><input type='text' value='" + i + "' name='matchNum' class='matchLabels'/></div>";
-			update =	update + "<div class='span5'>";
+			update =	update + "<div class='span4'>";
 			for (var j=1; j<=3; j++)
 			{
 				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
 			}
-			update =	update + "</div><div class='span5'>";
+			update =	update + "</div><div class='span4'>";
 			for (var j=4; j<=6; j++)
 			{
 				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
 			}
-			update =	update + "</div></div></form>";
+			update =	update + "</div>";
+			update = update + "<div class='span2'><button class='btn btn-medium btn-success assignBtn' id='saveAssignments' data-saveFormID='#match"+i+"form'>save</button></div></div></form>";
 		}
 
-		update = update + "</br><button class='btn btn-large btn-success assignBtn' onclick='saveForms()' id='saveAssignments'>Save Assignments</button>";
 		form.innerHTML = form.innerHTML +	update;
 		//$("#assigmentStart").hide();
 		return false;
+	});	
+
+	$("#saveAssignments").click(function(){
+		var matchFormID = $(this).attr("data-saveFormID");
+		$.post("saveAssignments.php", $(matchFormID).serialize(), function(data){
+        	alert(data);
+        });
+
+	});
+
+	$("#saveFormTest").click(function(event){
+		event.preventDefault();
+		alert("hi");
+		$.post("util/saveAssignments.php", $("#formTest").serialize(), function(data){
+			alert(data);
+		});
 	});
 });
 </script>
@@ -65,6 +64,18 @@ $(document).ready(function() {
 }
 </style>
 <h1>Assign Scouts</h1>
+
+<form id="formTest">
+	<input type="text" name="matchNum" placeholder="match" />
+	<input type="text" name="team1" placeholder="team1" />
+	<input type="text" name="team2" placeholder="team2" />
+	<input type="text" name="team3" placeholder="team3" />
+	<input type="text" name="team4" placeholder="team4" />
+	<input type="text" name="team5" placeholder="team5" />
+	<input type="text" name="team6" placeholder="team6" />	
+	<button type="button" id="saveFormTest">submit</button>
+</form>
+
 
 <div id="assigmentStart">
 <p> Number of matches:

@@ -1,6 +1,5 @@
 <?php
 include 'GLOBAL.php';
-echo "Hi from php";
 if ($usePassword) {
     $conn = mysql_connect($databaseIP, $databaseUser, $databasePassword);
 } else {
@@ -14,7 +13,7 @@ if (!$conn) {
 mysql_select_db($databaseID);
 
 
-function buildArray($assignmentFieldNames) 
+function buildArray($fieldNamesInput) 
 {    
     $length = count($fieldNamesInput);
 
@@ -27,9 +26,9 @@ function buildArray($assignmentFieldNames)
         if (isset($_POST[$fieldName]))
             $valueToPut = $_POST[$fieldName];
         else
-            $valueToPut = "false";
-        if $fieldName = "matchConCount"
-            $valueToPut = "0";
+            $valueToPut = 'false';
+        if ($fieldName = 'matchConCount')
+            $valueToPut = '0';
 
         $assocArray[$fieldName] = $valueToPut;
     }
