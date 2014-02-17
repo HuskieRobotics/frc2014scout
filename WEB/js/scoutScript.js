@@ -24,7 +24,7 @@ $(document).ready(function(){
         $.post("util/scoutSave.php", $("#teamScoutingForm").serialize(), function(data){
             alert(data);
         });
-        //$("#scoutingArea").load("util/teamScout.html");
+        $("#scoutingArea").load("util/teamScout.html");
 
     });
 
