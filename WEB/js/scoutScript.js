@@ -63,7 +63,6 @@ $(document).ready(function(){
 
     $("#allianceBallEndLink").click(function() {
         $("#teleop").show();
-        return false;
     });
 });
 

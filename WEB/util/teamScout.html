@@ -26,10 +26,26 @@
         <br/>
         Alliance Color: <input type="text" name="ALLIANCE_COLOR"  id="ALLIANCE_COLOR_form"/>
         <br/>
-        Pregame position: <input type="text" name="preGamePosition" id="preGamePosition_form"/>
+        Pregame position:
+        <select name="preGamePosition" form="teamScoutingForm">
+            <option value="1">1</option>
+            <option value="2">2</option> 
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
         <br/>
-        Pregame ball position: <input type="text" name="preGameBallPosition" id="preGameBallPosition_form"/>
+        Pregame ball position: 
+        <select name="preGameBallPosition" form="teamScoutingForm">
+            <option value="noBall">no ball</option>
+            <option value="inCollector">in collector</option>
+            <option value="onGround">on ground</option>
+        </select>
         <br/>
+    </div>
+    <div class="span5">
+        <img src="img/field_auto_zones.jpg"/>
     </div>
     </div>
     <div class="row">
@@ -173,14 +189,12 @@
     <input type="checkbox" name="playedDefense" id="playedDefense" value="playedDefense"/>plays defense
     <br/>
 
-    robot speed (0-can't move, 1-slow, 5-fast)
+    robot speed (0-can't move, 1-slow, 2-fast, 3-both)
     <br/>
     <input type="radio" name="robotSpeed" value="0" checked>0
     <input type="radio" name="robotSpeed" value="1">1
     <input type="radio" name="robotSpeed" value="2">2
     <input type="radio" name="robotSpeed" value="3">3
-    <input type="radio" name="robotSpeed" value="4">4
-    <input type="radio" name="robotSpeed" value="5">5
     <br/>
 
     robot maneuverability (1-low, 5-high)
