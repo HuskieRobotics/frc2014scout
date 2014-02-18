@@ -15,7 +15,7 @@ $(document).ready(function() {
 		var	update ='';
 		for (var i=1; i<=numberOfMatches; i++)
 		{ 
-			update = update + "<form id='match"+i+"form'>"
+			update = update + "<form id='match"+i+"form' action='util/saveAssignments.php' method='post'>"
 			update =	update + "<div class='row'>";
 			update =	update + "<div class='span2'><input type='text' value='" + i + "' name='matchNum' class='matchLabels'/></div>";
 			update =	update + "<div class='span4'>";
@@ -38,13 +38,13 @@ $(document).ready(function() {
 	});	
 	
 
-	$("#saveAssignments").click(function(event){
-		event.preventDefault();
-		alert("hi");
+	//$("#saveAssignments").click(function(event){
+	//	event.preventDefault();
+	//	alert("hi");
 		//$.post("util/saveAssignments.php", $("#formTest").serialize(), function(data){
 		//	alert(data);
 		//});
-	});
+	//});
 
 
 	//$(".saveAssignmentsBtn").click(function(event){
@@ -81,7 +81,7 @@ $(document).ready(function() {
 </style>
 <h1>Assign Scouts</h1>
 
-<h3>LAUGH</h3>
+<h3>laugh</h3>
 
 <form id="formTest">
 	<input type="text" name="matchNum" placeholder="match" />
