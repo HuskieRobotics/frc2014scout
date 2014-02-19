@@ -32,7 +32,12 @@ $(document).ready(function(){
         if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
         {
             $.post("util/getAssignment_team.php", $("#assignmentForm").serialize(), function(data){
-                $("#scoutAssignmentText").html(data);
+                //alert(data);
+                var newHTML = "Hi " + $("#NAME_OF_SCOUT").val() + ", ";
+                newHTML = newHTML += "you are scouting <b>"+data+"</b>";
+                newHTML = newHTML += " in match " + $("#MATCH_NUM").val() + ". ";
+                $("#scoutAssignmentText").html(newHTML);
+                $("#TEAM_NUM_form").val(data);
             });
             $("#teamScoutingForm").show();
             $("#teleop").hide();

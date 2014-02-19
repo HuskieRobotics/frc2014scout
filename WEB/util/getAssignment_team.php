@@ -1,40 +1,93 @@
 <?php
 include 'GLOBAL.php';
 
-$continue = false;
-
 if (isset($_POST['MATCH_NUM']))
 {
 	$MATCH_NUM = $_POST['MATCH_NUM'];
-	if (isset($_POST['NAME_OF_SCOUT']))
-		$NAME_OF_SCOUT = $_POST['NAME_OF_SCOUT'];
+}
+if (isset($_POST['NAME_OF_SCOUT']))
+{
+	$NAME_OF_SCOUT = $_POST['NAME_OF_SCOUT'];
 }
 
-if ($MATCH_NUM != '')
-{
-	$continue = true;
+if ($usePassword) {
+    $conn = mysql_connect($databaseIP, $databaseUser, $databasePassword);
+} else {
+    $conn = mysql_connect($databaseIP, $databaseUser);
+}
+if (!$conn) {
+    die("Could not connect: " . mysql_error());
+}
+//echo "Connection successful.<br/>";
+
+$database = "yes";
+$table = $assignmentTable;
+
+$length = count($assignmentFieldNames);
+
+mysql_select_db($databaseID);
+
+$sql = "SELECT ";
+
+
+$sql .= " " . implode(", ", $assignmentFieldNames) . " FROM $table";
+
+$return = mysql_query($sql, $conn);
+if (!$return) {
+    die("Could not get data: " . mysql_error());
+}
+//echo "Data retrieval successful.<br/>";
+
+$teamToScout = '';
+
+while ($row = mysql_fetch_assoc($return)) {
+    for ($i = 0; $i < $length; $i++) {
+        $fieldName = $assignmentFieldNames[$i];
+        
+        if ($fieldName == 'matchNum')
+        {
+        	if ($MATCH_NUM == $row[$fieldName])
+        	{
+        		$currConCount = $row['matchConCount'];
+        		$conCountMOD = $currConCount % 6;
+        		switch ($conCountMOD)
+				{
+        			case 0:
+        				$teamToScout = $row['team1'];
+        				break;
+        			case 1:
+        				$teamToScout = $row['team2'];
+        				break;
+        			case 2:
+        				$teamToScout = $row['team3'];
+        				break;
+        			case 3:
+        				$teamToScout = $row['team4'];
+        				break;
+        			case 4:
+        				$teamToScout = $row['team5'];
+        				break;
+        			case 5:
+        				$teamToScout = $row['team6'];
+        				break;
+        		}
+        		
+        	}
+
+        }
+    }
 }
 
-if ($continue)
-{
-	echo <<<_END
-	<h3>Hi $NAME_OF_SCOUT, you are scouting ...$CONNECT_COUNT... in match $MATCH_NUM</h3>
-_END;
-	$CONNECT_COUNT++;
-	$teamID = $CONNECT_COUNT % 6;
+$newConCount = $currConCount+1;
+$sql2 = "UPDATE $table ";
+$sql2 .= "SET matchConCount=$newConCount ";
+$sql2 .= "WHERE matchNum=$MATCH_NUM;";
+$return2 = mysql_query($sql2, $conn);
+if (!$return) {
+	die("Could not get data: " . mysql_error());
 }
-else
-{
-	echo <<<_END
-	<form action="" id="assignmentForm">
-	<p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." />
-	Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." />
-	</p>
-	<a href="#" class="btn btn-large btn-success" id="getAssignmentButton">Get Assignment</a>
-	</br>
-	<h3>Please try again.</h3>
-	</br>
-	</form>
-	<h3>Hi $NAME_OF_SCOUT, you are scouting ... in match $MATCH_NUM</h3>
-_END;
-}
+
+echo $teamToScout;
+
+mysql_close($conn);
+?>
