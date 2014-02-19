@@ -18,17 +18,21 @@
 <form action="" id="allianceScoutingForm">
 	<div class="row">
 		<div class="span6">
-	<p>
 	<h3>autonomous</h3>
 	<br/>
-	Balls starting on field: <input type="text" name="preBallsOnField" id="preBallsOnField"/>
-	When all the autonomous balls are scored
-	<input type="checkbox" name="allianceBallEndTime" id= "allianceBallEndTime"/>
-	Explain if autonomous ended late
-	<input type="text" name="lateAutoReason" id="lateAutoReason"/>
-	<p/>
+	Balls starting on field: 
+	<select name="preBallsOnField">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
 	<br/>
-	<p>
+	all autonomous balls scored
+	<input type="checkbox" name="allianceBallEndTime" id= "allianceBallEndTime"/>
+	<br/>
+	Explain why auto ended late
+	<input type="text" name="lateAutoReason" id="lateAutoReason"/>
+	<br/>
 	<h3>teleop</h3>
 	<br/>
 
@@ -39,7 +43,6 @@
 	<input type="radio" name="cycleAssistsNum" id="oneAssist"/> one assist
 	<input type="radio" name="cycleAssistsNum" id="twoAssist"/> two assists
 	<input type="radio" name="cycleAssistsNum" id="threeAssist"/> three assists
-	</p>
 	</div>
 	<br/>
 	<div class="span6">
@@ -60,6 +63,6 @@
 	<p/>
 	</div>
 	<br/>
-	<button type="button" id="alliance_saveButton">save</button>
+	<button type="button" class="btn btn-large btn-success btn-block" id="alliance_saveButton">save</button>
 </form>
 

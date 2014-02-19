@@ -28,6 +28,14 @@ $(document).ready(function(){
 
     });
 
+    $("#alliance_saveButton").click(function(){
+        $.post("util/scoutSave.php", $("#allianceScoutingForm").serialize(), function(data){
+            alert(data);
+        });
+        $("#scoutingArea").load("util/allianceScout.html");
+
+    });
+
     $("#getAssignmentButton_team").click(function(){
         if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
         {
@@ -35,7 +43,7 @@ $(document).ready(function(){
                 //alert(data);
                 var newHTML = "Hi " + $("#NAME_OF_SCOUT").val() + ", ";
                 newHTML = newHTML += "you are scouting <b>"+data+"</b>";
-                newHTML = newHTML += " in match " + $("#MATCH_NUM").val() + ". ";
+                newHTML = newHTML += " in match " + $("#MATCH_NUM").val() + ".";
                 $("#scoutAssignmentText").html(newHTML);
                 $("#TEAM_NUM_form").val(data);
             });
