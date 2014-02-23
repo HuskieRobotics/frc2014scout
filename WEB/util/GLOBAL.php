@@ -44,7 +44,6 @@ $teamFieldNames = array("MATCH_NUM",
 "ballTwoAuto",
 "ballThreeAuto",
 "autoHotGoal",
-"detectHotGoal",
 "autoColorZone",
 "allianceBallEndTime",
 "teleopInitPosition",
@@ -75,7 +74,7 @@ $teamFieldNames = array("MATCH_NUM",
 "foulPoints",
 "robotFoulProb");
 
-$teamFieldNameTypes = array("INT", "TEXT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT",
+$teamFieldNameTypes = array("INT", "TEXT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT",
      "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", 
      "INT", "INT", "INT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT");
 
