@@ -88,9 +88,11 @@
     <input type="radio" name="ballOneAuto" value="highMiss" /> high miss
     <input type="radio" name="ballOneAuto" value="lowMake" /> low make
     <input type="radio" name="ballOneAuto" value="lowMiss" /> low miss
+    <br/>
     <input type="radio" name="ballOneAuto" value="noShot" /> no shot
     <input type="radio" name="ballOneAuto" value="noBallOne" checked/> no ball 1
     </i>
+    <input type="checkbox" name="autoHotGoalOne" value="hot" /> made hot goal?
     </p>
 
     <p>
@@ -101,9 +103,11 @@
     <input type="radio" name="ballTwoAuto" value="highMiss" /> high miss
     <input type="radio" name="ballTwoAuto" value="lowMake" /> low make
     <input type="radio" name="ballTwoAuto" value="lowMiss" /> low miss
+    <br/>
     <input type="radio" name="ballTwoAuto" value="noShot" /> no shot
     <input type="radio" name="ballTwoAuto" value="noBallTwo" checked/> no ball 2
     </i>
+    <input type="checkbox" name="autoHotGoalTwo" value="hot" /> made hot goal?
     </p>
 
     <p>
@@ -114,16 +118,13 @@
     <input type="radio" name="ballThreeAuto" value="highMiss" /> high miss
     <input type="radio" name="ballThreeAuto" value="lowMake" /> low make
     <input type="radio" name="ballThreeAuto" value="lowMiss" /> low miss
+    <br/>
     <input type="radio" name="ballThreeAuto" value="noShot" /> no shot
     <input type="radio" name="ballThreeAuto" value="noBallThree" checked/> no ball 3
     </i>
+    <input type="checkbox" name="autoHotGoalThree" value="hot" /> made hot goal?
     </p>
 
-    <p>
-    <input type="checkbox" name="autoHotGoal" value="hot" />hot goal
-    <br/>
-    </p>
-    
     <p>
     <input type="checkbox" name="autoColorZone" value="movedTo" />moved to colored zone
     <br/>
@@ -280,6 +281,9 @@
         </div>
     </div>
     </div>
+
+    <br/>
+    <br/>
 
     <button type="button" class="btn btn-large btn-success btn-block" id="team_saveButton">save</button>
 </form>
