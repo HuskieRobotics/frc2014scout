@@ -147,10 +147,26 @@
     <input type="radio" name="teleopInitPosition" value="goalie">goalie
     <br/>
 
-    <img id="highHit" class="hit" data-scoreID="highGoalScores" data-shotID="highGoalShots" src="img/hit.jpg"/>
-    <img id="highMiss" class="miss" data-scoreID="highGoalScores" data-shotID="highGoalShots" src="img/miss.jpg"/>
-    <input type="text" value="0" id="highGoalScores" name="highGoalScores" class="counter_label"/>
-    <input type="text" value="0" id="highGoalShots" name="highGoalShots" class="counter_label"/>high goals/shots
+    <h6>high goals:</h6>
+    <img id="highHit_colored" class="hit" data-scoreID="highGoalScores_colored" data-shotID="highGoalShots_colored" src="img/hit.jpg"/>
+    <img id="highMiss_colored" class="miss" data-scoreID="highGoalScores_colored" data-shotID="highGoalShots_colored" src="img/miss.jpg"/>
+    <input type="text" value="0" id="highGoalScores_colored" name="highGoalScores_colored" class="counter_label"/>
+    <input type="text" value="0" id="highGoalShots_colored" name="highGoalShots_colored" class="counter_label"/> from colored
+    <br/>
+
+    <img id="highHit_white" class="hit" data-scoreID="highGoalScores_white" data-shotID="highGoalShots_white" src="img/hit.jpg"/>
+    <img id="highMiss" class="miss" data-scoreID="highGoalScores_white" data-shotID="highGoalShots_white" src="img/miss.jpg"/>
+    <input type="text" value="0" id="highGoalScores_white" name="highGoalScores_white" class="counter_label"/>
+    <input type="text" value="0" id="highGoalShots_white" name="highGoalShots_white" class="counter_label"/>from white
+    <br/>
+
+    <img id="highHit_goalie" class="hit" data-scoreID="highGoalScores_goalie" data-shotID="highGoalShots_goalie" src="img/hit.jpg"/>
+    <img id="highMiss" class="miss" data-scoreID="highGoalScores_goalie" data-shotID="highGoalShots_goalie" src="img/miss.jpg"/>
+    <input type="text" value="0" id="highGoalScores_goalie" name="highGoalScores_goalie" class="counter_label"/>
+    <input type="text" value="0" id="highGoalShots_goalie" name="highGoalShots_goalie" class="counter_label"/>from goalie
+    <br/>
+
+    <br/>
     <br/>
 
     <img id="lowHit" class="hit" data-scoreID="lowGoalScores" data-shotID="lowGoalShots" src="img/hit.jpg"/>
@@ -175,12 +191,12 @@
     <input type="text" value="0" id="passStarts" name="passStarts" class="counter_label"/>passes started
     <br/>
 
-    <img id="passRecvHit" class="hit" data-scoreID="passRecv" src="img/plus.jpg"/>
-    <input type="text" value="0" id="passRecv" name="passRecv" class="counter_label"/>passes received
+    <img id="passRecvHumanHit" class="hit" data-scoreID="passRecvHuman" src="img/plus.jpg"/>
+    <input type="text" value="0" id="passRecvHuman" name="passRecvHuman" class="counter_label"/>passes received from humans
     <br/>
 
-    <img id="robotCycleAssistsHit" class="hit" data-scoreID="robotCycleAssists" src="img/plus.jpg"/>
-    <input type="text" value="0" id="robotCycleAssists" name="robotCycleAssists" class="counter_label"/>robot cycle assists
+    <img id="passRecvRobotHit" class="hit" data-scoreID="passRecvRobot" src="img/plus.jpg"/>
+    <input type="text" value="0" id="passRecvRobot" name="passRecvRobot" class="counter_label"/>passes received from robots
     <br/>
 
     <img id="shotsBlockedHit" class="hit" data-scoreID="shotsBlocked" src="img/plus.jpg"/>
@@ -189,6 +205,11 @@
 
     <img id="passesBlockedHit" class="hit" data-scoreID="passesBlocked" src="img/plus.jpg"/>
     <input type="text" value="0" id="passesBlocked" name="passesBlocked" class="counter_label"/>passes blocked
+    <br/>
+
+    <img id="fumblesHit" class="hit" data-scoreID="fumbles" src="img/plus.jpg"/>
+    <input type="text" value="0" id="fumbles" name="fumbles" class="counter_label"/>
+    fumbles
     <br/>
         </div>
     </div>
@@ -212,10 +233,24 @@
     <input type="checkbox" name="collectedBall" id="collectedBall" value="collectedBall"/>collects ball
     <br/>
 
-    <input type="checkbox" name="playedDefense" id="playedDefense" value="playedDefense"/>plays defense
+    <input type="checkbox" name="pushed" id="pushed" value="pushed"/>pushed
     <br/>
 
-    robot speed (0-can't move, 1-slow, 2-fast, 3-both)
+    <input type="checkbox" name="canHandOff" id="canHandOff" value="canHandOff"/> can hand off ball
+    <br/>
+
+    <h6>defense types:</h6>
+    <br/>
+    <input type="checkbox" name="defense_inGoalie" id="defense_inGoalie" value="defense_inGoalie" /> goalie zone
+    <br/>
+    <input type="checkbox" name="defense_stopRobot" id="defense_stopRobot" value="defense_stopRobot" /> stopping robots
+    <br/>
+    <input type="checkbox" name="defense_stopGettingBall" id="defense_stopGettingBall" value="defense_stopGettingBall" /> prevents ball entering field
+    <br/>
+    <br/>
+
+
+    top speed (0-can't move, 1-slow, 2-fast, 3-both)
     <br/>
     <input type="radio" name="robotSpeed" value="0" checked>0
     <input type="radio" name="robotSpeed" value="1">1
@@ -223,14 +258,7 @@
     <input type="radio" name="robotSpeed" value="3">3
     <br/>
 
-    robot maneuverability (1-low, 5-high)
-    <br/>
-    <input type="radio" name="robotAgl" value="0" checked>0
-    <input type="radio" name="robotAgl" value="1">1
-    <input type="radio" name="robotAgl" value="2">2
-    <input type="radio" name="robotAgl" value="3">3
-    <input type="radio" name="robotAgl" value="4">4
-    <input type="radio" name="robotAgl" value="5">5
+    <input type="checkbox" name="maneuvered" value="manuevered">maneuvered
     <br/>
 
 
@@ -264,12 +292,12 @@
     <br/>   
 
     did the robot break?
+    <input type="checkbox" name="robotBreakage" value="broke">
     <br/>
-    <input type="radio" name="robotBreakage" value="physicalBreak">physical breaking
-    <input type="radio" name="robotBreakage" value="communicationFail">communication failure
-    <input type="radio" name="robotBreakage" value="fallOver">fall over
-    <input type="radio" name="robotBreakage" value="nothing" checked>no breakage
+    if so, please describe 
+    <input type="text" name="breakDescription" placeholder="describe here..."/>
     <br/>
+
 
     match comments
     <input type="text" name="matchComments" placeholder="type your comments here...">
