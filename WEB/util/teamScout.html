@@ -203,7 +203,10 @@
     <input type="radio" name="preferredPass" value="none" checked/>no passing
     <br/>
 
-    <input type="checkbox" name="caughtBall" id="caughtBall" value="caughtBall"/>catches ball
+    <input type="checkbox" name="caughtBallHuman" id="caughtBallHuman" value="caughtBallHuman"/>catches ball from human 
+    <br/>
+
+    <input type="checkbox" name="caughtBallRobots" id="caughtBallRobots" value="caughtBallRobots"/>catches ball from robots
     <br/>
 
     <input type="checkbox" name="collectedBall" id="collectedBall" value="collectedBall"/>collects ball
@@ -249,13 +252,15 @@
     <input type="radio" name="robotThrowing" value="3">3
     <br/>
 
-    best role in game
+    roles played:
     <br/>
-    <input type="radio" name="rolePlayed" value="defense">defense
-    <input type="radio" name="rolePlayed" value="shooter">shooter
-    <input type="radio" name="rolePlayed" value="assister">assister
-    <input type="radio" name="rolePlayed" value="catcher">catcher
-    <input type="radio" name="rolePlayed" value="nothing" checked>no role
+    <input type="checkbox" name="role_defense" value="defense">defense
+    <input type="checkbox" name="role_shooter" value="shooter">shooter
+    <input type="checkbox" name="role_assister" value="assister">assister
+    <br/>
+    <input type="checkbox" name="role_catcher" value="catcher">catcher
+    <input type="checkbox" name="role_soloCycler" value="soloCycler">solo-cycler
+    <input type="checkbox" name="role_soloTrussCatcher" value="soloTrussCatcher">solo-truss/catcher
     <br/>   
 
     did the robot break?
