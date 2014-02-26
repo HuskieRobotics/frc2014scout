@@ -89,7 +89,7 @@ $(document).ready(function(){
     });
 
     $("#allianceBallEndTime_checkbox").click(function() {
-        $("#allianceBallEndTime").val($("#timerBox").val());
+        $("#allianceBallEndTime").val($("#timerBox").html());
     });
 
     function getHash(matchNum, allianceColor)
