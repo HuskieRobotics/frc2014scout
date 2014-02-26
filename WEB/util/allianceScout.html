@@ -5,8 +5,8 @@
 <style>
 #timerBox 
 {
-	width:30px;
-	border-color: black;
+	width:60px;
+	text-align: center;
 }
 </style>
 
@@ -24,14 +24,26 @@
 
 <form action="" id="allianceScoutingForm">
 
-	<div id="matchTimer">
-		<div id="timerBox">asdf</div>
-		<button type="button" id="startTimer" class="btn btn-small btn-success">start</button>
-		<button type="button" id="stopTimer" class="btn btn-small btn-danger">stop</button>
+	
+	<div class="row">
+	<div class="span6 offset1">
+	Match #: <input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM_form" readonly/>
+    <br/>
+    Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="NAME_OF_SCOUT_form" readonly/>
+    <br/>
+    Alliance Color: <input type="text" name="ALLIANCE_COLOR"  id="ALLIANCE_COLOR_form" readonly/>
+    <br/>
+    Your unique hash:
+	<input type="text" name="HASH" id="hash_field"  readonly/>
+	<br/>
 	</div>
 
-	Your unique hash:
-	<input type="text" name="HASH" id="hash_field" />
+	<div id="matchTimer" class="span3 offset2">
+		<h5>match timer:</h5><div id="timerBox">0</div>
+		<button type="button" id="startTimer" class="btn btn-medium btn-success">start</button>
+		<button type="button" id="stopTimer" class="btn btn-medium btn-danger">stop</button>
+	</div>
+	</div>
 
 	<div class="row">
 		<div class="span6">
@@ -45,8 +57,8 @@
 	</select>
 	<br/>
 	all autonomous balls scored
-	<input type="checkbox" name="allianceBallEndTimeCHECKBOX" id= "allianceBallEndTime"/>
-	<input type=""
+	<input type="checkbox" name="allianceBallEndTime_checkbox" id= "allianceBallEndTime_checkbox"/>
+	<input type="text" name="allianceBallEndTime" id="allianceBallEndTIme" readonly/>
 	<br/>
 	Explain why auto ended late
 	<input type="text" name="lateAutoReason" id="lateAutoReason"/>
@@ -73,11 +85,6 @@
 	foul description
 	<input type="text" name= "foulDescription" id="foulDescription"/>
 	<br/>
-	robot breakage
-	<input type="radio" name= "allianceBreakage" id="allianceBreakage" checked/> no breakage
-	<input type="radio" name= "allianceBreakage" id="allianceBreakage" /> fall over
-	<input type="radio" name= "allianceBreakage" id="allianceBreakage" /> communcation failure
-	<input type="radio" name= "allianceBreakage" id="allianceBreakage" /> physical breaking
 	<p/>
 	</div>
 	<br/>
@@ -98,18 +105,16 @@ function myTimer()
 
 $("#startTimer").click(function()
 {
-	alert("START BABY");
 	seconds = 0;
 	intervalVar = setInterval(function(){myTimer()},1000);
 });
 
 $("#stopTimer").click(function()
 {
-	alert("STOP BABY");
 	clearInterval(intervalVar);
 	seconds = 0;
 	document.getElementById("timerBox").innerHTML=seconds;
-};
+});
 
 });
 </script>

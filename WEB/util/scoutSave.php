@@ -12,7 +12,6 @@ if (!$conn) {
 }
 
 $database = "yes";
-$table = "sTest";
 
 mysql_select_db($databaseID);
 

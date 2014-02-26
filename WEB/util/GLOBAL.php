@@ -162,16 +162,12 @@ $allianceFieldNames = array("MATCH_NUM",
 "allianceBallEndTime",
 "lateAutoReason",
 "allianceFoulPoints",
-"foulDescription",
-"allianceBreakage");
+"foulDescription",);
 
-$allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "INT", "TEXT", "TEXT", "INT", "TEXT", "TEXT");  
+$allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "INT", "TEXT", "TEXT", "INT", "TEXT");  
 
 $assignmentFieldNames = array("matchNum","team1","team2",
-    "team3","team4","team5","team6","matchConCount");
+    "team3","team4","team5","team6","matchConCount","allianceConCount");
 
 $assignmentFieldNameTypes = array("INT","INT","INT","INT","INT","INT",
-    "INT","INT","INT");
-
-
-
+    "INT","INT","INT", "INT");

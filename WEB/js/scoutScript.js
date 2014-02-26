@@ -29,10 +29,6 @@ $(document).ready(function(){
     });
 
     $("#alliance_saveButton").click(function(){
-        var matchNum = $("#MATCH_NUM_form").val();
-        var allianceColor = $("#allianceColor_form").val();
-        var hash = getHash(matchNum, allianceColor);
-        $("#hash_field").val(hash);
         $.post("util/scoutSave.php", $("#allianceScoutingForm").serialize(), function(data){
             alert(data);
         });
@@ -67,9 +63,19 @@ $(document).ready(function(){
         if (($("#MATCH_NUM").val() != '') && ($("#NAME_OF_SCOUT").val() != ''))
         {
             $.post("util/getAssignment_alliance.php", $("#assignmentForm").serialize(), function(data){
-                $("#scoutAssignmentText").html(data);
+                var newHTML = "Hi " + $("#NAME_OF_SCOUT").val() + ", ";
+                newHTML = newHTML += "you are scouting <b>"+data+" alliance</b>";
+                newHTML = newHTML += " in match " + $("#MATCH_NUM").val() + ".";
+                $("#scoutAssignmentText").html(newHTML);
+                $("#ALLIANCE_COLOR_form").val(data);
+                var matchNum = $("#MATCH_NUM_form").val();
+                var hash = getHash(matchNum, data);
+                $("#hash_field").val(hash);
             });
             $("#allianceScoutingForm").show();
+            $("#MATCH_NUM_form").val($("#MATCH_NUM").val());
+            $("#NAME_OF_SCOUT_form").val($("#NAME_OF_SCOUT").val());
+            
         }
         else
         {
@@ -80,6 +86,10 @@ $(document).ready(function(){
 
     $("#allianceBallEndLink").click(function() {
         $("#teleop").show();
+    });
+
+    $("#allianceBallEndTime_checkbox").click(function() {
+        $("#allianceBallEndTime").val($("#timerBox").val());
     });
 
     function getHash(matchNum, allianceColor)
@@ -94,7 +104,6 @@ $(document).ready(function(){
         {
             allianceNum = 1;
         }
-
         return (matchNum*10)+allianceNum;
     }
 });
