@@ -29,6 +29,10 @@ $(document).ready(function(){
     });
 
     $("#alliance_saveButton").click(function(){
+        var matchNum = $("#MATCH_NUM_form").val();
+        var allianceColor = $("#allianceColor_form").val();
+        var hash = getHash(matchNum, allianceColor);
+        $("#hash_field").val(hash);
         $.post("util/scoutSave.php", $("#allianceScoutingForm").serialize(), function(data){
             alert(data);
         });
@@ -77,6 +81,22 @@ $(document).ready(function(){
     $("#allianceBallEndLink").click(function() {
         $("#teleop").show();
     });
+
+    function getHash(matchNum, allianceColor)
+    {
+        //get numerical value for allianceColor
+        var allianceNum;
+        if (allianceColor == "red")
+        {
+            allianceNum = 0;
+        }
+        else
+        {
+            allianceNum = 1;
+        }
+
+        return (matchNum*10)+allianceNum;
+    }
 });
 
 function processResult(data, textStatus)

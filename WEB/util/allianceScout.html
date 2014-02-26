@@ -1,7 +1,14 @@
-<body>
 <h1>Alliance Scouting</h1>
 
 <script type="text/javascript" src="js/scoutScript.js"></script>
+
+<style>
+#timerBox 
+{
+	width:30px;
+	border-color: black;
+}
+</style>
 
 <div id="scoutAssignmentText">
     <form action="" id="assignmentForm">
@@ -16,6 +23,16 @@
 </div>
 
 <form action="" id="allianceScoutingForm">
+
+	<div id="matchTimer">
+		<div id="timerBox">asdf</div>
+		<button type="button" id="startTimer" class="btn btn-small btn-success">start</button>
+		<button type="button" id="stopTimer" class="btn btn-small btn-danger">stop</button>
+	</div>
+
+	Your unique hash:
+	<input type="text" name="HASH" id="hash_field" />
+
 	<div class="row">
 		<div class="span6">
 	<h3>autonomous</h3>
@@ -28,7 +45,8 @@
 	</select>
 	<br/>
 	all autonomous balls scored
-	<input type="checkbox" name="allianceBallEndTime" id= "allianceBallEndTime"/>
+	<input type="checkbox" name="allianceBallEndTimeCHECKBOX" id= "allianceBallEndTime"/>
+	<input type=""
 	<br/>
 	Explain why auto ended late
 	<input type="text" name="lateAutoReason" id="lateAutoReason"/>
@@ -65,4 +83,33 @@
 	<br/>
 	<button type="button" class="btn btn-large btn-success btn-block" id="alliance_saveButton">save</button>
 </form>
+<script type="text/javascript">
+$(document).ready(function(){
 
+var seconds = 0;
+
+var intervalVar;
+
+function myTimer()
+{
+	seconds++;
+	document.getElementById("timerBox").innerHTML=seconds;
+}
+
+$("#startTimer").click(function()
+{
+	alert("START BABY");
+	seconds = 0;
+	intervalVar = setInterval(function(){myTimer()},1000);
+});
+
+$("#stopTimer").click(function()
+{
+	alert("STOP BABY");
+	clearInterval(intervalVar);
+	seconds = 0;
+	document.getElementById("timerBox").innerHTML=seconds;
+};
+
+});
+</script>
