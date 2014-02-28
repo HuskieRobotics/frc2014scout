@@ -21,7 +21,7 @@ $(document).ready(function(){
 	});
         
     $("#team_saveButton").click(function(){
-        $.post("util/scoutSave.php", $("#teamScoutingForm").serialize(), function(data){
+        $.post("util/teamSave.php", $("#teamScoutingForm").serialize(), function(data){
             alert(data);
         });
         $("#scoutingArea").load("util/teamScout.html");
@@ -29,11 +29,18 @@ $(document).ready(function(){
     });
 
     $("#alliance_saveButton").click(function(){
-        $.post("util/scoutSave.php", $("#allianceScoutingForm").serialize(), function(data){
+        $.post("util/allianceSave.php", $("#allianceScoutingForm").serialize(), function(data){
             alert(data);
         });
         $("#scoutingArea").load("util/allianceScout.html");
 
+    });
+
+    $("#pit_saveButton").click(function(){
+        $.post("util/pitSave.php", $("#pitScoutingForm").serialize(), function(data){
+            alert(data);
+        });
+        $("#scoutingArea").load("util/pitScout.html");
     });
 
     $("#getAssignmentButton_team").click(function(){

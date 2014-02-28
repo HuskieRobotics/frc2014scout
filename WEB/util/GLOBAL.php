@@ -9,9 +9,10 @@ $databasePassword = "Admin";
 $databaseIP = "127.0.0.1";
 $table = "sTest";
 
-$teamTable = "team_db";
-$allianceTable = "alliance_db";
+$teamTable = "team_table";
+$allianceTable = "alliance_table";
 $assignmentTable = "assign_table";
+$pitTable = "pit_table";
 
 $login_db = "yes";
 $login_table = "members";
@@ -171,3 +172,10 @@ $assignmentFieldNames = array("matchNum","team1","team2",
 
 $assignmentFieldNameTypes = array("INT","INT","INT","INT","INT","INT",
     "INT","INT","INT", "INT");
+
+$pitFieldNames = array("driveTrain",
+    "numberMotors","descriptionMotors","shifters","topspeed","shooterGoal","shootingRange","shotHeight","blockers","blockerDescription",
+    "collectorType","collectorType_other","collectorLocation","weightRobot");
+
+$pitFieldNameTypes = array("TEXT","TEXT","TEXT","TEXT","TEXT","TEXT",
+    "TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT");

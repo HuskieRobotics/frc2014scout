@@ -1,11 +1,16 @@
-<form id="pitScouting">
+<body>
+<h1>Pit Scouting</h1>
+
+<script type="text/javascript" src="js/scoutScript.js"></script>
+
+<form id="pitScoutingForm">
 	Drivetrain Type: <input type="text" name="driveTrain" />
 	<br/>
 
 	Number of motors: <input type="text" name="numberMotors" />
 	<br/>
 
-	Description of motors: <input type="text" name="discriptionMotors" />
+	Description of motors: <input type="text" name="descriptionMotors" />
 	<br/>
 
 	Does it have shifters?: <input type="checkbox" name="shifters" />
@@ -41,11 +46,13 @@
 
 	Where do they collect balls from?: 
 	<input type="radio" name="collectorLocation" value="ground" />ground
-	<input type="radio" name="collectorType" value="air_robot" />air from robot
-	<input type="radio" name="collectorType" value="air_human" />air from human
-	<input type="radio" name="collectorType" value="both" />all 3
+	<input type="radio" name="collectorLocation" value="air_robot" />air from robot
+	<input type="radio" name="collectorLocation" value="air_human" />air from human
+	<input type="radio" name="collectorLocation" value="both" />all 3
 	<br/>
 
 	how heavy is the robot?: <input type="text" name="weightRobot" />
 	<br/>
+	<button type="button" class="btn btn-large btn-success btn-block" id="pit_saveButton">save</button>
 </form>
+</body>

@@ -2,5 +2,5 @@
 
 include 'GLOBAL.php';
 
-echo count($allianceFieldNames);
-echo count($allianceFieldNameTypes);
+echo count($pitFieldNames);
+echo count($pitFieldNameTypes);
