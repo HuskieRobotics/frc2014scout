@@ -1,7 +1,7 @@
 <?php
 include 'GLOBAL.php';
 echo "SETTING UP SQL...";
-echo '\n';
+echo "<br/>";
 echo "Team Fields :";
 
 echo "adding columns...";
@@ -39,7 +39,7 @@ echo "Table addition successful.";
 mysql_close($conn);
 
 
-echo "Assignment Fields :";
+echo "<br/>Assignment Fields :";
 
 echo "adding columns...";
 if ($usePassword) {
@@ -75,7 +75,7 @@ if (!$return)
 echo "Table addition successful.";
 mysql_close($conn);
 
-echo "Alliance Fields :";
+echo "<br/>Alliance Fields :";
 
 echo "adding columns...";
 if ($usePassword) {
@@ -112,7 +112,7 @@ echo "Table addition successful.";
 mysql_close($conn);
 
 
-echo "Pit Fields :";
+echo "<br/>Pit Fields :";
 
 echo "adding columns...";
 if ($usePassword) {
@@ -137,6 +137,42 @@ for ($i = 0; $i < $stop; $i++)
     else
     {
         $sql .= $pitFieldNames[$i] . " " . $pitFieldNameTypes[$i] . " NOT NULL);";
+    }
+}
+
+$return = mysql_query($sql, $conn);
+if (!$return)
+{
+    die("Could not add table: " . mysql_error());
+}
+echo "Table addition successful.";
+mysql_close($conn);
+
+echo "<br/>Cycle Fields :";
+
+echo "adding columns...";
+if ($usePassword) {
+    $conn = mysql_connect($databaseIP, $databaseUser, $databasePassword);
+} else {
+    $conn = mysql_connect($databaseIP, $databaseUser);
+}
+if (!$conn) {
+    die("Could not connect: " . mysql_error());
+}
+echo "Connection successful.<br/>";
+mysql_select_db($databaseID);
+$stop = count($cycleFieldNames);
+
+$sql = "CREATE TABLE $cycleTable( ";
+for ($i = 0; $i < $stop; $i++)
+{
+    if ($i < ($stop-1))
+    {
+        $sql .= $cycleFieldNames[$i] . " " . $cycleFieldNameTypes[$i] . " NOT NULL, ";
+    }
+    else
+    {
+        $sql .= $cycleFieldNames[$i] . " " . $cycleFieldNameTypes[$i] . " NOT NULL);";
     }
 }
 

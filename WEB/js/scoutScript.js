@@ -113,6 +113,31 @@ $(document).ready(function(){
         }
         return (matchNum*10)+allianceNum;
     }
+
+    
+    var oldCycles = document.getElementById('old_cycles');
+    var firstFlag = true;
+    var assocArray = {};
+
+    $("#newCycle").click(function(){
+        assocArray['hash'] = $("#hash_field").val();
+        if (!(firstFlag))
+        {   
+            assocArray['numAssists'] = $('input[name=cycleAssistsNum]:checked').val();
+            assocArray['endTime'] = $("#timerBox").html();
+            $.post("util/cycleSave.php", assocArray, function(data){});
+            var update = "<br/><br/>Start time: " + assocArray['startTime'];
+            update += "<br/>End time: " + assocArray['endTime'];
+            update += "<br/>Assists: " + assocArray['numAssists'];
+            oldCycles.innerHTML = oldCycles.innerHTML + update;
+        }
+        else
+        {
+            firstFlag = false;
+        }
+        assocArray['startTime'] = $("#timerBox").html();
+    });
+
 });
 
 function processResult(data, textStatus)

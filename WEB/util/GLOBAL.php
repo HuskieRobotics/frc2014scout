@@ -13,6 +13,7 @@ $teamTable = "team_table";
 $allianceTable = "alliance_table";
 $assignmentTable = "assign_table";
 $pitTable = "pit_table";
+$cycleTable = "cycle_table";
 
 $login_db = "yes";
 $login_table = "members";
@@ -179,3 +180,7 @@ $pitFieldNames = array("driveTrain",
 
 $pitFieldNameTypes = array("TEXT","TEXT","TEXT","TEXT","TEXT","TEXT",
     "TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT");
+
+$cycleFieldNames = array("hash", "startTime", "endTime","numAssists");
+
+$cycleFieldNameTypes = array("TEXT","TEXT","TEXT","TEXT");
