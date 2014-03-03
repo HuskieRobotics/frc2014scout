@@ -4,7 +4,18 @@
 <script type="text/javascript" src="js/scoutScript.js"></script>
 
 <form id="pitScoutingForm">
-	Drivetrain Type: <input type="text" name="driveTrain" />
+	Drivetrain Type: <select name="driveTrain">
+		<option value="tank4wheel">tank 4 wheel</option>
+		<option value="tank6wheel">tank 6 wheel</option>
+		<option value="tank8wheel">tank 8 wheel</option>
+		<option value="tank8+wheel">tank 8+ wheel</option>
+		<option value="tankTreads">tank treads</option>
+		<option value="mechanum">mechanum</option>
+		<option value="octocanum">octocanum</option>
+		<option value="buttefly">butterfly</option>
+		<option value="swerve">swerve</option>
+		<option value="other">other (describe)</option>
+	</select>
 	<br/>
 
 	Number of motors: <input type="text" name="numberMotors" />
