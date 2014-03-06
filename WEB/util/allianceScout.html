@@ -78,18 +78,39 @@
 	</div>
 	</div>
 	<br/>
+
 	<div class="span6">
 	<h3>overall game</h3>
-	<p>
+	<h5>match score:</h5>
 	<br/>
-	fouls committed by alliance (pt value)
-	<input type="text" name= "allianceFoulPoints" id="allianceFoulPoints"/>
+ 	<i>write these down from the <b>screen</b></i>
+ 	<br/>
+	auto score:
 	<br/>
+	<input type="text" name="allianceAutoPoints" id="allianceAutoPoints"/>
+	<br/>
+
+	teleop score:
+	<br/>
+	<input type="text" name="allianceTeleopPoints" id="allianceTeleopPoints"/>
+	<br/>
+
+	foul points (gained by <b>your</b> alliance):
+	<br/>
+	<input type="text" name="allianceFoulPoints" id="allianceFoulPoints"/>
+	<br/>
+
+	total points (sum of auto, teleop, and foul):
+	<br/>
+	<input type="text" name="allianceTotalPoints" id="allianceTotalPoints"/> 
+	<br/>
+
 	foul description
+	<br/>
 	<input type="text" name= "foulDescription" id="foulDescription"/>
 	<br/>
-	<p/>
 	</div>
+
 	<br/>
 	<button type="button" class="btn btn-large btn-success btn-block" id="alliance_saveButton">save</button>
 </form>

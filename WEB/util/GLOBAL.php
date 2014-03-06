@@ -140,10 +140,13 @@ $allianceFieldNames = array("MATCH_NUM",
 "preBallsOnField",
 "allianceBallEndTime",
 "lateAutoReason",
+"allianceAutoPoints",
+"allianceTeleopPoints",
 "allianceFoulPoints",
-"foulDescription",);
+"allianceTotalPoints",
+"foulDescription");
 
-$allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "INT", "TEXT", "TEXT", "INT", "TEXT");  
+$allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "INT", "TEXT", "TEXT", "INT", "INT","INT","INT","TEXT");  
 
 $assignmentFieldNames = array("matchNum","team1","team2",
     "team3","team4","team5","team6","matchConCount","allianceConCount");
@@ -152,11 +155,14 @@ $assignmentFieldNameTypes = array("INT","INT","INT","INT","INT","INT",
     "INT","INT","INT", "INT");
 
 $pitFieldNames = array("SCOUT_NAME","TEAM_NUM","driveTrain", "describeDrivetrain",
-    "numberMotors","descriptionMotors","shifters","topspeed","shooterGoal","shootingRange","shotHeight","blockers","blockerDescription",
-    "collectorType","collectorType_other","collectorLocation","weightRobot");
+    "numberMotors","descriptionMotors","wheelType","shifters","topspeed","shooterGoal","shootingRange","shotHeight",
+    "robotHeight","blockers","blockerDescription",
+    "collectorType","collectorType_other","collectorLocation",
+    "weightRobot","comments");
 
-$pitFieldNameTypes = array("TEXT","TEXT","TEXT","TEXT","TEXT","TEXT",
-    "TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT");
+$pitFieldNameTypes = array("TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT",
+    "TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT",
+    "TEXT","TEXT","TEXT","TEXT","TEXT");
 
 $cycleFieldNames = array("hash", "startTime", "endTime","numAssists");
 
