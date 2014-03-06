@@ -76,8 +76,6 @@ $teamFieldNames = array("MATCH_NUM",
 "matchComments");
 
 $teamFieldNameTypes = array(
-"TEXT",
-"TEXT",
 "TEXT", 
 "TEXT",
 "TEXT", 
