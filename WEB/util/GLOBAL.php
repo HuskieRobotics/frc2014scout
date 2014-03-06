@@ -153,12 +153,12 @@ $assignmentFieldNames = array("matchNum","team1","team2",
 $assignmentFieldNameTypes = array("INT","INT","INT","INT","INT","INT",
     "INT","INT","INT", "INT");
 
-$pitFieldNames = array("driveTrain",
+$pitFieldNames = array("SCOUT_NAME","driveTrain", "describeDrivetrain",
     "numberMotors","descriptionMotors","shifters","topspeed","shooterGoal","shootingRange","shotHeight","blockers","blockerDescription",
     "collectorType","collectorType_other","collectorLocation","weightRobot");
 
 $pitFieldNameTypes = array("TEXT","TEXT","TEXT","TEXT","TEXT","TEXT",
-    "TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT");
+    "TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT","TEXT");
 
 $cycleFieldNames = array("hash", "startTime", "endTime","numAssists");
 
