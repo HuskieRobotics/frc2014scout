@@ -213,17 +213,26 @@
     <input type="text" value="0" id="fumbles" name="fumbles" class="counter_label"/>
     fumbles
     <br/>
+    fumbles description: <input type="text" id="fumbleDescription" name="fumbleDescription" />
+    <br/>
         </div>
     </div>
     <div class="span6">
         <div id="overallGame">
     <h3>overall game</h3>
-    preferred passing method
+    preferred passing method (start)
     <br/>
-    <input type="radio" name="preferredPass" value="air"/>air
-    <input type="radio" name="preferredPass" value="ground"/>ground
-    <input type="radio" name="preferredPass" value="both"/>both
-    <input type="radio" name="preferredPass" value="none" checked/>no passing
+    <input type="radio" name="preferredPassStart" value="air"/>air
+    <input type="radio" name="preferredPassStart" value="ground"/>ground
+    <input type="radio" name="preferredPassStart" value="both"/>both
+    <input type="radio" name="preferredPassStart" value="none" checked/>no passing
+    <br/>
+    (recieve)
+    <br/>
+    <input type="radio" name="preferredPassRecv" value="air" />air
+    <input type="radio" name="preferredPassRecv" value="ground" />ground
+    <input type="radio" name="preferredPassRecv" value="both" />both
+    <input type="radio" name="preferredPassRecv" value="none" checked/>no passing
     <br/>
 
     <input type="checkbox" name="caughtBallHuman" id="caughtBallHuman" value="caughtBallHuman"/>catches ball from human 
@@ -232,13 +241,10 @@
     <input type="checkbox" name="caughtBallRobots" id="caughtBallRobots" value="caughtBallRobots"/>catches ball from robots
     <br/>
 
-    <input type="checkbox" name="collectedBall" id="collectedBall" value="collectedBall"/>collects ball
+    <input type="checkbox" name="collectedBall" id="collectedBall" value="collectedBall"/>collects <b>dead</b> ball
     <br/>
 
     <input type="checkbox" name="pushed" id="pushed" value="pushed"/>pushed
-    <br/>
-
-    <input type="checkbox" name="canHandOff" id="canHandOff" value="canHandOff"/> can hand off ball
     <br/>
 
     <h6>defense types:</h6>
@@ -260,26 +266,7 @@
     <input type="radio" name="robotSpeed" value="3">3
     <br/>
 
-    <input type="checkbox" name="maneuvered" value="manuevered">maneuvered
-    <br/>
-
-
-    robot pushing ability (1-weak, 5-strong)
-    <br/>
-    <input type="radio" name="robotPushingPower" value="0" checked>0
-    <input type="radio" name="robotPushingPower" value="1">1
-    <input type="radio" name="robotPushingPower" value="2">2
-    <input type="radio" name="robotPushingPower" value="3">3
-    <input type="radio" name="robotPushingPower" value="4">4
-    <input type="radio" name="robotPushingPower" value="5">5
-    <br/>
-
-    robot throwing ability (1-close to goal, 3-far away)
-    <br/>
-    <input type="radio" name="robotThrowing" value="0" checked>0
-    <input type="radio" name="robotThrowing" value="1">1
-    <input type="radio" name="robotThrowing" value="2">2
-    <input type="radio" name="robotThrowing" value="3">3
+    <inpust type="checkbox" name="maneuvered" value="maneuvered">maneuvered
     <br/>
 
     roles played:
@@ -303,18 +290,6 @@
 
     match comments
     <input type="text" name="matchComments" placeholder="type your comments here...">
-    <br/>
-
-    foul points
-    <input type="text" name="foulPoints" placeholder="describe fouls...">
-    <br/>
-
-    foul confidence
-    <br/>
-    <input type="radio" name="robotFoulProb" value="0" checked>0
-    <input type="radio" name="robotFoulProb" value="1">1
-    <input type="radio" name="robotFoulProb" value="2">2
-    <input type="radio" name="robotFoulProb" value="3">3
     <br/>
         </div>
     </div>

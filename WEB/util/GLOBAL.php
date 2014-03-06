@@ -18,22 +18,6 @@ $cycleTable = "cycle_table";
 $login_db = "yes";
 $login_table = "members";
 
-static $CONNECT_COUNT = 0;
-
-$fieldNames = array("teamNum","matchNum",
-    "autoGoalType","autoHotGoal","autoZonePoints",
-    "autoHotDetect","initZone","highGoalScores",
-    "highGoalShots","lowGoalScores","lowGoalShots",
-    "trussScores","trussShots","catchScores","catchShots", "assists",
-    "canCatch","canCollect","robotSpeed","robotPushing",
-    "robotThrow","teamworkRating","allianceColor","matchResult", 
-    "robotRole", "robotBreak", "matchComments", "autoShots");
-
-$fieldNameTypes = array("INT", "INT", "TEXT", "TEXT", "TEXT", "TEXT", 
-    "TEXT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT", "INT",
-    "TEXT", "TEXT", "INT", "INT", "INT", "INT", "TEXT", "TEXT", "TEXT", 
-    "TEXT", "TEXT", "INT");
-
 $teamFieldNames = array("MATCH_NUM",
 "NAME_OF_SCOUT",
 "TEAM_NUM",
@@ -69,19 +53,18 @@ $teamFieldNames = array("MATCH_NUM",
 "shotsBlocked",
 "passesBlocked",
 "fumbles",
-"preferredPass",
+"fumbleDescription",
+"preferredPassStart",
+"preferredPassEnd",
 "caughtBallHuman",
 "caughtBallRobots",
 "collectedBall",
 "pushed",
-"canHandOff",
 "defense_inGoalie",
 "defense_stopRobot",
 "defense_stopGettingBall",
 "robotSpeed",
 "maneuvered",
-"robotPushingPower",
-"robotThrowing",
 "role_defense",
 "role_shooter",
 "role_assister",
@@ -90,13 +73,13 @@ $teamFieldNames = array("MATCH_NUM",
 "role_soloTrussCatcher",
 "robotBreakage",
 "breakDescription",
-"matchComments",
-"foulPoints",
-"robotFoulProb");
+"matchComments");
 
 $teamFieldNameTypes = array(
 "TEXT",
+"TEXT",
 "TEXT", 
+"TEXT",
 "TEXT", 
 "TEXT", 
 "TEXT", 
@@ -127,8 +110,6 @@ $teamFieldNameTypes = array(
 "TEXT", 
 "TEXT", 
 "TEXT", 
-"TEXT", 
-"TEXT", 
 "TEXT",
 "TEXT",
 "TEXT", 
@@ -139,8 +120,6 @@ $teamFieldNameTypes = array(
 "TEXT",
 "TEXT",
 "TEXT", 
-"TEXT",
-"TEXT",
 "TEXT",
 "TEXT",
 "TEXT",
