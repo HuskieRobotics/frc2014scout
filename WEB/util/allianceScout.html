@@ -42,7 +42,7 @@
 	<div id="matchTimer" class="span3 offset1">
 		<h5>match timer:</h5><p id="timerBox">0</p>
 		<button type="button" id="startTimer" class="btn btn-medium btn-success">start</button>
-		<button type="button" id="stopTimer" class="btn btn-medium btn-danger">stop</button>
+		ends after 135 seconds
 	</div>
 	</div>
 
@@ -102,8 +102,17 @@ var intervalVar;
 
 function myTimer()
 {
-	seconds++;
-	document.getElementById("timerBox").innerHTML=seconds;
+	if (seconds < 135)
+	{
+		seconds++;
+		document.getElementById("timerBox").innerHTML=seconds;
+	}
+	else
+	{
+		clearInterval(intervalVar);
+		seconds = 0;
+		document.getElementById("timerBox").innerHTML=seconds;
+	}
 }
 
 $("#startTimer").click(function()
