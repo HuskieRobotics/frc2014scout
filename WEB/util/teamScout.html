@@ -3,6 +3,19 @@
 
 <script type="text/javascript" src="js/scoutScript.js"></script>
 
+<style>
+#timerBox
+{
+    width:60px;
+    text-align: center;
+}
+
+#allianceBallEndTime
+{
+    width:50px;
+}
+</style>
+
 <div id="scoutAssignmentText">
     <form action="" id="assignmentForm">
         <p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM"/>
@@ -79,6 +92,14 @@
     </div>
     </div>
     <div class="row">
+        <div class="span4 offset4" id="matchTimer">
+            <h5>match timer:</h5><p id="timerBox">0</p>
+            <button type="button" id="startTimer" class="btn btn-medium btn-success">start</button>
+            <br/>
+            <i>ends after 135 seconds</i>
+        </div>
+    </div>
+    <div class="row">
     <div class="span6">
         <div id="autonomous">
     <h3>autonomous</h3>
@@ -134,7 +155,9 @@
     </p>
 
     <p>
-    <a href="#" id="allianceBallEndLink"><input type="checkbox" name="allianceBallEndTime" id="allianceBallEndCheck" /></a><b>all alliance balls scored</b>
+    <a href="#" id="allianceBallEndLink"><input type="checkbox" name="allianceBallEndTime_checkbox" id="allianceBallEndTime_checkbox" /></a><b>all autonomous balls scored</b>
+    <input type="text" name="allianceBallEndTime" id="allianceBallEndTime" readonly/>
+    <br/>
     </p>
         </div>
         <div id="teleop">
@@ -301,4 +324,41 @@
 
     <button type="button" class="btn btn-large btn-success btn-block" id="team_saveButton">save</button>
 </form>
+<script type="text/javascript">
+$(document).ready(function(){
+
+var seconds = 0;
+
+var intervalVar;
+
+function myTimer()
+{
+    if (seconds < 135)
+    {
+        seconds++;
+        document.getElementById("timerBox").innerHTML=seconds;
+    }
+    else
+    {
+        clearInterval(intervalVar);
+        seconds = 0;
+        document.getElementById("timerBox").innerHTML=seconds;
+    }
+}
+
+$("#startTimer").click(function()
+{
+    seconds = 0;
+    intervalVar = setInterval(function(){myTimer()},1000);
+});
+
+$("#stopTimer").click(function()
+{
+    clearInterval(intervalVar);
+    seconds = 0;
+    document.getElementById("timerBox").innerHTML=seconds;
+});
+
+});
+</script>
 </body>
