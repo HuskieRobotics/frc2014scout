@@ -24,7 +24,7 @@ $(document).ready(function(){
         $.post("util/teamSave.php", $("#teamScoutingForm").serialize(), function(data){
             alert(data);
         });
-        $("#scoutingArea").load("util/teamScout.html");
+        //$("#scoutingArea").load("util/teamScout.html");
 
     });
 
@@ -32,7 +32,7 @@ $(document).ready(function(){
         $.post("util/allianceSave.php", $("#allianceScoutingForm").serialize(), function(data){
             alert(data);
         });
-        $("#scoutingArea").load("util/allianceScout.html");
+        //$("#scoutingArea").load("util/allianceScout.html");
 
     });
 
@@ -40,7 +40,7 @@ $(document).ready(function(){
         $.post("util/pitSave.php", $("#pitScoutingForm").serialize(), function(data){
             alert(data);
         });
-        $("#scoutingArea").load("util/pitScout.html");
+        //$("#scoutingArea").load("util/pitScout.html");
     });
 
     $("#getAssignmentButton_team").click(function(){
