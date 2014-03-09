@@ -143,6 +143,7 @@ $teamFieldNameTypes = array(
 $allianceFieldNames = array("MATCH_NUM",
 "NAME_OF_SCOUT",
 "ALLIANCE_COLOR",
+"seedNum",
 "HASH",
 "preBallsOnField",
 "allianceBallEndTime",
@@ -151,9 +152,11 @@ $allianceFieldNames = array("MATCH_NUM",
 "allianceTeleopPoints",
 "allianceFoulPoints",
 "allianceTotalPoints",
-"foulDescription");
+"foulDescription",
+"comments");
 
-$allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "INT","INT", "TEXT", "TEXT", "INT", "INT","INT","INT","TEXT");  
+$allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "TEXT",
+    "INT","INT", "TEXT", "TEXT", "INT", "INT","INT","INT","TEXT","TEXT");  
 
 $assignmentFieldNames = array("matchNum","team1","team2",
     "team3","team4","team5","team6","matchConCount","allianceConCount");

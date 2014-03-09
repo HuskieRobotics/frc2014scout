@@ -34,6 +34,8 @@
     <br/>
     Alliance Color: <input type="text" name="ALLIANCE_COLOR"  id="ALLIANCE_COLOR_form" readonly/>
     <br/>
+    Seed number: <input type="text" name="seedNum" id="seedNum" />
+    <br/>
     Your unique hash:
 	<input type="text" name="HASH" id="hash_field"  readonly/>
 	<br/>
@@ -43,7 +45,7 @@
 		<h5>match timer:</h5><p id="timerBox">0</p>
 		<button type="button" id="startTimer" class="btn btn-medium btn-success">start</button>
 		<br/>
-		<i>ends after 135 seconds</i>
+		<i>ends after 155 seconds</i>
 	</div>
 	</div>
 
@@ -53,6 +55,7 @@
 	<br/>
 	Balls starting on field: 
 	<select name="preBallsOnField">
+		<option value="0">0</option>
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
@@ -96,7 +99,7 @@
 	<input type="text" name="allianceTeleopPoints" id="allianceTeleopPoints"/>
 	<br/>
 
-	foul points (gained by <b>your</b> alliance):
+	foul points (gained by <b><u>opposing</u></b> alliance):
 	<br/>
 	<input type="text" name="allianceFoulPoints" id="allianceFoulPoints"/>
 	<br/>
@@ -108,7 +111,12 @@
 
 	foul description
 	<br/>
-	<input type="text" name= "foulDescription" id="foulDescription"/>
+	<input type="text" name="foulDescription" id="foulDescription"/>
+	<br/>
+
+	comments:
+	<br/>
+	<input type="text" name="comments" id="comments" />
 	<br/>
 	</div>
 
@@ -124,7 +132,7 @@ var intervalVar;
 
 function myTimer()
 {
-	if (seconds < 135)
+	if (seconds < 155)
 	{
 		seconds++;
 		document.getElementById("timerBox").innerHTML=seconds;
