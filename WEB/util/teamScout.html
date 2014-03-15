@@ -91,6 +91,7 @@
         <img src="img/field_auto_zones.jpg"/>
     </div>
     </div>
+    <!--
     <div class="row">
         <div class="span4 offset4" id="matchTimer">
             <h5>match timer:</h5><p id="timerBox">0</p>
@@ -99,6 +100,7 @@
             <i>ends after 155 seconds</i>
         </div>
     </div>
+    -->
     <div class="row">
     <div class="span6">
         <div id="autonomous">
@@ -150,11 +152,6 @@
     </p>
 
     <p>
-    <input type="checkbox" name="autoColorZone" value="autoColorZone" />moved to colored zone
-    <br/>
-    </p>
-
-    <p>
     <a href="#" id="allianceBallEndLink"><input type="checkbox" name="allianceBallEndTime_checkbox" id="allianceBallEndTime_checkbox" /></a><b>all autonomous balls scored</b>
     <input type="text" name="allianceBallEndTime" id="allianceBallEndTime" readonly/>
     <br/>
@@ -164,13 +161,6 @@
     <h3>teleop</h3>
     <i>note: these are all <b>your</b> robot only</i>
     <br/>
-    <br/>
-    initial zone
-    <br/>
-    <input type="radio" name="teleopInitPosition" value="red">red
-    <input type="radio" name="teleopInitPosition" value="white">white
-    <input type="radio" name="teleopInitPosition" value="blue">blue
-    <input type="radio" name="teleopInitPosition" value="goalie">goalie
     <br/>
 
     <h6>high goals:</h6>
@@ -229,10 +219,6 @@
     <input type="text" value="0" id="shotsBlocked" name="shotsBlocked" class="counter_label"/>shots blocked
     <br/>
 
-    <img id="passesBlockedHit" class="hit" data-scoreID="passesBlocked" src="img/plus.jpg"/>
-    <input type="text" value="0" id="passesBlocked" name="passesBlocked" class="counter_label"/>passes blocked
-    <br/>
-
     <img id="fumblesHit" class="hit" data-scoreID="fumbles" src="img/plus.jpg"/>
     <input type="text" value="0" id="fumbles" name="fumbles" class="counter_label"/>
     fumbles
@@ -244,29 +230,6 @@
     <div class="span6">
         <div id="overallGame">
     <h3>overall game</h3>
-    preferred passing method (start)
-    <br/>
-    <input type="radio" name="preferredPassStart" value="air"/>air
-    <input type="radio" name="preferredPassStart" value="ground"/>ground
-    <input type="radio" name="preferredPassStart" value="both"/>both
-    <input type="radio" name="preferredPassStart" value="none" checked/>no passing
-    <br/>
-    (recieve)
-    <br/>
-    <input type="radio" name="preferredPassRecv" value="air" />air
-    <input type="radio" name="preferredPassRecv" value="ground" />ground
-    <input type="radio" name="preferredPassRecv" value="both" />both
-    <input type="radio" name="preferredPassRecv" value="none" checked/>no passing
-    <br/>
-
-    <input type="checkbox" name="caughtBallHuman" id="caughtBallHuman" value="caughtBallHuman"/>catches ball from human 
-    <br/>
-
-    <input type="checkbox" name="caughtBallRobots" id="caughtBallRobots" value="caughtBallRobots"/>catches ball from robots
-    <br/>
-
-    <input type="checkbox" name="collectedBall" id="collectedBall" value="collectedBall"/>collects <b>dead</b> ball
-    <br/>
 
     <input type="checkbox" name="pushed" id="pushed" value="pushed"/>pushed
     <br/>
@@ -274,10 +237,6 @@
     <h5>strategy</h5>
     <input type="checkbox" name="throwsToHumanOverTruss" value="throwsToHumanOverTruss" />throws ball to human over truss
     <br/>
-
-    <input type="checkbox" name="lineUpToLow" value="lineUpToLow" />lines up to low goal and shoots into high goal
-    <br/>
-
 
     <h5>defense types:</h5>
     <br/>
@@ -332,6 +291,7 @@
 
     <button type="button" class="btn btn-large btn-success btn-block" id="team_saveButton">save</button>
 </form>
+<!--
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -369,4 +329,5 @@ $("#stopTimer").click(function()
 
 });
 </script>
+-->
 </body>
