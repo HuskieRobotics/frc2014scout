@@ -49,7 +49,6 @@ $teamFieldNames = array("MATCH_NUM",
 "passStarts",
 "passRecvHuman",
 "passRecvRobot",
-"passRecvGround",
 "shotsBlocked",
 "fumbles",
 "fumbleDescription",
@@ -75,7 +74,6 @@ $teamFieldNames = array("MATCH_NUM",
 "matchComments");
 
 $teamFieldNameTypes = array(
-"TEXT",
 "TEXT", 
 "TEXT", 
 "TEXT", 
