@@ -1,0 +1,355 @@
+<body>
+<h1>Team Scouting</h1>
+
+<script type="text/javascript" src="js/scoutScript.js"></script>
+
+<style>
+#timerBox
+{
+    width:60px;
+    text-align: center;
+}
+
+#allianceBallEndTime
+{
+    width:50px;
+}
+</style>
+
+<div id="scoutAssignmentText">
+    <form action="" id="assignmentForm">
+        <p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM"/>
+            Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="NAME_OF_SCOUT"/>
+        </p>
+        <a href="#" class="btn btn-large btn-success" id="getAssignmentButton_team">Get Assignment!</a>
+    </br>
+    <h3>Please request an assignment.</h3>
+    </br>
+    </form>
+</div>
+
+<form action="" id="teamScoutingForm"> 
+    <div class="row">
+    <div class="span6 offset1">
+        Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM_form" readonly/>
+        <br/>
+        Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="NAME_OF_SCOUT_form" readonly/>
+        <br/>
+        Team #: <input type="text" name="TEAM_NUM" id="TEAM_NUM_form" />
+        <br/>
+        Alliance Color: 
+        <input type="radio" name="ALLIANCE_COLOR" id="ALLIANCE_COLOR_form" value="red"/>red
+        <input type="radio" name="ALLIANCE_COLOR" id="ALLIANCE_COLOR_form" value="blue"/>blue
+        <br/>
+        Pregame position:
+        <select name="preGamePosition" form="teamScoutingForm">
+            <option value="1">1</option>
+            <option value="2">2</option> 
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+        <br/>
+        Pregame ball positions:
+        <br/>
+        1: 
+        <select name="preGameBallOnePosition" form="teamScoutingForm">
+            <option value="noBall">no ball one</option>
+            <option value="inCollector">in collector</option>
+            <option value="leftOfBot">to the left</option>
+            <option value="rightOfBot">to the right</option>
+            <option value="inFrontOfBot">in front</option>
+            <option value="behindBot">behind</option>
+        </select>
+        <br/>
+        2: 
+        <select name="preGameBallTwoPosition" form="teamScoutingForm">
+            <option value="noBall">no ball two</option>
+            <option value="inCollector">in collector</option>
+            <option value="leftOfBot">to the left</option>
+            <option value="rightOfBot">to the right</option>
+            <option value="inFrontOfBot">in front</option>
+            <option value="behindBot">behind</option>
+        </select>
+        <br/>
+        3: 
+        <select name="preGameBallThreePosition" form="teamScoutingForm">
+            <option value="noBall">no ball three</option>
+            <option value="inCollector">in collector</option>
+            <option value="leftOfBot">to the left</option>
+            <option value="rightOfBot">to the right</option>
+            <option value="inFrontOfBot">in front</option>
+            <option value="behindBot">behind</option>
+        </select>
+        <br/>
+
+    </div>
+    <div class="span5">
+        <img src="img/field_auto_zones.jpg"/>
+    </div>
+    </div>
+    <!--
+    <div class="row">
+        <div class="span4 offset4" id="matchTimer">
+            <h5>match timer:</h5><p id="timerBox">0</p>
+            <button type="button" id="startTimer" class="btn btn-medium btn-success">start</button>
+            <br/>
+            <i>ends after 155 seconds</i>
+        </div>
+    </div>
+    -->
+    <div class="row">
+    <div class="span6">
+        <div id="autonomous">
+    <h3>autonomous</h3>
+    note: these radio buttons are for balls scored in autonomous period <b>only.</b>
+    <p>
+    ball 1
+    <br>
+    <i>
+    <input type="radio" name="ballOneAuto" value="highMake" /> high make
+    <input type="radio" name="ballOneAuto" value="highMiss" /> high miss
+    <input type="radio" name="ballOneAuto" value="lowMake" /> low make
+    <input type="radio" name="ballOneAuto" value="lowMiss" /> low miss
+    <br/>
+    <input type="radio" name="ballOneAuto" value="noShot" /> no shot
+    <input type="radio" name="ballOneAuto" value="noBallOne" checked/> no ball 1
+    </i>
+    <input type="checkbox" name="autoHotGoalOne" value="autoHotGoalOne" /> made hot goal?
+    </p>
+
+    <p>
+    ball 2
+    <br>
+    <i>
+    <input type="radio" name="ballTwoAuto" value="highMake" /> high make
+    <input type="radio" name="ballTwoAuto" value="highMiss" /> high miss
+    <input type="radio" name="ballTwoAuto" value="lowMake" /> low make
+    <input type="radio" name="ballTwoAuto" value="lowMiss" /> low miss
+    <br/>
+    <input type="radio" name="ballTwoAuto" value="noShot" /> no shot
+    <input type="radio" name="ballTwoAuto" value="noBallTwo" checked/> no ball 2
+    </i>
+    <input type="checkbox" name="autoHotGoalTwo" value="autoHotGoalTwo" /> made hot goal?
+    </p>
+
+    <p>
+    ball 3
+    <br>
+    <i>
+    <input type="radio" name="ballThreeAuto" value="highMake" /> high make
+    <input type="radio" name="ballThreeAuto" value="highMiss" /> high miss
+    <input type="radio" name="ballThreeAuto" value="lowMake" /> low make
+    <input type="radio" name="ballThreeAuto" value="lowMiss" /> low miss
+    <br/>
+    <input type="radio" name="ballThreeAuto" value="noShot" /> no shot
+    <input type="radio" name="ballThreeAuto" value="noBallThree" checked/> no ball 3
+    </i>
+    <input type="checkbox" name="autoHotGoalThree" value="autoHotGoalThree" /> made hot goal?
+    </p>
+
+    <p>
+    <a href="#" id="allianceBallEndLink"><input type="checkbox" name="allianceBallEndTime_checkbox" id="allianceBallEndTime_checkbox" /></a><b>all autonomous balls scored</b>
+    <input type="text" name="allianceBallEndTime" id="allianceBallEndTime" readonly/>
+    <br/>
+    </p>
+        </div>
+        <div id="teleop">
+    <h3>teleop</h3>
+    <i>note: these are all <b>your</b> robot only</i>
+    <br/>
+    <br/>
+
+    <img id="fumblesHit" class="hit" data-scoreID="fumbles" src="img/plus.jpg"/>
+    <input type="text" value="0" id="fumbles" name="fumbles" class="counter_label"/>
+    fumbles
+    <br/>
+
+    <h6>goals:</h6>
+    <img id="highHit_white" class="hit" data-scoreID="highGoalScores_white" data-shotID="highGoalShots_white" src="img/hit.jpg"/>
+    <img id="highMiss" class="miss" data-scoreID="highGoalScores_white" data-shotID="highGoalShots_white" src="img/miss.jpg"/>
+    <input type="text" value="0" id="highGoalScores_white" name="highGoalScores_white" class="counter_label"/>
+    <input type="text" value="0" id="highGoalShots_white" name="highGoalShots_white" class="counter_label"/>from white
+    <br/>
+
+    <img id="highHit_colored" class="hit" data-scoreID="highGoalScores_colored" data-shotID="highGoalShots_colored" src="img/hit.jpg"/>
+    <img id="highMiss_colored" class="miss" data-scoreID="highGoalScores_colored" data-shotID="highGoalShots_colored" src="img/miss.jpg"/>
+    <input type="text" value="0" id="highGoalScores_colored" name="highGoalScores_colored" class="counter_label"/>
+    <input type="text" value="0" id="highGoalShots_colored" name="highGoalShots_colored" class="counter_label"/>from colored
+    <br/>
+
+    <img id="highHit_goalie" class="hit" data-scoreID="highGoalScores_goalie" data-shotID="highGoalShots_goalie" src="img/hit.jpg"/>
+    <img id="highMiss" class="miss" data-scoreID="highGoalScores_goalie" data-shotID="highGoalShots_goalie" src="img/miss.jpg"/>
+    <input type="text" value="0" id="highGoalScores_goalie" name="highGoalScores_goalie" class="counter_label"/>
+    <input type="text" value="0" id="highGoalShots_goalie" name="highGoalShots_goalie" class="counter_label"/>from goalie
+    <br/>
+
+    <img id="lowHit" class="hit" data-scoreID="lowGoalScores" data-shotID="lowGoalShots" src="img/hit.jpg"/>
+    <img id="lowMiss" class="miss" data-scoreID="lowGoalScores" data-shotID="lowGoalShots" src="img/miss.jpg"/>
+    <input type="text" value="0" id="lowGoalScores" name="lowGoalScores" class="counter_label"/>
+    <input type="text" value="0" id="lowGoalShots" name="lowGoalShots" class="counter_label"/>low goals/shots
+    <br/>
+
+    <br/>
+    <br/>
+
+    <img id="trussHit" class="hit" data-scoreID="trussThrowScores" data-shotID="trussThrowShots" src="img/hit.jpg"/>
+    <img id="trussMiss" class="miss" data-scoreID="trussThrowScores" data-shotID="trussThrowShots" src="img/miss.jpg"/>
+    <input type="text" value="0" id="trussThrowScores" name="trussThrowScores" class="counter_label"/>
+    <input type="text" value="0" id="trussThrowShots" name="trussThrowShots" class="counter_label"/>truss throws/scores
+    <br/>
+
+    <img id="catchHit" class="hit" data-scoreID="trussCatchScores" data-shotID="trussCatchShots" src="img/hit.jpg"/>
+    <img id="catchMiss" class="miss" data-scoreID="trussCatchScores" data-shotID="trussCatchShots" src="img/miss.jpg"/>
+    <input type="text" value="0" id="trussCatchScores" name="trussCatchScores" class="counter_label"/>
+    <input type="text" value="0" id="trussCatchShots" name="trussCatchShots" class="counter_label"/>catches/attempts
+    <br/>
+
+    <img id="passStartsHit" class="hit" data-scoreID="passStarts" src="img/plus.jpg"/>
+    <input type="text" value="0" id="passStarts" name="passStarts" class="counter_label"/>passes started
+    <br/>
+
+    <img id="passRecvHumanHit" class="hit" data-scoreID="passRecvHuman" src="img/plus.jpg"/>
+    <input type="text" value="0" id="passRecvHuman" name="passRecvHuman" class="counter_label"/>passes received from humans
+    <br/>
+
+    <img id="passRecvRobotHit" class="hit" data-scoreID="passRecvRobot" src="img/plus.jpg"/>
+    <input type="text" value="0" id="passRecvRobot" name="passRecvRobot" class="counter_label"/>passes received from robots
+    <br/>
+
+    <img id="passRecvGroundHit" class="hit" data-scoreID="passRecvGround" src="img/plus.jpg"/>
+    <input type="text" value="0" id="passRecvGround" name="passRecvGround" class="counter_label"/>passes from ground
+    <br/>
+
+    <img id="shotsBlockedHit" class="hit" data-scoreID="shotsBlocked" src="img/plus.jpg"/>
+    <input type="text" value="0" id="shotsBlocked" name="shotsBlocked" class="counter_label"/>shots blocked
+    <br/>
+
+    
+        </div>
+    </div>
+    <div class="span6">
+        <div id="overallGame">
+    <h3>overall game</h3>
+
+    <input type="checkbox" name="pushed" id="pushed" value="pushed"/>pushed
+    <br/>
+
+    <h5>strategy</h5>
+    <input type="checkbox" name="throwsToHumanOverTruss" value="throwsToHumanOverTruss" />throws ball to human over truss
+    <br/>
+
+    <h5>defense types:</h5>
+    <br/>
+    <input type="checkbox" name="defense_inGoalie" id="defense_inGoalie" value="defense_inGoalie" /> goalie zone
+    <br/>
+    <input type="checkbox" name="defense_shotBlock" id="defense_shotBlock" value="defense_shotBlock" /> shot blocker
+    <br/>
+    <input type="checkbox" name="defense_passBlock" id="defense_passBlock" value="defense_passBlock" /> pass blocker
+    <br/>
+    <input type="checkbox" name="defense_inboundBlock" id="defense_inboundBlock" value="defense_inboundBlock" /> inbound blocker
+    <br/>
+    <br/>
+
+
+    top speed (0-can't move, 1-slow, 2-fast, 3-both)
+    <br/>
+    <input type="radio" name="robotSpeed" value="0" checked>0
+    <input type="radio" name="robotSpeed" value="1">1
+    <input type="radio" name="robotSpeed" value="2">2
+    <input type="radio" name="robotSpeed" value="3">3
+    <br/>
+
+    <input type="checkbox" name="maneuvered" value="maneuvered">maneuvered
+    <br/>
+
+    roles played:
+    <br/>
+    <input type="checkbox" name="role_defense" value="defense"/>defense
+    <input type="checkbox" name="role_shooter" value="shooter"/>shooter
+    <input type="checkbox" name="role_assister" value="assister"/>assister
+    <br/>
+    <input type="checkbox" name="role_catcher" value="catcher"/>catcher
+    <input type="checkbox" name="role_soloCycler" value="soloCycler"/>solo-cycler
+    <input type="checkbox" name="role_soloTrussCatcher" value="soloTrussCatcher"/>solo-truss/catcher
+    <br/>   
+
+    did the robot break?
+    <input type="checkbox" name="robotBreakage" value="robotBreakage"/>
+    <br/>
+    if so, please describe 
+    <input type="text" name="breakDescription" placeholder="describe here..."/>
+    <br/>
+
+    <h5>general questions:</h5>
+
+    describe any/all fouls:
+    <br/>
+    <input type="text" name="foulComments" placeholder"describe fouls..."/>
+    <br/>
+
+    describe fumbles, be specific:
+    <br/>
+    <input type="text" name="fumbleComments" placeholder="describe fumbles..."/>
+    <br/>
+
+    describe how they collect, include any/all problems:
+    <br/>
+    <input type="text" name="collectComments" placeholder="describe collection..."/>
+    <br/>
+
+    general comments:
+    <input type="text" name="matchComments" placeholder="type your comments here..."/>
+    <br/>
+        </div>
+    </div>
+    </div>
+
+    <br/>
+    <br/>
+
+    <button type="button" class="btn btn-large btn-success btn-block" id="team_saveButton">save</button>
+</form>
+<!--
+<script type="text/javascript">
+$(document).ready(function(){
+
+var seconds = 0;
+
+var intervalVar;
+
+function myTimer()
+{
+    if (seconds < 155)
+    {
+        seconds++;
+        document.getElementById("timerBox").innerHTML=seconds;
+    }
+    else
+    {
+        clearInterval(intervalVar);
+        seconds = 0;
+        document.getElementById("timerBox").innerHTML=seconds;
+    }
+}
+
+$("#startTimer").click(function()
+{
+    seconds = 0;
+    intervalVar = setInterval(function(){myTimer()},1000);
+});
+
+$("#stopTimer").click(function()
+{
+    clearInterval(intervalVar);
+    seconds = 0;
+    document.getElementById("timerBox").innerHTML=seconds;
+});
+
+});
+</script>
+-->
+</body>

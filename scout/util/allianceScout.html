@@ -1,0 +1,163 @@
+<body>
+<h1>Alliance Scouting</h1>
+
+<script type="text/javascript" src="js/scoutScript.js"></script>
+
+<style>
+#timerBox 
+{
+	width:60px;
+	text-align: center;
+}
+</style>
+
+<div id="scoutAssignmentText">
+    <form action="" id="assignmentForm">
+        <p>Match #<input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM"/>
+            Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="NAME_OF_SCOUT"/>
+        </p>
+        <a href="#" class="btn btn-large btn-success" id="getAssignmentButton_alliance">Get Assignment!</a>
+    </br>
+    <h3>Please request an assignment.</h3>
+</br>
+</form>
+</div>
+
+<form action="" id="allianceScoutingForm">
+
+	
+	<div class="row">
+	<div class="span6 offset1">
+	Match #: <input type="text" name="MATCH_NUM" placeholder="... 1 ..." id="MATCH_NUM_form" readonly/>
+    <br/>
+    Your Name: <input type="text" name="NAME_OF_SCOUT" placeholder="... name ..." id="NAME_OF_SCOUT_form" readonly/>
+    <br/>
+    Alliance Color: <input type="text" name="ALLIANCE_COLOR"  id="ALLIANCE_COLOR_form" />
+    <br/>
+    Seed number: <input type="text" name="seedNum" id="seedNum" />
+    <br/>
+    Your unique hash:
+	<input type="text" name="HASH" id="hash_field"  readonly/>
+	<br/>
+	</div>
+
+	<div id="matchTimer" class="span3 offset1">
+		<h5>match timer:</h5><p id="timerBox">0</p>
+		<button type="button" id="startTimer" class="btn btn-medium btn-success">start</button>
+		<br/>
+		<i>ends after 155 seconds</i>
+	</div>
+	</div>
+
+	<div class="row">
+		<div class="span6">
+	<h3>autonomous</h3>
+	<br/>
+	Balls starting on field: 
+	<select name="preBallsOnField">
+		<option value="0">0</option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
+	<br/>
+	all autonomous balls scored
+	<input type="checkbox" name="allianceBallEndTime_checkbox" id= "allianceBallEndTime_checkbox"/>
+	<input type="text" name="allianceBallEndTime" id="allianceBallEndTime" readonly/>
+	<br/>
+	Explain why auto ended late
+	<input type="text" name="lateAutoReason" id="lateAutoReason"/>
+	<br/>
+	<h3>teleop</h3>
+	<br/>
+
+	<button type="button" name="newCycle" id="newCycle" class="btn btn-primary btn-medium">new cycle</button>
+
+	assists
+	<input type="radio" name="cycleAssistsNum" id="oneAssist" value="1"/> one assist
+	<input type="radio" name="cycleAssistsNum" id="twoAssist" value="2"/> two assists
+	<input type="radio" name="cycleAssistsNum" id="threeAssist" value="3"/> three assists
+
+	<div id="old_cycles">
+	</div>
+	</div>
+	<br/>
+
+	<div class="span6">
+	<h3>overall game</h3>
+	<h5>match score:</h5>
+	<br/>
+ 	<i>write these down from the <b>screen</b></i>
+ 	<br/>
+	auto score:
+	<br/>
+	<input type="text" name="allianceAutoPoints" id="allianceAutoPoints"/>
+	<br/>
+
+	teleop score:
+	<br/>
+	<input type="text" name="allianceTeleopPoints" id="allianceTeleopPoints"/>
+	<br/>
+
+	foul points (listed under <b><u>opposing</u></b> alliance):
+	<br/>
+	<input type="text" name="allianceFoulPoints" id="allianceFoulPoints"/>
+	<br/>
+
+	total points (sum of auto, teleop, and foul):
+	<br/>
+	<input type="text" name="allianceTotalPoints" id="allianceTotalPoints"/> 
+	<br/>
+
+	foul description
+	<br/>
+	<input type="text" name="foulDescription" id="foulDescription"/>
+	<br/>
+
+	comments:
+	<br/>
+	<input type="text" name="comments" id="comments" />
+	<br/>
+	</div>
+
+	<br/>
+	<button type="button" class="btn btn-large btn-success btn-block" id="alliance_saveButton">save</button>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+
+var seconds = 0;
+
+var intervalVar;
+
+function myTimer()
+{
+	if (seconds < 155)
+	{
+		seconds++;
+		document.getElementById("timerBox").innerHTML=seconds;
+	}
+	else
+	{
+		clearInterval(intervalVar);
+		seconds = 0;
+		document.getElementById("timerBox").innerHTML=seconds;
+	}
+}
+
+$("#startTimer").click(function()
+{
+	seconds = 0;
+	intervalVar = setInterval(function(){myTimer()},1000);
+});
+
+$("#stopTimer").click(function()
+{
+	clearInterval(intervalVar);
+	seconds = 0;
+	document.getElementById("timerBox").innerHTML=seconds;
+});
+
+});
+</script>
+</body>

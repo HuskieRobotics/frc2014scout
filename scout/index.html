@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3061 Scouting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+  <link rel='stylesheet' type='text/css' href='css/scoutStylesheet.css'/>
+
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+         <script src="js/jquery.js"></script>
+         <!-- Include all compiled plugins (below), or include individual files as needed -->
+         <script src="js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+        // Wait for the page to load first
+
+        window.onload = function() {
+          //Get a reference to the link on the page
+          // with an id of "mylink"
+          var startTeamScout = document.getElementById("startTeamScout");
+          var startAllianceScout = document.getElementById("startAllianceScout");
+          var startPitScout = document.getElementById("startPitScout");
+          var homeLink = document.getElementById("homeLink");
+          var assignScouts = document.getElementById("fillAssignments");
+
+          homeLink.onclick = function() {
+            $("#scoutingArea").empty();
+            $("#homeNavbar").show();
+            return false;
+          };
+
+          startTeamScout.onclick = function() {
+            $("#scoutingArea").load("util/teamScout.html");
+            $("#homeNavbar").hide();
+            return false;
+          };
+
+          startAllianceScout.onclick = function() {
+            $("#scoutingArea").load("util/allianceScout.html");
+            $("#homeNavbar").hide();
+            return false;
+          };
+
+          startPitScout.onclick = function(){
+            $("#scoutingArea").load("util/pitScout.html");
+          }
+
+          assignScouts.onclick = function() {
+            $("#scoutingArea").load("util/scoutAssigning.html");
+            $("#homeNavbar").hide();
+            return false;
+          };
+        };
+    </script>
+    <style>
+      #about {
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+        width: 300px;
+      }
+
+      .container {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    </style>
+
+</head>
+    <body>
+      <!-- The Main wrapper div starts -->
+      <div class="container">
+        <!-- header content -->
+        <h1><a href="index.html">team 3061 scouting</a></h1>
+        <!-- Navigation -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li><a href="#" id="homeLink">Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="scout-dropdown">
+                    <i class="icon-th-large"></i> Scout ...
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" id="startTeamScout">... a team</a></li>
+                    <li><a href="#" id="startAllianceScout">... an alliance</a></li>
+                    <li><a href="#" id="startPitScout">... the pits</a></li>
+                  </ul>
+                </li>
+                <li><a href="#" id="fillAssignments">Assign Scouts</a></li>
+                <li><a href="http://team3061.org/" target="_blank">3061 Home Page</a></li>
+                
+              </ul>
+            </div>
+
+          </div>
+        </div>
+          <!--
+        <div class="navbar" id="homeNavbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li><a href="#about" id="aboutLink">Home</a></li>
+                <li><a href="#madeBy" id="madeByLink">Assign Scouts</a></li>
+                <li><a href="http://team3061.org/" target="_blank">3061 Home Page</a></li>
+                
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      -->
+
+        <div id="scoutingArea">
+        </div>
+
+
+
+        <div class="row" id="about">
+          <h3>created by team 3061</h3>
+        </div>
+
+        <div class="row" id="madeBy">
+        </div>
+       
+      </div>
+   </body>
+</html>

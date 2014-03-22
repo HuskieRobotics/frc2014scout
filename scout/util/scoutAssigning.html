@@ -1,0 +1,100 @@
+<body>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript">
+
+var numberOfMatches = 0;
+
+$(document).ready(function() {
+
+	$("#startAssigning").click(function() {
+		numberOfMatches = $("#numberOfMatches").val();
+		var form = document.getElementById('assignScouts');
+
+		var	update ='';
+		for (var i=1; i<=numberOfMatches; i++)
+		{ 
+			update = update + "<form id='match"+i+"form' action='util/saveAssignments.php' method='post'>"
+			update =	update + "<div class='row'>";
+			update =	update + "<div class='span2'><input type='text' value='" + i + "' name='matchNum' class='matchLabels'/></div>";
+			update =	update + "<div class='span4'>";
+			for (var j=1; j<=3; j++)
+			{
+				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
+			}
+			update =	update + "</div><div class='span4'>";
+			for (var j=4; j<=6; j++)
+			{
+				update = update + "<input type='text' placeholder='team: "+j+"' name='team"+j+"' class='teamLabels' data-matchNum='"+i+"'/>";
+			}
+			update =	update + "</div>";
+			update = update + "<div class='span2'><button type='button' class='btn btn-medium btn-success saveAssignmentsBtn' id='saveAssignments' data-saveFormID='match"+i+"form'>save</button></div></div></form>";
+		}
+
+		form.innerHTML = form.innerHTML +	update;
+		//$("#assigmentStart").hide();
+		return false;
+	});	
+	
+	$("#saveForm").click(function(event){
+		event.preventDefault();
+		$("#previousMatch").val($("#saveMatch").val());
+		$.post("util/saveAssignments.php", $("#saveMatchesForm").serialize(), function(data){
+			alert(data);
+		});
+	});
+});
+</script>
+<style>
+.matchLabels {
+	width: 45px;
+	text-align: center;
+}
+.teamLabels{
+	text-align: center;
+	width: 75px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.conLabel {
+	width:10px;
+}
+</style>
+<h1>Assign Scouts</h1>
+Previous match saved: 
+<input type='text' id='previousMatch' readonly/>
+</br>
+
+<div class="row">
+<form id="saveMatchesForm">
+	<div class="span1">
+		Match #:
+		<br/>
+		<input type="text" name="matchNum" placeholder="match" id='saveMatch' class="matchLabels">
+	</div>
+	<div class="span5">
+		teams 1-3
+		<br/>
+	<input type="text" name="team1" placeholder="team1" class="teamLabels">
+	<input type="text" name="team2" placeholder="team2" class="teamLabels">
+	<input type="text" name="team3" placeholder="team3" class="teamLabels">
+	</div>
+	<div class="span5">
+		teams 4-6
+		<br/>
+	<input type="text" name="team4" placeholder="team4" class="teamLabels">
+	<input type="text" name="team5" placeholder="team5" class="teamLabels">
+	<input type="text" name="team6" placeholder="team6" class="teamLabels">	
+	</div>
+	<div class="span1">
+	<input type="text" name="matchConCount" value="0" class="conLabel" readonly>
+	<input type="text" name="allianceConCount" value="0" class="conLabel" readonly>
+	<button type="button" class='btn btn-medium btn-success saveAssignmentsBtn' id="saveForm">submit</button>
+	</div>
+</form>
+</div>
+
+<div id="assignScouts">
+</div>
+</body>
