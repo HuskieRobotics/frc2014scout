@@ -140,11 +140,22 @@ $allianceFieldNames = array("MATCH_NUM",
 $allianceFieldNameTypes = array("INT", "TEXT", "TEXT", "TEXT",
     "INT","INT", "TEXT", "TEXT", "INT", "INT","INT","INT","TEXT","TEXT");  
 
-$assignmentFieldNames = array("matchNum","team1","team2",
-    "team3","team4","team5","team6","matchConCount","allianceConCount");
+$assignmentFieldNames = array("matchNum","team1","team1_assign", 
+    "team2", "team2_assign",
+    "team3", "team3_assign",
+    "team4", "team4_assign",
+    "team5", "team5_assign",
+    "team6", "team6_assign",
+    "matchConCount","allianceConCount");
 
-$assignmentFieldNameTypes = array("INT","INT","INT","INT","INT","INT",
-    "INT","INT","INT", "INT");
+$assignmentFieldNameTypes = array("INT",
+    "INT","TEXT",
+    "INT","TEXT",
+    "INT","TEXT",
+    "INT","TEXT",
+    "INT","TEXT",
+    "INT","TEXT",
+    "INT","INT");
 
 $pitFieldNames = array("SCOUT_NAME","TEAM_NUM","driveTrain", "describeDrivetrain",
     "numberMotors","descriptionMotors","wheelType","shifters","topspeed","shooterGoal","shootingRange","shotHeight",
