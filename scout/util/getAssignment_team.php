@@ -78,6 +78,35 @@ while ($row = mysql_fetch_assoc($return)) {
     }
 }
 
+while ($row = mysql_fetch_assoc($return)) {
+    if ($MATCH_NUM == $row['matchNum'])
+    {
+        for ($i = 1; $i <=6; i++)
+        {
+            if ($row['team' + $i + '_assign'] == $NAME_OF_SCOUT)
+            {
+                $teamToScout = $row['team' + $i]; 
+            }
+        }
+
+        for ($i = 1; $i <= 6; $i++)
+        {
+            if ($row['team' + $i + '_assign'] == '')
+            {
+                $teamToScout = $row['team' + $i];
+                $sql3 = "UPDATE $table ";
+                $sql3 .= "SET team" + "$i" + "_assign=$NAME_OF_SCOUT ";
+                $sql3 .= "WHERE matchNum=$MATCH_NUM;";
+                $return3 = mysql_query($sql3, $conn);
+                if (!$return)
+                {
+                    die("Failed " . mysql_error());
+                }
+            }
+        }
+    }
+}
+
 $newConCount = $currConCount+1;
 $sql2 = "UPDATE $table ";
 $sql2 .= "SET matchConCount=$newConCount ";
