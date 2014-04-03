@@ -38,7 +38,7 @@ if (!$return)
 echo "Table addition successful.";
 mysql_close($conn);
 
-/*
+
 echo "<br/>Assignment Fields :";
 
 echo "adding columns...";
@@ -74,7 +74,7 @@ if (!$return)
 }
 echo "Table addition successful.";
 mysql_close($conn);
-*/
+
 
 echo "<br/>Alliance Fields :";
 
@@ -113,7 +113,7 @@ echo "Table addition successful.";
 mysql_close($conn);
 
 
-/*
+
 echo "<br/>Pit Fields :";
 
 echo "adding columns...";
@@ -186,4 +186,3 @@ if (!$return)
 }
 echo "Table addition successful.";
 mysql_close($conn);
-*/

@@ -40,6 +40,7 @@ if (!$return) {
 
 $teamToScout = '';
 
+/*
 while ($row = mysql_fetch_assoc($return)) {
     for ($i = 0; $i < $length; $i++) {
         $fieldName = $assignmentFieldNames[$i];
@@ -77,36 +78,46 @@ while ($row = mysql_fetch_assoc($return)) {
         }
     }
 }
+*/
 
 while ($row = mysql_fetch_assoc($return)) {
     if ($MATCH_NUM == $row['matchNum'])
     {
-        for ($i = 1; $i <=6; i++)
+        $flag = false;
+        for ($i = 1; $i <=6; $i++)
         {
-            if ($row['team' + $i + '_assign'] == $NAME_OF_SCOUT)
+            if ($row['team' . $i . '_assign'] == $NAME_OF_SCOUT)
             {
-                $teamToScout = $row['team' + $i]; 
+                $teamToScout = $row['team' . $i];
+                $flag = true;
             }
+        }
+
+        if ($flag)
+        {
+            break;
         }
 
         for ($i = 1; $i <= 6; $i++)
         {
-            if ($row['team' + $i + '_assign'] == '')
+            if ($row['team' . $i . '_assign'] == 'false')
             {
-                $teamToScout = $row['team' + $i];
+                $teamToScout = $row['team' . $i];
                 $sql3 = "UPDATE $table ";
-                $sql3 .= "SET team" + "$i" + "_assign=$NAME_OF_SCOUT ";
+                $sql3 .= "SET team"."$i"."_assign='$NAME_OF_SCOUT' ";
                 $sql3 .= "WHERE matchNum=$MATCH_NUM;";
                 $return3 = mysql_query($sql3, $conn);
-                if (!$return)
+                if (!$return3)
                 {
                     die("Failed " . mysql_error());
                 }
+                break;
             }
         }
     }
 }
 
+/*
 $newConCount = $currConCount+1;
 $sql2 = "UPDATE $table ";
 $sql2 .= "SET matchConCount=$newConCount ";
@@ -115,6 +126,7 @@ $return2 = mysql_query($sql2, $conn);
 if (!$return) {
 	die("Could not get data: " . mysql_error());
 }
+*/
 
 echo $teamToScout;
 
