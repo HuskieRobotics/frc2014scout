@@ -55,7 +55,7 @@ $(document).ready(function(){
                 $("#TEAM_NUM_form").val(data);
             });
             $("#teamScoutingForm").show();
-            $("#teleop").hide();
+            //$("#teleop").hide();
             $("#MATCH_NUM_form").val($("#MATCH_NUM").val());
             $("#NAME_OF_SCOUT_form").val($("#NAME_OF_SCOUT").val());
         }
@@ -92,7 +92,7 @@ $(document).ready(function(){
     });
 
     $("#allianceBallEndLink").click(function() {
-        $("#teleop").show();
+        //$("#teleop").show();
     });
 
     $("#allianceBallEndTime_checkbox").click(function() {
