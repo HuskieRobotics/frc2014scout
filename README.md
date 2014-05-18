@@ -1,4 +1,5 @@
-frc2014scout
+#Scouting System for 2014 FRC Season
 ============
 
-Season 2014's scouting system
+Made by Team 3061
+
